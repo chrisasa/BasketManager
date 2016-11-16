@@ -5,6 +5,7 @@
  */
 package basketmanager;
 
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 /**
@@ -26,7 +27,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private void changeMainBodyContent(JPanel newJPanel) {
         clearMainBodyContent();
         
-        jPanel_MainBody.add(newJPanel);
+        jPanel_MainBody.add(newJPanel, BorderLayout.PAGE_START);
+        
         jPanel_MainBody.revalidate();
         jPanel_MainBody.repaint();
     }
@@ -46,10 +48,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel_Main = new javax.swing.JPanel();
-        jPanel_MainBody = new javax.swing.JPanel();
         jPanel_AddMatchData = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -73,6 +72,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_Location = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton_NewMatchAdd = new javax.swing.JButton();
+        jPanel_Main = new javax.swing.JPanel();
+        jPanel_MainBody = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem_FileExit = new javax.swing.JMenuItem();
@@ -83,12 +84,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jMenu_MatchData = new javax.swing.JMenu();
         jMenuItem_MatchAddNew = new javax.swing.JMenuItem();
         jMenu_Statictis = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel_MainBody.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setText("Add Match Data");
+        jPanel_AddMatchData.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Match Data"));
 
         jLabel2.setText("Opponent");
 
@@ -126,7 +125,6 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel_AddMatchDataLayout.createSequentialGroup()
                         .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,14 +149,12 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                             .addComponent(jTextField_Location)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
                     .addComponent(jButton_NewMatchAdd))
-                .addContainerGap(618, Short.MAX_VALUE))
+                .addContainerGap(606, Short.MAX_VALUE))
         );
         jPanel_AddMatchDataLayout.setVerticalGroup(
             jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_AddMatchDataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField_Opponent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,19 +200,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                     .addComponent(jTextField_Location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton_NewMatchAdd)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel_MainBodyLayout = new javax.swing.GroupLayout(jPanel_MainBody);
-        jPanel_MainBody.setLayout(jPanel_MainBodyLayout);
-        jPanel_MainBodyLayout.setHorizontalGroup(
-            jPanel_MainBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_AddMatchData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel_MainBodyLayout.setVerticalGroup(
-            jPanel_MainBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_AddMatchData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 600));
+
+        jPanel_MainBody.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_MainBody.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout jPanel_MainLayout = new javax.swing.GroupLayout(jPanel_Main);
         jPanel_Main.setLayout(jPanel_MainLayout);
@@ -224,14 +215,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             jPanel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_MainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel_MainLayout.setVerticalGroup(
             jPanel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -283,6 +274,13 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu_MatchData);
 
         jMenu_Statictis.setText("Statistics");
+
+        jMenuItem1.setText("Single Season");
+        jMenu_Statictis.add(jMenuItem1);
+
+        jMenuItem2.setText("Multiple Seasons");
+        jMenu_Statictis.add(jMenuItem2);
+
         jMenuBar1.add(jMenu_Statictis);
 
         setJMenuBar(jMenuBar1);
@@ -358,7 +356,6 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_NewMatchAdd;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -372,6 +369,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_FileExit;
     private javax.swing.JMenuItem jMenuItem_MatchAddNew;
     private javax.swing.JMenuItem jMenuItem_SeasonAddSeason;
