@@ -5,6 +5,8 @@
  */
 package basketmanager;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author
@@ -16,6 +18,23 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
      */
     public BasketManagerJFrame() {
         initComponents();
+        
+        clearMainBodyContent();
+    }
+    
+    
+    private void changeMainBodyContent(JPanel newJPanel) {
+        clearMainBodyContent();
+        
+        jPanel_MainBody.add(newJPanel);
+        jPanel_MainBody.revalidate();
+        jPanel_MainBody.repaint();
+    }
+    
+    private void clearMainBodyContent() {
+        jPanel_MainBody.removeAll();
+        jPanel_MainBody.revalidate();
+        jPanel_MainBody.repaint();
     }
 
     /**
@@ -28,69 +47,175 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel_Main = new javax.swing.JPanel();
-        jPanel_MainMenu = new javax.swing.JPanel();
-        jButton_MenuSeason = new javax.swing.JButton();
-        jButton_MenuPlayer = new javax.swing.JButton();
-        jButton_MenuMatchData = new javax.swing.JButton();
-        jButton_MenuStatistics = new javax.swing.JButton();
-        jButton_MenuExit = new javax.swing.JButton();
         jPanel_MainBody = new javax.swing.JPanel();
+        jPanel_AddMatchData = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField_Opponent = new javax.swing.JTextField();
+        jTextField_FoulsCommited = new javax.swing.JTextField();
+        jTextField_FoulsConceded = new javax.swing.JTextField();
+        jTextField_Assists = new javax.swing.JTextField();
+        jTextField_Rebounds = new javax.swing.JTextField();
+        jTextField_Steals = new javax.swing.JTextField();
+        jTextField_Blocks = new javax.swing.JTextField();
+        jTextField_PointsScored = new javax.swing.JTextField();
+        jTextField_PointsConceded = new javax.swing.JTextField();
+        jTextField_Location = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jButton_NewMatchAdd = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem_FileExit = new javax.swing.JMenuItem();
+        jMenu_Season = new javax.swing.JMenu();
+        jMenuItem_SeasonAddSeason = new javax.swing.JMenuItem();
+        jMenuItem_SeasonList = new javax.swing.JMenuItem();
+        jMenu_Player = new javax.swing.JMenu();
+        jMenu_MatchData = new javax.swing.JMenu();
+        jMenuItem_MatchAddNew = new javax.swing.JMenuItem();
+        jMenu_Statictis = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton_MenuSeason.setText("Season");
-
-        jButton_MenuPlayer.setText("Player");
-
-        jButton_MenuMatchData.setText("Match Data");
-
-        jButton_MenuStatistics.setText("Statistics");
-
-        jButton_MenuExit.setText("Exit");
-        jButton_MenuExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_MenuExitActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_MainMenuLayout = new javax.swing.GroupLayout(jPanel_MainMenu);
-        jPanel_MainMenu.setLayout(jPanel_MainMenuLayout);
-        jPanel_MainMenuLayout.setHorizontalGroup(
-            jPanel_MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MainMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_MenuSeason)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_MenuPlayer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_MenuMatchData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_MenuStatistics)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 497, Short.MAX_VALUE)
-                .addComponent(jButton_MenuExit)
-                .addContainerGap())
-        );
-        jPanel_MainMenuLayout.setVerticalGroup(
-            jPanel_MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton_MenuSeason)
-                .addComponent(jButton_MenuPlayer)
-                .addComponent(jButton_MenuMatchData)
-                .addComponent(jButton_MenuStatistics)
-                .addComponent(jButton_MenuExit))
-        );
-
         jPanel_MainBody.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setText("Add Match Data");
+
+        jLabel2.setText("Opponent");
+
+        jLabel3.setText("Date");
+
+        jLabel4.setText("Fouls Commited");
+
+        jLabel5.setText("Fouls Conceded");
+
+        jLabel6.setText("Assists");
+
+        jLabel7.setText("Rebounds");
+
+        jLabel8.setText("Steals");
+
+        jLabel9.setText("Blocks");
+
+        jLabel13.setText("Points Scored");
+
+        jLabel14.setText("Points Conceded");
+
+        jLabel15.setText("Location (City/Town)");
+
+        jCheckBox1.setText("Home Game");
+
+        jButton_NewMatchAdd.setText("Add");
+
+        javax.swing.GroupLayout jPanel_AddMatchDataLayout = new javax.swing.GroupLayout(jPanel_AddMatchData);
+        jPanel_AddMatchData.setLayout(jPanel_AddMatchDataLayout);
+        jPanel_AddMatchDataLayout.setHorizontalGroup(
+            jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_AddMatchDataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_AddMatchDataLayout.createSequentialGroup()
+                        .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_Opponent)
+                            .addComponent(jTextField_FoulsCommited)
+                            .addComponent(jTextField_FoulsConceded)
+                            .addComponent(jTextField_Assists)
+                            .addComponent(jTextField_Rebounds)
+                            .addComponent(jTextField_Steals)
+                            .addComponent(jTextField_Blocks)
+                            .addComponent(jTextField_PointsScored)
+                            .addComponent(jTextField_PointsConceded)
+                            .addComponent(jTextField_Location)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                    .addComponent(jButton_NewMatchAdd))
+                .addContainerGap(618, Short.MAX_VALUE))
+        );
+        jPanel_AddMatchDataLayout.setVerticalGroup(
+            jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_AddMatchDataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField_Opponent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField_FoulsCommited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField_FoulsConceded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField_Assists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField_Rebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField_Steals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField_Blocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextField_PointsScored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jTextField_PointsConceded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_AddMatchDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField_Location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton_NewMatchAdd)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel_MainBodyLayout = new javax.swing.GroupLayout(jPanel_MainBody);
         jPanel_MainBody.setLayout(jPanel_MainBodyLayout);
         jPanel_MainBodyLayout.setHorizontalGroup(
             jPanel_MainBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jPanel_AddMatchData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel_MainBodyLayout.setVerticalGroup(
             jPanel_MainBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addComponent(jPanel_AddMatchData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_MainLayout = new javax.swing.GroupLayout(jPanel_Main);
@@ -99,20 +224,68 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             jPanel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_MainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel_MainLayout.setVerticalGroup(
             jPanel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MainLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_MainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jMenu2.setText("File");
+
+        jMenuItem_FileExit.setText("Exit");
+        jMenuItem_FileExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_FileExitActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem_FileExit);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu_Season.setText("Season");
+
+        jMenuItem_SeasonAddSeason.setText("Add New");
+        jMenuItem_SeasonAddSeason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_SeasonAddSeasonActionPerformed(evt);
+            }
+        });
+        jMenu_Season.add(jMenuItem_SeasonAddSeason);
+
+        jMenuItem_SeasonList.setText("Seasons List");
+        jMenuItem_SeasonList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_SeasonListActionPerformed(evt);
+            }
+        });
+        jMenu_Season.add(jMenuItem_SeasonList);
+
+        jMenuBar1.add(jMenu_Season);
+
+        jMenu_Player.setText("Player");
+        jMenuBar1.add(jMenu_Player);
+
+        jMenu_MatchData.setText("Match Data");
+
+        jMenuItem_MatchAddNew.setText("Add New Match");
+        jMenuItem_MatchAddNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_MatchAddNewActionPerformed(evt);
+            }
+        });
+        jMenu_MatchData.add(jMenuItem_MatchAddNew);
+
+        jMenuBar1.add(jMenu_MatchData);
+
+        jMenu_Statictis.setText("Statistics");
+        jMenuBar1.add(jMenu_Statictis);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,10 +301,24 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_MenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MenuExitActionPerformed
+    private void jMenuItem_FileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_FileExitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jButton_MenuExitActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem_FileExitActionPerformed
+
+    private void jMenuItem_SeasonListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SeasonListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem_SeasonListActionPerformed
+
+    private void jMenuItem_SeasonAddSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SeasonAddSeasonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem_SeasonAddSeasonActionPerformed
+
+    private void jMenuItem_MatchAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_MatchAddNewActionPerformed
+        // TODO add your handling code here:
+        changeMainBodyContent(jPanel_AddMatchData);
+    }//GEN-LAST:event_jMenuItem_MatchAddNewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,13 +356,42 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_MenuExit;
-    private javax.swing.JButton jButton_MenuMatchData;
-    private javax.swing.JButton jButton_MenuPlayer;
-    private javax.swing.JButton jButton_MenuSeason;
-    private javax.swing.JButton jButton_MenuStatistics;
+    private javax.swing.JButton jButton_NewMatchAdd;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem_FileExit;
+    private javax.swing.JMenuItem jMenuItem_MatchAddNew;
+    private javax.swing.JMenuItem jMenuItem_SeasonAddSeason;
+    private javax.swing.JMenuItem jMenuItem_SeasonList;
+    private javax.swing.JMenu jMenu_MatchData;
+    private javax.swing.JMenu jMenu_Player;
+    private javax.swing.JMenu jMenu_Season;
+    private javax.swing.JMenu jMenu_Statictis;
+    private javax.swing.JPanel jPanel_AddMatchData;
     private javax.swing.JPanel jPanel_Main;
     private javax.swing.JPanel jPanel_MainBody;
-    private javax.swing.JPanel jPanel_MainMenu;
+    private javax.swing.JTextField jTextField_Assists;
+    private javax.swing.JTextField jTextField_Blocks;
+    private javax.swing.JTextField jTextField_FoulsCommited;
+    private javax.swing.JTextField jTextField_FoulsConceded;
+    private javax.swing.JTextField jTextField_Location;
+    private javax.swing.JTextField jTextField_Opponent;
+    private javax.swing.JTextField jTextField_PointsConceded;
+    private javax.swing.JTextField jTextField_PointsScored;
+    private javax.swing.JTextField jTextField_Rebounds;
+    private javax.swing.JTextField jTextField_Steals;
     // End of variables declaration//GEN-END:variables
 }
