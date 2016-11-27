@@ -41,6 +41,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         initApp();
 
         clearMainBodyContent();
+        
+        changeMainBodyContent(jPanel_Intro);
     }
 
     private void initApp() {
@@ -48,7 +50,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         initMatchesStoreFile();
 
-        initGamesStoreFile();
+        initGamesStoreFile();        
     }
 
     private void initPlayersStoreFile() {
@@ -175,6 +177,9 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_MatchesList = new javax.swing.JTable();
+        jPanel_Intro = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
         jPanel_Main = new javax.swing.JPanel();
         jPanel_MainBody = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -715,6 +720,34 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jPanel_MatchList.add(jPanel4, java.awt.BorderLayout.CENTER);
 
+        jPanel_Intro.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Player"));
+        jPanel_Intro.setPreferredSize(new java.awt.Dimension(970, 570));
+        jPanel_Intro.setLayout(new java.awt.BorderLayout());
+
+        jLabel30.setFont(new java.awt.Font("Lucida Handwriting", 0, 36)); // NOI18N
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("Basket Manager v.1.0");
+        jLabel30.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel_Intro.add(jPanel5, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
@@ -734,7 +767,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             jPanel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                .addComponent(jPanel_MainBody, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1098,6 +1131,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1125,6 +1159,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel_Intro;
     private javax.swing.JPanel jPanel_Main;
     private javax.swing.JPanel jPanel_MainBody;
     private javax.swing.JPanel jPanel_MatchAdd;
