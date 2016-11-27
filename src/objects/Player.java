@@ -11,6 +11,7 @@ package objects;
  */
 public class Player {
     
+    private int Id;
     private String FirstName;
     private String LastName;
     private String DoB;
@@ -23,7 +24,8 @@ public class Player {
     public Player() {
     }
 
-    public Player(String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey) {
+    public Player(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey) {
+        this.Id = Id;
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.DoB = DoB;
@@ -33,8 +35,21 @@ public class Player {
         this.Position = Position;
         this.Jersey = Jersey;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" + "Id=" + Id + ", FirstName=" + FirstName + ", LastName=" + LastName + ", DoB=" + DoB + ", PoB=" + PoB + ", Height=" + Height + ", Weight=" + Weight + ", Position=" + Position + ", Jersey=" + Jersey + '}';
+    }
     
     // Getters and Setters
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
     
     public String getFirstName() {
         return FirstName;
