@@ -5,6 +5,7 @@
  */
 package objects;
 
+import database.DatabaseManager;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -12,14 +13,11 @@ import java.io.RandomAccessFile;
  *
  * @author
  */
-public class PlayerRecord extends Player {
-    public static final int ID_POINTER_LENGTH = 15;
+public class PlayerRecord extends Player implements DatabaseRecord {
     
-    public static final int STRING_ENTRY_LENGTH = 15;
-    
-    public static final int NUMBER_OF_STRING_FIELDS = 8;
+    private static final int STRING_ENTRY_LENGTH = 15;
 
-    public static final int DATABASE_ENRTY_SIZE = Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH));
+    private static final int NUMBER_OF_STRING_FIELDS = 8;
 
     public PlayerRecord() {
         this(0, "", "", "", "", "", "", "", "");
@@ -27,53 +25,61 @@ public class PlayerRecord extends Player {
 
     public PlayerRecord(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey) {
         super(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
+        //super(ID_POINTER_LENGTH,STRING_ENTRY_LENGTH,NUMBER_OF_STRING_FIELDS, Id);
     }
 
+    @Override
     public void readFromFile(RandomAccessFile file) throws IOException {
         setId(file.readInt());
-        setFirstName(readString(file));
-        setLastName(readString(file));
-        setDoB(readString(file));
-        setPoB(readString(file));
-        setHeight(readString(file));
-        setWeight(readString(file));
-        setPosition(readString(file));
-        setJersey(readString(file));        
+        setFirstName(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setLastName(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setDoB(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setPoB(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setHeight(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setWeight(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setPosition(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setJersey(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
     }
 
+    @Override
     public void writeToFile(RandomAccessFile file) throws IOException {
         file.writeInt(getId());
-        writeString(file, getFirstName());
-        writeString(file, getLastName());
-        writeString(file, getDoB());
-        writeString(file, getPoB());
-        writeString(file, getHeight());
-        writeString(file, getWeight());
-        writeString(file, getPosition());
-        writeString(file, getWeight());
+        DatabaseManager.writeString(file, getFirstName(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getLastName(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getDoB(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getPoB(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getHeight(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getWeight(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getPosition(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getWeight(), STRING_ENTRY_LENGTH);
     }
 
-    private String readString(RandomAccessFile file) throws IOException {
-        char[] tmpCharArray = new char[STRING_ENTRY_LENGTH];
-
-        for (int i = 0; i < tmpCharArray.length; i++) {
-            tmpCharArray[i] = file.readChar();
-        }
-
-        return new String(tmpCharArray).replace('\0', ' ');
+    @Override
+    public String toString() {
+        return "PlayerRecord{" + "Id=" + getId() + ", FirstName=" + getFirstName() 
+                + ", LastName=" + getLastName() + ", DoB=" + getDoB() + ", PoB=" 
+                + getPoB() + ", Height=" + getHeight() + ", Weight=" + getWeight() 
+                + ", Position=" + getPosition() + ", Jersey=" + getJersey() + '}';
     }
 
-    private void writeString(RandomAccessFile file, String inputString) throws IOException {
-        StringBuffer buffer = null;
-
-        if (inputString != null) {
-            buffer = new StringBuffer(inputString);
-        } else {
-            buffer = new StringBuffer(STRING_ENTRY_LENGTH);
-        }
-
-        buffer.setLength(STRING_ENTRY_LENGTH);
-
-        file.writeChars(buffer.toString());
+    @Override
+    public int getRecordId() {
+        return getId();
     }
+
+    @Override
+    public int getStringEntryLength() {
+        return STRING_ENTRY_LENGTH;
+    }
+
+    @Override
+    public int getNumberOfStringFields() {
+        return NUMBER_OF_STRING_FIELDS;
+    }
+
+    @Override
+    public int getDatabaseEntrySize() {
+        return DatabaseManager.getDatabaseEntrySize(NUMBER_OF_STRING_FIELDS, STRING_ENTRY_LENGTH);
+    }
+
 }

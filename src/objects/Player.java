@@ -36,11 +36,6 @@ public class Player {
         this.Jersey = Jersey;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" + "Id=" + Id + ", FirstName=" + FirstName + ", LastName=" + LastName + ", DoB=" + DoB + ", PoB=" + PoB + ", Height=" + Height + ", Weight=" + Weight + ", Position=" + Position + ", Jersey=" + Jersey + '}';
-    }
-    
     // Getters and Setters
 
     public int getId() {

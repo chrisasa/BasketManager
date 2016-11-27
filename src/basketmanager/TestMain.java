@@ -12,7 +12,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import objects.PlayerRecord;
-import database.FileDatabaseManagerPlayer;
+import database.FileDatabaseManager;
+import java.util.ArrayList;
+import tools.GlobalVariables;
 
 /**
  *
@@ -20,7 +22,7 @@ import database.FileDatabaseManagerPlayer;
  */
 public class TestMain {
 
-    public static String filePath = "/Users/christos/Documents/Dev_Tools/GIT_Repos/BasketManager/src/files/testDB.txt";
+    public static String filePath = "/Users/christos/Documents/Dev_Tools/GIT_Repos/BasketManager/src/files/players.store";
 
     /**
      * @param args the command line arguments
@@ -73,12 +75,12 @@ public class TestMain {
         File tmpFile = new File(filePath);
 
         RandomAccessFile randomAccessFile = new RandomAccessFile(filePath, "rw");
-//        randomAccessFile.readLong();
 //        randomAccessFile.writeInt(0);
 //        System.out.println();
 //        randomAccessFile.close();
         
-        FileDatabaseManagerPlayer database = new FileDatabaseManagerPlayer(filePath);
+//        PlayerRecord playerRecord = new PlayerRecord();
+//        FileDatabaseManager database = new FileDatabaseManager(filePath, playerRecord);
 //        PlayerRecord playerRecord1 = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(filePath), "1", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord2 = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(filePath), "2", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord3 = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(filePath), "3", "123", "123", "123", "123", "123", "123", "123");
@@ -88,8 +90,12 @@ public class TestMain {
 //        database.insertRecord(playerRecord2);
 //        database.insertRecord(playerRecord3);
 //        database.insertRecord(playerRecord4);
-//        database.showAllRecords();
-//        
+        ArrayList al = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
+        
+        System.out.println(al.size());
+        
+        DatabaseManager.showAllPlayerRecords(GlobalVariables.pathPlayersRaf);
+
 //        PlayerRecord playerRecord1 = new PlayerRecord(1, "1up", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord2 = new PlayerRecord(2, "2up", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord3 = new PlayerRecord(3, "3up", "123", "123", "123", "123", "123", "123", "123");
@@ -100,8 +106,7 @@ public class TestMain {
 //        database.updateRecord(playerRecord3);
 //        database.updateRecord(playerRecord4);
 //
-        database.showAllRecords();
-        database.test();
+//        database.showAllRecords();
 
 
     }

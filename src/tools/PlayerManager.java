@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
-
+@Deprecated
 public class PlayerManager implements PlayerManagerInterface {
 
     ExcelManagerInterface excelManager = new ExcelManager();
