@@ -20,10 +20,6 @@ public interface DatabaseRecord {
     
     public int getRecordId();
     
-    public int getStringEntryLength();
-    
-    public int getNumberOfStringFields();
-    
     public int getDatabaseEntrySize();
     
     @Override

@@ -25,7 +25,6 @@ public class PlayerRecord extends Player implements DatabaseRecord {
 
     public PlayerRecord(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey) {
         super(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
-        //super(ID_POINTER_LENGTH,STRING_ENTRY_LENGTH,NUMBER_OF_STRING_FIELDS, Id);
     }
 
     @Override
@@ -68,18 +67,8 @@ public class PlayerRecord extends Player implements DatabaseRecord {
     }
 
     @Override
-    public int getStringEntryLength() {
-        return STRING_ENTRY_LENGTH;
-    }
-
-    @Override
-    public int getNumberOfStringFields() {
-        return NUMBER_OF_STRING_FIELDS;
-    }
-
-    @Override
     public int getDatabaseEntrySize() {
-        return DatabaseManager.getDatabaseEntrySize(NUMBER_OF_STRING_FIELDS, STRING_ENTRY_LENGTH);
+        return Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH));
     }
 
 }

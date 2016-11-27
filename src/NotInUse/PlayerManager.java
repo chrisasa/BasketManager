@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tools;
+package NotInUse;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+import tools.GlobalVariables;
 @Deprecated
 public class PlayerManager implements PlayerManagerInterface {
 

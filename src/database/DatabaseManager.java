@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import objects.MatchRecord;
 import objects.PlayerRecord;
 
 /**
@@ -118,6 +119,41 @@ public class DatabaseManager {
 
         return recordsArrayList;
     }
+    
+    public static ArrayList<MatchRecord> getAllMatchesEntries(String playersRafPath) throws FileNotFoundException {
+
+        RandomAccessFile randomAccessFile = new RandomAccessFile(playersRafPath, "rw");
+
+        ArrayList<MatchRecord> recordsArrayList = new ArrayList<>();
+
+        try {
+            long seekPoint = getDataEntriesStartPointerOffset();
+
+            // Loop up to the end of the file (EOFException)
+            while (true) {
+                randomAccessFile.seek(seekPoint);
+
+                MatchRecord matchRecord = new MatchRecord();
+
+                matchRecord.readFromFile(randomAccessFile);
+
+                recordsArrayList.add(matchRecord);
+
+                // Increase by one entry size the seek position to get the next entry
+                seekPoint += matchRecord.getDatabaseEntrySize();
+            }
+
+        } catch (EOFException ex1) {
+            return recordsArrayList;
+        } catch (IOException ex2) {
+            System.err.println("Error reading file");
+        }
+
+        return recordsArrayList;
+    }
+    
+    
+    
 
     public static void createRafStoreFile(String filePath) {
 

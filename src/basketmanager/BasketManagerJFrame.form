@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JPanel" name="jPanel_AddMatchData">
+    <Container class="javax.swing.JPanel" name="jPanel_MatchAdd">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -14,41 +14,48 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel6" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel15" alignment="0" pref="150" max="32767" attributes="0"/>
+                      <Component id="jLabel_MatchAddMessage" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jLabel6" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel15" alignment="0" pref="150" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextField_MatchOpponent" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchFoulsCommited" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchFoulsConceded" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchAssists" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchRebounds" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchSteals" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchBlocks" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchPointsScored" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchPointsConceded" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_MatchLocation" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jCheckBox_MatchHomeGame" alignment="0" pref="200" max="32767" attributes="0"/>
+                                      <Component id="jSpinner_MatchDate" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jButton_NewMatchAdd" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField_Opponent" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_FoulsCommited" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_FoulsConceded" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_Assists" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_Rebounds" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_Steals" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_Blocks" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_PointsScored" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_PointsConceded" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_Location" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jCheckBox1" alignment="0" pref="200" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jButton_NewMatchAdd" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="606" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -58,58 +65,63 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_Opponent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchOpponent" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinner_MatchDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_FoulsCommited" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchFoulsCommited" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_FoulsConceded" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchFoulsConceded" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_Assists" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchAssists" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_Rebounds" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchRebounds" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_Steals" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchSteals" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_Blocks" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchBlocks" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBox_MatchHomeGame" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_PointsScored" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchPointsScored" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_PointsConceded" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchPointsConceded" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_Location" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_MatchLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jLabel_MatchAddMessage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
                   <Component id="jButton_NewMatchAdd" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -172,27 +184,27 @@
             <Property name="text" type="java.lang.String" value="Location (City/Town)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Opponent">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchOpponent">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_FoulsCommited">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchFoulsCommited">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_FoulsConceded">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchFoulsConceded">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Assists">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchAssists">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Rebounds">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchRebounds">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Steals">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchSteals">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Blocks">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchBlocks">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_PointsScored">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchPointsScored">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_PointsConceded">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchPointsConceded">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Location">
+        <Component class="javax.swing.JTextField" name="jTextField_MatchLocation">
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_MatchHomeGame">
           <Properties>
             <Property name="text" type="java.lang.String" value="Home Game"/>
           </Properties>
@@ -200,6 +212,21 @@
         <Component class="javax.swing.JButton" name="jButton_NewMatchAdd">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_NewMatchAddActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="jSpinner_MatchDate">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_MatchAddMessage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
         </Component>
       </SubComponents>
@@ -527,15 +554,67 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="9" rowCount="1">
                         <Column editable="false" title="Id" type="java.lang.Object"/>
-                        <Column editable="true" title="First Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Last Name" type="java.lang.Object"/>
-                        <Column editable="true" title="DoB" type="java.lang.Object"/>
-                        <Column editable="true" title="PoB" type="java.lang.Object"/>
-                        <Column editable="true" title="Height" type="java.lang.Object"/>
-                        <Column editable="true" title="Weight" type="java.lang.Object"/>
-                        <Column editable="true" title="Position" type="java.lang.Object"/>
-                        <Column editable="true" title="Jersey" type="java.lang.Object"/>
+                        <Column editable="false" title="First Name" type="java.lang.Object"/>
+                        <Column editable="false" title="Last Name" type="java.lang.Object"/>
+                        <Column editable="false" title="DoB" type="java.lang.Object"/>
+                        <Column editable="false" title="PoB" type="java.lang.Object"/>
+                        <Column editable="false" title="Height" type="java.lang.Object"/>
+                        <Column editable="false" title="Weight" type="java.lang.Object"/>
+                        <Column editable="false" title="Position" type="java.lang.Object"/>
+                        <Column editable="false" title="Jersey" type="java.lang.Object"/>
                       </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="1">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -847,6 +926,151 @@
         </Container>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JPanel" name="jPanel_MatchList">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="List of Players"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel4">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Center"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="946" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="534" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable_MatchesList">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="13" rowCount="1">
+                        <Column editable="false" title="Id" type="java.lang.Object"/>
+                        <Column editable="false" title="Opponent" type="java.lang.Object"/>
+                        <Column editable="false" title="Date" type="java.lang.Object"/>
+                        <Column editable="false" title="Fouls Commited" type="java.lang.Object"/>
+                        <Column editable="false" title="Fouls Conceded" type="java.lang.Object"/>
+                        <Column editable="false" title="Assists" type="java.lang.Object"/>
+                        <Column editable="false" title="Rebounds" type="java.lang.Object"/>
+                        <Column editable="false" title="Steals" type="java.lang.Object"/>
+                        <Column editable="false" title="Blocks" type="java.lang.Object"/>
+                        <Column editable="false" title="Home Game" type="java.lang.Object"/>
+                        <Column editable="false" title="Points Scored" type="java.lang.Object"/>
+                        <Column editable="false" title="Points Conceded" type="java.lang.Object"/>
+                        <Column editable="false" title="Location" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="1">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu_File">
@@ -903,6 +1127,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_PlayerList">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Player List"/>
+                <Property name="actionCommand" type="java.lang.String" value="Players List"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_PlayerListActionPerformed"/>
@@ -921,6 +1146,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_MatchAddNewActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_MatchList">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Matches List"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_MatchListActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
