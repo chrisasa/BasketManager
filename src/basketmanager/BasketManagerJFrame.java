@@ -17,9 +17,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import objects.MatchRecord;
+import objects.PlayerGameRecord;
 import objects.PlayerRecord;
 import tools.GlobalVariables;
 
@@ -41,7 +43,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         initApp();
 
         clearMainBodyContent();
-        
+
         changeMainBodyContent(jPanel_Intro);
     }
 
@@ -50,7 +52,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         initMatchesStoreFile();
 
-        initGamesStoreFile();        
+        initGamesStoreFile();
     }
 
     private void initPlayersStoreFile() {
@@ -113,7 +115,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jTextField_MatchOpponent = new javax.swing.JTextField();
-        jTextField_MatchFoulsCommited = new javax.swing.JTextField();
+        jTextField_MatchFoulsCommitted = new javax.swing.JTextField();
         jTextField_MatchFoulsConceded = new javax.swing.JTextField();
         jTextField_MatchAssists = new javax.swing.JTextField();
         jTextField_MatchRebounds = new javax.swing.JTextField();
@@ -123,7 +125,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_MatchPointsConceded = new javax.swing.JTextField();
         jTextField_MatchLocation = new javax.swing.JTextField();
         jCheckBox_MatchHomeGame = new javax.swing.JCheckBox();
-        jButton_NewMatchAdd = new javax.swing.JButton();
+        jButton_AddMatch = new javax.swing.JButton();
         jSpinner_MatchDate = new javax.swing.JSpinner();
         jLabel_MatchAddMessage = new javax.swing.JLabel();
         jPanel_PlayerAdd = new javax.swing.JPanel();
@@ -144,7 +146,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_PlayerWeight = new javax.swing.JTextField();
         jTextField_PlayerPosition = new javax.swing.JTextField();
         jTextField_PlayerJersey = new javax.swing.JTextField();
-        jButton_PlayerAdd = new javax.swing.JButton();
+        jButton_AddPlayer = new javax.swing.JButton();
         jLabel_PlayerAddMessage = new javax.swing.JLabel();
         jPanel_PlayerList = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -168,11 +170,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_PlayerGameBlocks = new javax.swing.JTextField();
         jTextField_PlayerGameAwayTeamName = new javax.swing.JTextField();
         jTextField_PlayerGamePointsScored = new javax.swing.JTextField();
-        jButton_PlayerAddGame = new javax.swing.JButton();
+        jButton_AddPlayerGame = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         jTextField_PlayerGameLocation = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jCheckBox_PlayerGameHomeGame = new javax.swing.JCheckBox();
+        jSpinner_PlayerGameDate = new javax.swing.JSpinner();
+        jLabel_PlayerGameAddMessage = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jComboBox_PlayerGamePlayerName = new javax.swing.JComboBox<>();
         jPanel_MatchList = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -191,6 +197,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jMenu_Player = new javax.swing.JMenu();
         jMenuItem_PlayerAdd = new javax.swing.JMenuItem();
         jMenuItem_PlayerList = new javax.swing.JMenuItem();
+        jMenuItem_PlayerAddGame = new javax.swing.JMenuItem();
         jMenu_MatchData = new javax.swing.JMenu();
         jMenuItem_MatchAddNew = new javax.swing.JMenuItem();
         jMenuItem_MatchList = new javax.swing.JMenuItem();
@@ -224,10 +231,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jCheckBox_MatchHomeGame.setText("Home Game");
 
-        jButton_NewMatchAdd.setText("Add");
-        jButton_NewMatchAdd.addActionListener(new java.awt.event.ActionListener() {
+        jButton_AddMatch.setText("Add");
+        jButton_AddMatch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_NewMatchAddActionPerformed(evt);
+                jButton_AddMatchActionPerformed(evt);
             }
         });
 
@@ -261,7 +268,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel_MatchAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField_MatchOpponent)
-                                    .addComponent(jTextField_MatchFoulsCommited)
+                                    .addComponent(jTextField_MatchFoulsCommitted)
                                     .addComponent(jTextField_MatchFoulsConceded)
                                     .addComponent(jTextField_MatchAssists)
                                     .addComponent(jTextField_MatchRebounds)
@@ -272,7 +279,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                                     .addComponent(jTextField_MatchLocation)
                                     .addComponent(jCheckBox_MatchHomeGame, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                                     .addComponent(jSpinner_MatchDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton_NewMatchAdd))
+                            .addComponent(jButton_AddMatch))
                         .addGap(0, 600, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -290,7 +297,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_MatchAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField_MatchFoulsCommited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_MatchFoulsCommitted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel_MatchAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -328,7 +335,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel_MatchAddMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jButton_NewMatchAdd)
+                .addComponent(jButton_AddMatch)
                 .addContainerGap())
         );
 
@@ -376,10 +383,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jTextField_PlayerJersey.setPreferredSize(new java.awt.Dimension(200, 28));
 
-        jButton_PlayerAdd.setText("Add");
-        jButton_PlayerAdd.addActionListener(new java.awt.event.ActionListener() {
+        jButton_AddPlayer.setText("Add");
+        jButton_AddPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_PlayerAddActionPerformed(evt);
+                jButton_AddPlayerActionPerformed(evt);
             }
         });
 
@@ -428,7 +435,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField_PlayerJersey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton_PlayerAdd))
+                            .addComponent(jButton_AddPlayer))
                         .addGap(0, 584, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -470,7 +477,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_PlayerAddMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addComponent(jButton_PlayerAdd)
+                .addComponent(jButton_AddPlayer)
                 .addContainerGap())
         );
 
@@ -562,10 +569,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jTextField_PlayerGamePointsScored.setPreferredSize(new java.awt.Dimension(200, 28));
 
-        jButton_PlayerAddGame.setText("Add");
-        jButton_PlayerAddGame.addActionListener(new java.awt.event.ActionListener() {
+        jButton_AddPlayerGame.setText("Add");
+        jButton_AddPlayerGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_PlayerAddGameActionPerformed(evt);
+                jButton_AddPlayerGameActionPerformed(evt);
             }
         });
 
@@ -579,6 +586,13 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jCheckBox_PlayerGameHomeGame.setText("Home Game");
 
+        jSpinner_PlayerGameDate.setModel(new javax.swing.SpinnerDateModel());
+
+        jLabel_PlayerGameAddMessage.setText(" ");
+
+        jLabel31.setText("Player Name");
+        jLabel31.setPreferredSize(new java.awt.Dimension(150, 16));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -586,52 +600,66 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_PlayerGameAddMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameFoulsCommitted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameFoulsConceded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameSteals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameAwayTeamName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGamePointsScored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_PlayerAddGame)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_PlayerGameLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox_PlayerGameHomeGame)
-                            .addComponent(jTextField_PlayerGameBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(590, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameSteals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameAwayTeamName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGamePointsScored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton_AddPlayerGame)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSpinner_PlayerGameDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox_PlayerGameHomeGame)
+                                    .addComponent(jTextField_PlayerGameBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox_PlayerGamePlayerName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameFoulsCommitted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameFoulsConceded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerGameRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 584, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_PlayerGamePlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_PlayerGameFoulsCommitted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -643,7 +671,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_PlayerGameAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_PlayerGameRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -670,9 +698,13 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_PlayerGameLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jButton_PlayerAddGame)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner_PlayerGameDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_PlayerGameAddMessage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jButton_AddPlayerGame)
                 .addContainerGap())
         );
 
@@ -720,7 +752,6 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jPanel_MatchList.add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jPanel_Intro.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Player"));
         jPanel_Intro.setPreferredSize(new java.awt.Dimension(970, 570));
         jPanel_Intro.setLayout(new java.awt.BorderLayout());
 
@@ -735,14 +766,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -822,6 +853,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         });
         jMenu_Player.add(jMenuItem_PlayerList);
 
+        jMenuItem_PlayerAddGame.setText("Add Game");
+        jMenuItem_PlayerAddGame.setActionCommand("Players List");
+        jMenuItem_PlayerAddGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PlayerAddGameActionPerformed(evt);
+            }
+        });
+        jMenu_Player.add(jMenuItem_PlayerAddGame);
+
         jMenuBar1.add(jMenu_Player);
 
         jMenu_MatchData.setText("Match Data");
@@ -885,14 +925,16 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_SeasonAddSeasonActionPerformed
 
     private void jMenuItem_MatchAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_MatchAddNewActionPerformed
+        clearAddMatch();
         changeMainBodyContent(jPanel_MatchAdd);
     }//GEN-LAST:event_jMenuItem_MatchAddNewActionPerformed
 
     private void jMenuItem_PlayerAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerAddActionPerformed
+        clearAddNewPlayer();
         changeMainBodyContent(jPanel_PlayerAdd);
     }//GEN-LAST:event_jMenuItem_PlayerAddActionPerformed
 
-    private void jButton_PlayerAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PlayerAddActionPerformed
+    private void jButton_AddPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddPlayerActionPerformed
         String FirstName = jTextField_PlayerFirstName.getText().trim();
         String LastName = jTextField_PlayerLastName.getText().trim();
         String DoB = jTextField_PlayerDoB.getText().trim();
@@ -902,10 +944,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         String Position = jTextField_PlayerPosition.getText().trim();
         String Jersey = jTextField_PlayerJersey.getText().trim();
 
-        if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("") 
-                && !PoB.equals("") && !Height.equals("") && !Weight.equals("") 
+        if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("")
+                && !PoB.equals("") && !Height.equals("") && !Weight.equals("")
                 && !Position.equals("") && !Jersey.equals("")) {
-            
+
             PlayerRecord playerRecord = new PlayerRecord();
             FileDatabaseManager database;
             try {
@@ -915,20 +957,75 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             jLabel_PlayerAddMessage.setText("Player added successfully");
             jLabel_PlayerAddMessage.setForeground(Color.BLUE);
+
+            clearAddNewPlayer();
         } else {
             jLabel_PlayerAddMessage.setText("All fields should be filled!");
             jLabel_PlayerAddMessage.setForeground(Color.RED);
         }
+    }//GEN-LAST:event_jButton_AddPlayerActionPerformed
 
-        clearAddNewPlayer();
-    }//GEN-LAST:event_jButton_PlayerAddActionPerformed
+    private String[] splitPlayerIdAndName(String playerInfo) {
+        String[] idAndName = new String[2];
 
-    private void jButton_PlayerAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PlayerAddGameActionPerformed
+        // indexOf to get the first occurrence of our splitter character '.'
+        int splitterPosition = playerInfo.indexOf('.');
 
-    }//GEN-LAST:event_jButton_PlayerAddGameActionPerformed
+        // The first position of the array is for the Player's Id
+        idAndName[0] = playerInfo.substring(0, splitterPosition);
+
+        // The second position of the array is for the Player's Name
+        idAndName[1] = playerInfo.substring(splitterPosition + 1);
+
+        return idAndName;
+    }
+
+    private void jButton_AddPlayerGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddPlayerGameActionPerformed
+
+        String tmpPlayerData = jComboBox_PlayerGamePlayerName.getSelectedItem().toString();
+        String[] tmpIdAndName = splitPlayerIdAndName(tmpPlayerData);
+        int PlayerId = Integer.parseInt(tmpIdAndName[0]); // Convert string to int
+        String PlayerName = tmpIdAndName[1];
+
+        String FoulsCommitted = jTextField_PlayerGameFoulsCommitted.getText().trim();
+        String FoulsConceded = jTextField_PlayerGameFoulsConceded.getText().trim();
+        String Assists = jTextField_PlayerGameAssists.getText().trim();
+        String Rebounds = jTextField_PlayerGameRebounds.getText().trim();
+        String Steals = jTextField_PlayerGameSteals.getText().trim();
+        String Blocks = jTextField_PlayerGameBlocks.getText().trim();
+        int HomeGame = jCheckBox_PlayerGameHomeGame.isSelected() ? 1 : 0; // 0 = false or 1 = true
+        String AwayTeamName = jTextField_PlayerGameAwayTeamName.getText().trim();
+        String PointsScored = jTextField_PlayerGamePointsScored.getText().trim();
+        String Location = jTextField_PlayerGameLocation.getText().trim();
+        Date tmpDate = (Date) jSpinner_PlayerGameDate.getValue();
+        long GameDate = tmpDate.getTime();
+
+        if (!FoulsCommitted.equals("") && !FoulsConceded.equals("") && !Assists.equals("")
+                && !Rebounds.equals("") && !Steals.equals("") && !Blocks.equals("")
+                && !AwayTeamName.equals("") && !PointsScored.equals("") && !Location.equals("")) {
+
+            PlayerGameRecord playerGameRecord = new PlayerGameRecord();
+            FileDatabaseManager database;
+            try {
+                database = new FileDatabaseManager(GlobalVariables.pathGamesRaf, playerGameRecord);
+                PlayerGameRecord newPlayerGameRecord = new PlayerGameRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathGamesRaf), PlayerId, PlayerName, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, AwayTeamName, PointsScored, Location, GameDate);
+                database.insertRecord(newPlayerGameRecord);
+            } catch (IOException ex) {
+                Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            clearAddPlayerGame();
+
+            jLabel_PlayerGameAddMessage.setText("Player game added successfully");
+            jLabel_PlayerGameAddMessage.setForeground(Color.BLUE);
+        } else {
+            jLabel_PlayerGameAddMessage.setText("All fields should be filled!");
+            jLabel_PlayerGameAddMessage.setForeground(Color.RED);
+        }
+    }//GEN-LAST:event_jButton_AddPlayerGameActionPerformed
 
     private void jMenuItem_PlayerListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerListActionPerformed
 
@@ -960,54 +1057,54 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         changeMainBodyContent(jPanel_PlayerList);
     }//GEN-LAST:event_jMenuItem_PlayerListActionPerformed
 
-    private void jButton_NewMatchAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewMatchAddActionPerformed
+    private void jButton_AddMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddMatchActionPerformed
         String Opponent = jTextField_MatchOpponent.getText().trim();
-        Date tmpDate = (Date)jSpinner_MatchDate.getValue();
+        Date tmpDate = (Date) jSpinner_MatchDate.getValue();
         long DateTimestamp = tmpDate.getTime();
-        String FoulsCommited = jTextField_MatchFoulsCommited.getText().trim();
+        String FoulsCommitted = jTextField_MatchFoulsCommitted.getText().trim();
         String FoulsConceded = jTextField_MatchFoulsConceded.getText().trim();
         String Assists = jTextField_MatchAssists.getText().trim();
         String Rebounds = jTextField_MatchRebounds.getText().trim();
         String Steals = jTextField_MatchSteals.getText().trim();
         String Blocks = jTextField_MatchBlocks.getText().trim();
-        int HomeGame = jCheckBox_MatchHomeGame.isSelected()? 1 : 0; // 0 = false or 1 = true
+        int HomeGame = jCheckBox_MatchHomeGame.isSelected() ? 1 : 0; // 0 = false or 1 = true
         String PointsScored = jTextField_MatchPointsScored.getText().trim();
         String PointsConceded = jTextField_MatchPointsConceded.getText().trim();
         String Location = jTextField_MatchLocation.getText().trim();
-        
-        if(!Opponent.equals("") && !FoulsCommited.equals("") && !FoulsConceded.equals("") && !Assists.equals("")
+
+        if (!Opponent.equals("") && !FoulsCommitted.equals("") && !FoulsConceded.equals("") && !Assists.equals("")
                 && !Rebounds.equals("") && !Steals.equals("") && !Blocks.equals("")
-                && !PointsScored.equals("") && !PointsConceded.equals("") && !Location.equals("") ) {
-            
+                && !PointsScored.equals("") && !PointsConceded.equals("") && !Location.equals("")) {
+
             MatchRecord matchRecord = new MatchRecord();
             FileDatabaseManager database;
             try {
                 database = new FileDatabaseManager(GlobalVariables.pathMatchesRaf, matchRecord);
-                MatchRecord newMatchRecord = new MatchRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathMatchesRaf),Opponent, DateTimestamp, FoulsCommited, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, PointsScored, PointsConceded, Location);
+                MatchRecord newMatchRecord = new MatchRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathMatchesRaf), Opponent, DateTimestamp, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, PointsScored, PointsConceded, Location);
                 database.insertRecord(newMatchRecord);
             } catch (IOException ex) {
                 Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             jLabel_MatchAddMessage.setText("Match added successfully");
             jLabel_MatchAddMessage.setForeground(Color.BLUE);
+
+            clearAddMatch();
         } else {
             jLabel_MatchAddMessage.setText("All fields should be filled!");
             jLabel_MatchAddMessage.setForeground(Color.RED);
         }
-        
-        clearAddMatch();
-    }//GEN-LAST:event_jButton_NewMatchAddActionPerformed
+    }//GEN-LAST:event_jButton_AddMatchActionPerformed
 
     private void jMenuItem_MatchListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_MatchListActionPerformed
-        
+
         try {
             ArrayList<MatchRecord> allMatches = DatabaseManager.getAllMatchesEntries(GlobalVariables.pathMatchesRaf);
 
             DefaultTableModel tableModel = (DefaultTableModel) jTable_MatchesList.getModel();
             tableModel.setRowCount(0); // Clear table model
 
-            for (MatchRecord record : allMatches) {                
+            for (MatchRecord record : allMatches) {
                 Object[] tmpPlayerRow = new Object[]{
                     record.getId(),
                     record.getOpponent().trim(),
@@ -1018,7 +1115,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                     record.getRebounds().trim(),
                     record.getSteals().trim(),
                     record.getBlocks().trim(),
-                    (record.getHomeGame()==1?true:false),
+                    (record.getHomeGame() == 1 ? true : false),
                     record.getPointsScored().trim(),
                     record.getPointsConceded().trim(),
                     record.getLocation().trim()
@@ -1029,9 +1126,45 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         changeMainBodyContent(jPanel_MatchList);
     }//GEN-LAST:event_jMenuItem_MatchListActionPerformed
+
+    private void jMenuItem_PlayerAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerAddGameActionPerformed
+        clearAddPlayerGame();
+
+        loadAllPlayers();
+
+        changeMainBodyContent(jPanel_PlayerAddGame);
+    }//GEN-LAST:event_jMenuItem_PlayerAddGameActionPerformed
+
+    // Get all available players and add them in the combo box of PlayerGame form
+    private void loadAllPlayers() {
+        try {
+            ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
+
+            // Check if there are any players in the database
+            if(allPlayers.size()>0){
+                DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
+                for (PlayerRecord player : allPlayers) {
+
+                    String comboBoxItemFormat = player.getId() + "." + player.getFirstName().trim() + " " + player.getFirstName().trim();
+
+                    comboBoxModel.addElement(comboBoxItemFormat);
+                }
+                
+                jButton_AddPlayerGame.setEnabled(true);
+            } else {
+                jLabel_PlayerGameAddMessage.setText("There is no available player to add game stats!");
+                jLabel_PlayerGameAddMessage.setForeground(Color.RED);
+                
+                jButton_AddPlayerGame.setEnabled(false);
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void clearAddNewPlayer() {
         jTextField_PlayerFirstName.setText("");
@@ -1043,19 +1176,19 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_PlayerPosition.setText("");
         jTextField_PlayerJersey.setText("");
     }
-    
+
     private long getCurrentTimestamp() {
         //If you want the current timestamp :
         Calendar c = Calendar.getInstance();
         long timestamp = c.getTimeInMillis();
-        
+
         return timestamp;
     }
-    
-    private void clearAddMatch(){
+
+    private void clearAddMatch() {
         jTextField_MatchOpponent.setText("");
         jSpinner_MatchDate.setValue(new Date(getCurrentTimestamp()));
-        jTextField_MatchFoulsCommited.setText("");
+        jTextField_MatchFoulsCommitted.setText("");
         jTextField_MatchFoulsConceded.setText("");
         jTextField_MatchAssists.setText("");
         jTextField_MatchRebounds.setText("");
@@ -1065,6 +1198,20 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_MatchPointsScored.setText("");
         jTextField_MatchPointsConceded.setText("");
         jTextField_MatchLocation.setText("");
+    }
+
+    private void clearAddPlayerGame() {
+        jTextField_PlayerGameFoulsCommitted.setText("");
+        jTextField_PlayerGameFoulsConceded.setText("");
+        jTextField_PlayerGameAssists.setText("");
+        jTextField_PlayerGameRebounds.setText("");
+        jTextField_PlayerGameSteals.setText("");
+        jTextField_PlayerGameBlocks.setText("");
+        jCheckBox_PlayerGameHomeGame.setSelected(false);
+        jTextField_PlayerGameAwayTeamName.setText("");
+        jTextField_PlayerGamePointsScored.setText("");
+        jTextField_PlayerGameLocation.setText("");
+        jSpinner_PlayerGameDate.setValue(new Date(getCurrentTimestamp()));
     }
 
     /**
@@ -1103,11 +1250,12 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_NewMatchAdd;
-    private javax.swing.JButton jButton_PlayerAdd;
-    private javax.swing.JButton jButton_PlayerAddGame;
+    private javax.swing.JButton jButton_AddMatch;
+    private javax.swing.JButton jButton_AddPlayer;
+    private javax.swing.JButton jButton_AddPlayerGame;
     private javax.swing.JCheckBox jCheckBox_MatchHomeGame;
     private javax.swing.JCheckBox jCheckBox_PlayerGameHomeGame;
+    private javax.swing.JComboBox<String> jComboBox_PlayerGamePlayerName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1132,6 +1280,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1140,6 +1289,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_MatchAddMessage;
     private javax.swing.JLabel jLabel_PlayerAddMessage;
+    private javax.swing.JLabel jLabel_PlayerGameAddMessage;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -1147,6 +1297,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_MatchAddNew;
     private javax.swing.JMenuItem jMenuItem_MatchList;
     private javax.swing.JMenuItem jMenuItem_PlayerAdd;
+    private javax.swing.JMenuItem jMenuItem_PlayerAddGame;
     private javax.swing.JMenuItem jMenuItem_PlayerList;
     private javax.swing.JMenuItem jMenuItem_SeasonAddSeason;
     private javax.swing.JMenuItem jMenuItem_SeasonList;
@@ -1171,11 +1322,12 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner_MatchDate;
+    private javax.swing.JSpinner jSpinner_PlayerGameDate;
     private javax.swing.JTable jTable_MatchesList;
     private javax.swing.JTable jTable_PlayersList;
     private javax.swing.JTextField jTextField_MatchAssists;
     private javax.swing.JTextField jTextField_MatchBlocks;
-    private javax.swing.JTextField jTextField_MatchFoulsCommited;
+    private javax.swing.JTextField jTextField_MatchFoulsCommitted;
     private javax.swing.JTextField jTextField_MatchFoulsConceded;
     private javax.swing.JTextField jTextField_MatchLocation;
     private javax.swing.JTextField jTextField_MatchOpponent;

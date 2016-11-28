@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import objects.MatchRecord;
+import objects.PlayerGameRecord;
 import objects.PlayerRecord;
 
 /**
@@ -21,6 +22,29 @@ import objects.PlayerRecord;
 public class DatabaseManager {
 
     private static final int ID_POINTER_LENGTH = Integer.BYTES;
+
+    public static void createRafStoreFile(String filePath) {
+
+        try {
+            File file = new File(filePath);
+
+            if (file.createNewFile()) {
+                System.out.println("File is created!");
+            } else {
+                System.out.println("File already exists.");
+            }
+
+            // Instantiate database Id pointer
+            RandomAccessFile randomAccessFile = new RandomAccessFile(filePath, "rw");
+
+            randomAccessFile.writeInt(0);
+
+            randomAccessFile.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static int generateNewPlayerEntryId(String DatabaseFilePath) throws FileNotFoundException, IOException {
 
@@ -88,9 +112,9 @@ public class DatabaseManager {
         }
     }
 
-    public static ArrayList<PlayerRecord> getAllPlayerEntries(String playersRafPath) throws FileNotFoundException {
+    public static ArrayList<PlayerRecord> getAllPlayerEntries(String RafPath) throws FileNotFoundException {
 
-        RandomAccessFile randomAccessFile = new RandomAccessFile(playersRafPath, "rw");
+        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
         ArrayList<PlayerRecord> recordsArrayList = new ArrayList<>();
 
@@ -119,10 +143,10 @@ public class DatabaseManager {
 
         return recordsArrayList;
     }
-    
-    public static ArrayList<MatchRecord> getAllMatchesEntries(String playersRafPath) throws FileNotFoundException {
 
-        RandomAccessFile randomAccessFile = new RandomAccessFile(playersRafPath, "rw");
+    public static ArrayList<MatchRecord> getAllMatchesEntries(String RafPath) throws FileNotFoundException {
+
+        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
         ArrayList<MatchRecord> recordsArrayList = new ArrayList<>();
 
@@ -154,28 +178,37 @@ public class DatabaseManager {
     
     
     
+    
+    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntries(String RafPath) throws FileNotFoundException {
 
-    public static void createRafStoreFile(String filePath) {
+        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+
+        ArrayList<PlayerGameRecord> recordsArrayList = new ArrayList<>();
 
         try {
-            File file = new File(filePath);
+            long seekPoint = getDataEntriesStartPointerOffset();
 
-            if (file.createNewFile()) {
-                System.out.println("File is created!");
-            } else {
-                System.out.println("File already exists.");
+            // Loop up to the end of the file (EOFException)
+            while (true) {
+                randomAccessFile.seek(seekPoint);
+
+                PlayerGameRecord playerGameRecord = new PlayerGameRecord();
+
+                playerGameRecord.readFromFile(randomAccessFile);
+
+                recordsArrayList.add(playerGameRecord);
+
+                // Increase by one entry size the seek position to get the next entry
+                seekPoint += playerGameRecord.getDatabaseEntrySize();
             }
-            
-            // Instantiate database Id pointer
-            RandomAccessFile randomAccessFile = new RandomAccessFile(filePath, "rw");
-            
-            randomAccessFile.writeInt(0);
-            
-            randomAccessFile.close();
-            
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        } catch (EOFException ex1) {
+            return recordsArrayList;
+        } catch (IOException ex2) {
+            System.err.println("Error reading file");
         }
+
+        return recordsArrayList;
     }
 
 }

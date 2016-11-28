@@ -9,10 +9,11 @@ package objects;
  *
  * @author
  */
-public class Match {
+public class PlayerGame {
+    
     private int Id;
-    private String Opponent;
-    private long Date;
+    private int PlayerId;
+    private String PlayerName;
     private String FoulsCommitted;
     private String FoulsConceded;
     private String Assists;
@@ -20,30 +21,31 @@ public class Match {
     private String Steals;
     private String Blocks;
     private int HomeGame; // 0 or 1
+    private String AwayTeamName;
     private String PointsScored;
-    private String PointsConceded;
     private String Location;
+    private long GameDate;
 
-    public Match() {
+    public PlayerGame() {
     }
 
-    public Match(int Id, String Opponent, long Date, String FoulsCommited, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String PointsScored, String PointsConceded, String Location) {
+    public PlayerGame(int Id, int PlayerId, String PlayerName, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String AwayTeamName, String PointsScored, String Location, long GameDate) {
         this.Id = Id;
-        this.Opponent = Opponent;
-        this.Date = Date;
-        this.FoulsCommitted = FoulsCommited;
+        this.PlayerId = PlayerId;
+        this.PlayerName = PlayerName;
+        this.FoulsCommitted = FoulsCommitted;
         this.FoulsConceded = FoulsConceded;
         this.Assists = Assists;
         this.Rebounds = Rebounds;
         this.Steals = Steals;
         this.Blocks = Blocks;
         this.HomeGame = HomeGame;
+        this.AwayTeamName = AwayTeamName;
         this.PointsScored = PointsScored;
-        this.PointsConceded = PointsConceded;
         this.Location = Location;
+        this.GameDate = GameDate;
     }
 
-    
     // Getters and Setters
     public int getId() {
         return Id;
@@ -53,28 +55,28 @@ public class Match {
         this.Id = Id;
     }
 
-    public String getOpponent() {
-        return Opponent;
+    public int getPlayerId() {
+        return PlayerId;
     }
 
-    public void setOpponent(String Opponent) {
-        this.Opponent = Opponent;
+    public void setPlayerId(int PlayerId) {
+        this.PlayerId = PlayerId;
     }
 
-    public long getDate() {
-        return Date;
+    public String getPlayerName() {
+        return PlayerName;
     }
 
-    public void setDate(long Date) {
-        this.Date = Date;
+    public void setPlayerName(String PlayerName) {
+        this.PlayerName = PlayerName;
     }
 
-    public String getFoulsCommited() {
+    public String getFoulsCommitted() {
         return FoulsCommitted;
     }
 
-    public void setFoulsCommited(String FoulsCommited) {
-        this.FoulsCommitted = FoulsCommited;
+    public void setFoulsCommitted(String FoulsCommitted) {
+        this.FoulsCommitted = FoulsCommitted;
     }
 
     public String getFoulsConceded() {
@@ -125,20 +127,20 @@ public class Match {
         this.HomeGame = HomeGame;
     }
 
+    public String getAwayTeamName() {
+        return AwayTeamName;
+    }
+
+    public void setAwayTeamName(String AwayTeamName) {
+        this.AwayTeamName = AwayTeamName;
+    }
+
     public String getPointsScored() {
         return PointsScored;
     }
 
     public void setPointsScored(String PointsScored) {
         this.PointsScored = PointsScored;
-    }
-
-    public String getPointsConceded() {
-        return PointsConceded;
-    }
-
-    public void setPointsConceded(String PointsConceded) {
-        this.PointsConceded = PointsConceded;
     }
 
     public String getLocation() {
@@ -149,4 +151,18 @@ public class Match {
         this.Location = Location;
     }
 
+    public long getGameDate() {
+        return GameDate;
+    }
+
+    public void setGameDate(long GameDate) {
+        this.GameDate = GameDate;
+    }
+
+    
+    
+    
+    
+    
+    
 }
