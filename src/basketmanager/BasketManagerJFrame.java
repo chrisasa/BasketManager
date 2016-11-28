@@ -71,10 +71,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void initGamesStoreFile() {
-        File playersRaf = new File(GlobalVariables.pathGamesRaf);
+        File playersRaf = new File(GlobalVariables.pathPlayersGamesRaf);
 
         if (!playersRaf.exists()) {
-            DatabaseManager.createRafStoreFile(GlobalVariables.pathGamesRaf);
+            DatabaseManager.createRafStoreFile(GlobalVariables.pathPlayersGamesRaf);
         }
     }
 
@@ -186,6 +186,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jPanel_Intro = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
+        jPanel_PlayerGameList = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable_PlayerGamesList = new javax.swing.JTable();
         jPanel_Main = new javax.swing.JPanel();
         jPanel_MainBody = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -198,6 +202,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jMenuItem_PlayerAdd = new javax.swing.JMenuItem();
         jMenuItem_PlayerList = new javax.swing.JMenuItem();
         jMenuItem_PlayerAddGame = new javax.swing.JMenuItem();
+        jMenuItem_PlayerGameList = new javax.swing.JMenuItem();
         jMenu_MatchData = new javax.swing.JMenu();
         jMenuItem_MatchAddNew = new javax.swing.JMenuItem();
         jMenuItem_MatchList = new javax.swing.JMenuItem();
@@ -732,6 +737,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTable_MatchesList.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable_MatchesList);
         jTable_MatchesList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable_MatchesList.getColumnModel().getColumnCount() > 0) {
+            jTable_MatchesList.getColumnModel().getColumn(1).setHeaderValue("Opponent");
+            jTable_MatchesList.getColumnModel().getColumn(2).setHeaderValue("Date");
+        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -778,6 +787,43 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         );
 
         jPanel_Intro.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        jPanel_PlayerGameList.setBorder(javax.swing.BorderFactory.createTitledBorder("List of Players Games"));
+        jPanel_PlayerGameList.setLayout(new java.awt.BorderLayout());
+
+        jTable_PlayerGamesList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Player Name", "Fouls Commited", "Fouls Conceded", "Assists", "Rebounds", "Steals", "Blocks", "Home Game", "Away Team", "Points Scored", "Location", "Game Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_PlayerGamesList.setColumnSelectionAllowed(true);
+        jTable_PlayerGamesList.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(jTable_PlayerGamesList);
+        jTable_PlayerGamesList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+        );
+
+        jPanel_PlayerGameList.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 600));
@@ -844,7 +890,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         });
         jMenu_Player.add(jMenuItem_PlayerAdd);
 
-        jMenuItem_PlayerList.setText("Player List");
+        jMenuItem_PlayerList.setText("Players List");
         jMenuItem_PlayerList.setActionCommand("Players List");
         jMenuItem_PlayerList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -861,6 +907,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             }
         });
         jMenu_Player.add(jMenuItem_PlayerAddGame);
+
+        jMenuItem_PlayerGameList.setText("Players' Games List");
+        jMenuItem_PlayerGameList.setActionCommand("Players List");
+        jMenuItem_PlayerGameList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PlayerGameListActionPerformed(evt);
+            }
+        });
+        jMenu_Player.add(jMenuItem_PlayerGameList);
 
         jMenuBar1.add(jMenu_Player);
 
@@ -1010,8 +1065,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             PlayerGameRecord playerGameRecord = new PlayerGameRecord();
             FileDatabaseManager database;
             try {
-                database = new FileDatabaseManager(GlobalVariables.pathGamesRaf, playerGameRecord);
-                PlayerGameRecord newPlayerGameRecord = new PlayerGameRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathGamesRaf), PlayerId, PlayerName, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, AwayTeamName, PointsScored, Location, GameDate);
+                database = new FileDatabaseManager(GlobalVariables.pathPlayersGamesRaf, playerGameRecord);
+                PlayerGameRecord newPlayerGameRecord = new PlayerGameRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathPlayersGamesRaf), PlayerId, PlayerName, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, AwayTeamName, PointsScored, Location, GameDate);
                 database.insertRecord(newPlayerGameRecord);
             } catch (IOException ex) {
                 Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -1105,11 +1160,11 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             tableModel.setRowCount(0); // Clear table model
 
             for (MatchRecord record : allMatches) {
-                Object[] tmpPlayerRow = new Object[]{
+                Object[] tmpMatchRow = new Object[]{
                     record.getId(),
                     record.getOpponent().trim(),
                     new Date(record.getDate()),
-                    record.getFoulsCommited().trim(),
+                    record.getFoulsCommitted().trim(),
                     record.getFoulsConceded().trim(),
                     record.getAssists().trim(),
                     record.getRebounds().trim(),
@@ -1121,7 +1176,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                     record.getLocation().trim()
                 };
 
-                tableModel.addRow(tmpPlayerRow);
+                tableModel.addRow(tmpMatchRow);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -1137,6 +1192,39 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         changeMainBodyContent(jPanel_PlayerAddGame);
     }//GEN-LAST:event_jMenuItem_PlayerAddGameActionPerformed
+
+    private void jMenuItem_PlayerGameListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerGameListActionPerformed
+        try {
+            ArrayList<PlayerGameRecord> allPlayerGameRecords = DatabaseManager.getAllPlayerGamesEntries(GlobalVariables.pathPlayersGamesRaf);
+
+            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayerGamesList.getModel();
+            tableModel.setRowCount(0); // Clear table model
+
+            for (PlayerGameRecord record : allPlayerGameRecords) {
+                Object[] tmpPlayerGameRow = new Object[]{
+                    record.getId(),
+                    record.getPlayerName().trim(),
+                    record.getFoulsCommitted().trim(),
+                    record.getFoulsConceded().trim(),
+                    record.getAssists().trim(),
+                    record.getRebounds().trim(),
+                    record.getSteals().trim(),
+                    record.getBlocks().trim(),
+                    (record.getHomeGame() == 1 ? true : false),
+                    record.getAwayTeamName().trim(),
+                    record.getPointsScored().trim(),                    
+                    record.getLocation().trim(),
+                    new Date(record.getGameDate())
+                };
+
+                tableModel.addRow(tmpPlayerGameRow);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        changeMainBodyContent(jPanel_PlayerGameList);
+    }//GEN-LAST:event_jMenuItem_PlayerGameListActionPerformed
 
     // Get all available players and add them in the combo box of PlayerGame form
     private void loadAllPlayers() {
@@ -1298,6 +1386,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_MatchList;
     private javax.swing.JMenuItem jMenuItem_PlayerAdd;
     private javax.swing.JMenuItem jMenuItem_PlayerAddGame;
+    private javax.swing.JMenuItem jMenuItem_PlayerGameList;
     private javax.swing.JMenuItem jMenuItem_PlayerList;
     private javax.swing.JMenuItem jMenuItem_SeasonAddSeason;
     private javax.swing.JMenuItem jMenuItem_SeasonList;
@@ -1311,6 +1400,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel_Intro;
     private javax.swing.JPanel jPanel_Main;
     private javax.swing.JPanel jPanel_MainBody;
@@ -1318,12 +1408,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_MatchList;
     private javax.swing.JPanel jPanel_PlayerAdd;
     private javax.swing.JPanel jPanel_PlayerAddGame;
+    private javax.swing.JPanel jPanel_PlayerGameList;
     private javax.swing.JPanel jPanel_PlayerList;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner jSpinner_MatchDate;
     private javax.swing.JSpinner jSpinner_PlayerGameDate;
     private javax.swing.JTable jTable_MatchesList;
+    private javax.swing.JTable jTable_PlayerGamesList;
     private javax.swing.JTable jTable_PlayersList;
     private javax.swing.JTextField jTextField_MatchAssists;
     private javax.swing.JTextField jTextField_MatchBlocks;

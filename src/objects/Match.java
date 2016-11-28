@@ -69,7 +69,7 @@ public class Match {
         this.Date = Date;
     }
 
-    public String getFoulsCommited() {
+    public String getFoulsCommitted() {
         return FoulsCommitted;
     }
 

@@ -49,7 +49,7 @@ public class MatchRecord extends Match implements DatabaseRecord {
         file.writeInt(getId());
         DatabaseManager.writeString(file, getOpponent(), STRING_ENTRY_LENGTH);
         file.writeLong(getDate());
-        DatabaseManager.writeString(file, getFoulsCommited(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getFoulsCommitted(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getFoulsConceded(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getAssists(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getRebounds(), STRING_ENTRY_LENGTH);

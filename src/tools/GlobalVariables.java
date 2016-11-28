@@ -27,7 +27,7 @@ public class GlobalVariables {
     
     public static final String pathPlayersRaf = pathFilesFolderPath + File.separator + "Players.store";
     
-    public static final String pathGamesRaf = pathFilesFolderPath + File.separator + "Games.store";
+    public static final String pathPlayersGamesRaf = pathFilesFolderPath + File.separator + "Games.store";
     
     public static final String pathMatchesRaf = pathFilesFolderPath + File.separator + "Matches.store";
     
