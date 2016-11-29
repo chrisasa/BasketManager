@@ -9,6 +9,9 @@ import database.DatabaseManager;
 import database.FileDatabaseManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,7 +21,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import objects.MatchRecord;
 import objects.PlayerGameRecord;
@@ -53,6 +58,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         initMatchesStoreFile();
 
         initGamesStoreFile();
+
+        initListeners();
     }
 
     private void initPlayersStoreFile() {
@@ -76,6 +83,37 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         if (!playersRaf.exists()) {
             DatabaseManager.createRafStoreFile(GlobalVariables.pathPlayersGamesRaf);
         }
+    }
+
+    private void initListeners() {
+        jTable_PlayersList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                JTable jTable = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = jTable.rowAtPoint(p);
+                // get the double clikc
+                if (me.getClickCount() == 2) {
+                    displayPlayerUpdate(jTable, row);
+                }
+            }
+
+        });
+        
+        jTable_MatchesList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                JTable jTable = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = jTable.rowAtPoint(p);
+                // get the double clikc
+                if (me.getClickCount() == 2) {
+//                    displayMatchUpdate(jTable, row);
+                }
+            }
+
+        });
+
     }
 
     private void changeMainBodyContent(JPanel newJPanel) {
@@ -190,6 +228,30 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_PlayerGamesList = new javax.swing.JTable();
+        jPanel_PlayerUpdate = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jTextField_PlayerUpdateFirstName = new javax.swing.JTextField();
+        jTextField_PlayerUpdateLastName = new javax.swing.JTextField();
+        jTextField_PlayerUpdateDoB = new javax.swing.JTextField();
+        jTextField_PlayerUpdatePoB = new javax.swing.JTextField();
+        jTextField_PlayerUpdateHeight = new javax.swing.JTextField();
+        jTextField_PlayerUpdateWeight = new javax.swing.JTextField();
+        jTextField_PlayerUpdatePosition = new javax.swing.JTextField();
+        jTextField_PlayerUpdateJersey = new javax.swing.JTextField();
+        jButton_UpdatePlayer = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel_PlayerUpdateMessage = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel_PlayerUpdateId = new javax.swing.JLabel();
+        jDialog_ExitConfirmation = new javax.swing.JDialog();
         jPanel_Main = new javax.swing.JPanel();
         jPanel_MainBody = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -825,7 +887,187 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jPanel_PlayerGameList.add(jPanel6, java.awt.BorderLayout.CENTER);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel_PlayerUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Player"));
+        jPanel_PlayerUpdate.setPreferredSize(new java.awt.Dimension(970, 570));
+        jPanel_PlayerUpdate.setLayout(new java.awt.BorderLayout());
+
+        jLabel32.setText("First Name");
+        jLabel32.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel33.setText("Last Name");
+        jLabel33.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel34.setText("DoB");
+        jLabel34.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel35.setText("PoB");
+        jLabel35.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel36.setText("Height");
+        jLabel36.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel37.setText("Weight");
+        jLabel37.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel38.setText("Position");
+        jLabel38.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel39.setText("Jersey");
+        jLabel39.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jTextField_PlayerUpdateFirstName.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdateLastName.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdateDoB.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdatePoB.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdateHeight.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdateWeight.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdatePosition.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerUpdateJersey.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jButton_UpdatePlayer.setText("Update");
+        jButton_UpdatePlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_UpdatePlayerActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel_PlayerUpdateMessage.setForeground(java.awt.Color.red);
+        jLabel_PlayerUpdateMessage.setText(" ");
+
+        jLabel40.setText("Player ID");
+
+        jLabel_PlayerUpdateId.setText(" ");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_PlayerUpdateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jButton_UpdatePlayer)
+                                .addGap(57, 57, 57)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdateLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdateDoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdatePoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdateHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdateWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdatePosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_PlayerUpdateJersey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_PlayerUpdateFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_PlayerUpdateId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 584, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel_PlayerUpdateId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdateFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdateLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdateDoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdatePoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdateHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdateWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdatePosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerUpdateJersey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addComponent(jLabel_PlayerUpdateMessage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_UpdatePlayer)
+                    .addComponent(jButton1))
+                .addContainerGap())
+        );
+
+        jPanel_PlayerUpdate.add(jPanel7, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jDialog_ExitConfirmationLayout = new javax.swing.GroupLayout(jDialog_ExitConfirmation.getContentPane());
+        jDialog_ExitConfirmation.getContentPane().setLayout(jDialog_ExitConfirmationLayout);
+        jDialog_ExitConfirmationLayout.setHorizontalGroup(
+            jDialog_ExitConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog_ExitConfirmationLayout.setVerticalGroup(
+            jDialog_ExitConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Basket Manager");
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
         jPanel_MainBody.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -891,7 +1133,6 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jMenu_Player.add(jMenuItem_PlayerAdd);
 
         jMenuItem_PlayerList.setText("Players List");
-        jMenuItem_PlayerList.setActionCommand("Players List");
         jMenuItem_PlayerList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_PlayerListActionPerformed(evt);
@@ -966,9 +1207,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem_FileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_FileExitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-
+        int exitConfirmation = JOptionPane.showConfirmDialog(jPanel_Main, "Do you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+        if (exitConfirmation == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jMenuItem_FileExitActionPerformed
 
     private void jMenuItem_SeasonListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SeasonListActionPerformed
@@ -985,42 +1227,11 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_MatchAddNewActionPerformed
 
     private void jMenuItem_PlayerAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerAddActionPerformed
-        clearAddNewPlayer();
-        changeMainBodyContent(jPanel_PlayerAdd);
+        displayPlayerAdd();
     }//GEN-LAST:event_jMenuItem_PlayerAddActionPerformed
 
     private void jButton_AddPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddPlayerActionPerformed
-        String FirstName = jTextField_PlayerFirstName.getText().trim();
-        String LastName = jTextField_PlayerLastName.getText().trim();
-        String DoB = jTextField_PlayerDoB.getText().trim();
-        String PoB = jTextField_PlayerPoB.getText().trim();
-        String Height = jTextField_PlayerHeight.getText().trim();
-        String Weight = jTextField_PlayerWeight.getText().trim();
-        String Position = jTextField_PlayerPosition.getText().trim();
-        String Jersey = jTextField_PlayerJersey.getText().trim();
-
-        if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("")
-                && !PoB.equals("") && !Height.equals("") && !Weight.equals("")
-                && !Position.equals("") && !Jersey.equals("")) {
-
-            PlayerRecord playerRecord = new PlayerRecord();
-            FileDatabaseManager database;
-            try {
-                database = new FileDatabaseManager(GlobalVariables.pathPlayersRaf, playerRecord);
-                PlayerRecord newPlayerRecord = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathPlayersRaf), FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
-                database.insertRecord(newPlayerRecord);
-            } catch (IOException ex) {
-                Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            jLabel_PlayerAddMessage.setText("Player added successfully");
-            jLabel_PlayerAddMessage.setForeground(Color.BLUE);
-
-            clearAddNewPlayer();
-        } else {
-            jLabel_PlayerAddMessage.setText("All fields should be filled!");
-            jLabel_PlayerAddMessage.setForeground(Color.RED);
-        }
+        addPlayer();
     }//GEN-LAST:event_jButton_AddPlayerActionPerformed
 
     private String[] splitPlayerIdAndName(String playerInfo) {
@@ -1083,33 +1294,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_AddPlayerGameActionPerformed
 
     private void jMenuItem_PlayerListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerListActionPerformed
-
-        try {
-            ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
-
-            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayersList.getModel();
-            tableModel.setRowCount(0); // Clear table model
-
-            for (PlayerRecord player : allPlayers) {
-                Object[] tmpPlayerRow = new Object[]{
-                    player.getId(),
-                    player.getFirstName().trim(),
-                    player.getLastName().trim(),
-                    player.getDoB().trim(),
-                    player.getPoB().trim(),
-                    player.getHeight().trim(),
-                    player.getWeight().trim(),
-                    player.getPosition().trim(),
-                    player.getJersey().trim()
-                };
-
-                tableModel.addRow(tmpPlayerRow);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        changeMainBodyContent(jPanel_PlayerList);
+        displayPlayerList();
     }//GEN-LAST:event_jMenuItem_PlayerListActionPerformed
 
     private void jButton_AddMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddMatchActionPerformed
@@ -1153,6 +1338,132 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
     private void jMenuItem_MatchListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_MatchListActionPerformed
 
+        displayMatchList();
+    }//GEN-LAST:event_jMenuItem_MatchListActionPerformed
+
+    private void jMenuItem_PlayerAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerAddGameActionPerformed
+        displayPlayerGameAdd();
+    }//GEN-LAST:event_jMenuItem_PlayerAddGameActionPerformed
+
+    private void jMenuItem_PlayerGameListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerGameListActionPerformed
+        displayPlayerGameList();
+    }//GEN-LAST:event_jMenuItem_PlayerGameListActionPerformed
+
+    private void jButton_UpdatePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdatePlayerActionPerformed
+        updatePlayer();
+    }//GEN-LAST:event_jButton_UpdatePlayerActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        displayPlayerList();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    // Display methods
+    private void displayPlayerList() {
+        try {
+            ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
+
+            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayersList.getModel();
+            tableModel.setRowCount(0); // Clear table model
+
+            for (PlayerRecord player : allPlayers) {
+                Object[] tmpPlayerRow = new Object[]{
+                    player.getId(),
+                    player.getFirstName().trim(),
+                    player.getLastName().trim(),
+                    player.getDoB().trim(),
+                    player.getPoB().trim(),
+                    player.getHeight().trim(),
+                    player.getWeight().trim(),
+                    player.getPosition().trim(),
+                    player.getJersey().trim()
+                };
+
+                tableModel.addRow(tmpPlayerRow);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        changeMainBodyContent(jPanel_PlayerList);
+    }
+
+    private void displayPlayerAdd() {
+        jLabel_PlayerAddMessage.setText("");
+
+        clearAddNewPlayer();
+
+        changeMainBodyContent(jPanel_PlayerAdd);
+    }
+
+    private void displayPlayerUpdate(JTable jTable, int row) {
+        // TODO: Need to be refactored in case of reordering columns
+        String Id = jTable.getValueAt(row, 0).toString();
+        String FirstName = jTable.getValueAt(row, 1).toString();
+        String LastName = jTable.getValueAt(row, 2).toString();
+        String DoB = jTable.getValueAt(row, 2).toString();
+        String PoB = jTable.getValueAt(row, 3).toString();
+        String Height = jTable.getValueAt(row, 4).toString();
+        String Weight = jTable.getValueAt(row, 5).toString();
+        String Position = jTable.getValueAt(row, 6).toString();
+        String Jersey = jTable.getValueAt(row, 7).toString();
+
+        jLabel_PlayerUpdateId.setText(Id);
+        jTextField_PlayerUpdateFirstName.setText(FirstName);
+        jTextField_PlayerUpdateLastName.setText(LastName);
+        jTextField_PlayerUpdateDoB.setText(DoB);
+        jTextField_PlayerUpdatePoB.setText(PoB);
+        jTextField_PlayerUpdateHeight.setText(Height);
+        jTextField_PlayerUpdateWeight.setText(Weight);
+        jTextField_PlayerUpdatePosition.setText(Position);
+        jTextField_PlayerUpdateJersey.setText(Jersey);
+
+        jLabel_PlayerUpdateMessage.setText("");
+
+        changeMainBodyContent(jPanel_PlayerUpdate);
+    }
+
+    private void displayPlayerGameList() {
+        try {
+            ArrayList<PlayerGameRecord> allPlayerGameRecords = DatabaseManager.getAllPlayerGamesEntries(GlobalVariables.pathPlayersGamesRaf);
+
+            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayerGamesList.getModel();
+            tableModel.setRowCount(0); // Clear table model
+
+            for (PlayerGameRecord record : allPlayerGameRecords) {
+                Object[] tmpPlayerGameRow = new Object[]{
+                    record.getId(),
+                    record.getPlayerName().trim(),
+                    record.getFoulsCommitted().trim(),
+                    record.getFoulsConceded().trim(),
+                    record.getAssists().trim(),
+                    record.getRebounds().trim(),
+                    record.getSteals().trim(),
+                    record.getBlocks().trim(),
+                    (record.getHomeGame() == 1 ? true : false),
+                    record.getAwayTeamName().trim(),
+                    record.getPointsScored().trim(),
+                    record.getLocation().trim(),
+                    new Date(record.getGameDate())
+                };
+
+                tableModel.addRow(tmpPlayerGameRow);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        changeMainBodyContent(jPanel_PlayerGameList);
+    }
+
+    private void displayPlayerGameAdd() {
+        clearAddPlayerGame();
+        
+        loadAllPlayers();
+        
+        changeMainBodyContent(jPanel_PlayerAddGame);
+    }
+    
+    private void displayMatchList() {
         try {
             ArrayList<MatchRecord> allMatches = DatabaseManager.getAllMatchesEntries(GlobalVariables.pathMatchesRaf);
 
@@ -1183,48 +1494,82 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         }
 
         changeMainBodyContent(jPanel_MatchList);
-    }//GEN-LAST:event_jMenuItem_MatchListActionPerformed
+    }
 
-    private void jMenuItem_PlayerAddGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerAddGameActionPerformed
-        clearAddPlayerGame();
+    // Actions methods
+    private void addPlayer() throws IllegalArgumentException {
+        String FirstName = jTextField_PlayerFirstName.getText().trim();
+        String LastName = jTextField_PlayerLastName.getText().trim();
+        String DoB = jTextField_PlayerDoB.getText().trim();
+        String PoB = jTextField_PlayerPoB.getText().trim();
+        String Height = jTextField_PlayerHeight.getText().trim();
+        String Weight = jTextField_PlayerWeight.getText().trim();
+        String Position = jTextField_PlayerPosition.getText().trim();
+        String Jersey = jTextField_PlayerJersey.getText().trim();
 
-        loadAllPlayers();
+        if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("")
+                && !PoB.equals("") && !Height.equals("") && !Weight.equals("")
+                && !Position.equals("") && !Jersey.equals("")) {
 
-        changeMainBodyContent(jPanel_PlayerAddGame);
-    }//GEN-LAST:event_jMenuItem_PlayerAddGameActionPerformed
-
-    private void jMenuItem_PlayerGameListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PlayerGameListActionPerformed
-        try {
-            ArrayList<PlayerGameRecord> allPlayerGameRecords = DatabaseManager.getAllPlayerGamesEntries(GlobalVariables.pathPlayersGamesRaf);
-
-            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayerGamesList.getModel();
-            tableModel.setRowCount(0); // Clear table model
-
-            for (PlayerGameRecord record : allPlayerGameRecords) {
-                Object[] tmpPlayerGameRow = new Object[]{
-                    record.getId(),
-                    record.getPlayerName().trim(),
-                    record.getFoulsCommitted().trim(),
-                    record.getFoulsConceded().trim(),
-                    record.getAssists().trim(),
-                    record.getRebounds().trim(),
-                    record.getSteals().trim(),
-                    record.getBlocks().trim(),
-                    (record.getHomeGame() == 1 ? true : false),
-                    record.getAwayTeamName().trim(),
-                    record.getPointsScored().trim(),                    
-                    record.getLocation().trim(),
-                    new Date(record.getGameDate())
-                };
-
-                tableModel.addRow(tmpPlayerGameRow);
+            PlayerRecord playerRecord = new PlayerRecord();
+            FileDatabaseManager database;
+            try {
+                database = new FileDatabaseManager(GlobalVariables.pathPlayersRaf, playerRecord);
+                PlayerRecord newPlayerRecord = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(GlobalVariables.pathPlayersRaf), FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
+                database.insertRecord(newPlayerRecord);
+            } catch (IOException ex) {
+                Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-        changeMainBodyContent(jPanel_PlayerGameList);
-    }//GEN-LAST:event_jMenuItem_PlayerGameListActionPerformed
+            jLabel_PlayerAddMessage.setText("Player added successfully");
+            jLabel_PlayerAddMessage.setForeground(Color.BLUE);
+
+            clearAddNewPlayer();
+        } else {
+            jLabel_PlayerAddMessage.setText("All fields should be filled!");
+            jLabel_PlayerAddMessage.setForeground(Color.RED);
+        }
+    }
+
+    private void updatePlayer() throws IllegalArgumentException {
+        int Id = Integer.parseInt(jLabel_PlayerUpdateId.getText());
+        String FirstName = jTextField_PlayerUpdateFirstName.getText().trim();
+        String LastName = jTextField_PlayerUpdateLastName.getText().trim();
+        String DoB = jTextField_PlayerUpdateDoB.getText().trim();
+        String PoB = jTextField_PlayerUpdatePoB.getText().trim();
+        String Height = jTextField_PlayerUpdateHeight.getText().trim();
+        String Weight = jTextField_PlayerUpdateWeight.getText().trim();
+        String Position = jTextField_PlayerUpdatePosition.getText().trim();
+        String Jersey = jTextField_PlayerUpdateJersey.getText().trim();
+
+        if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("")
+                && !PoB.equals("") && !Height.equals("") && !Weight.equals("")
+                && !Position.equals("") && !Jersey.equals("")) {
+
+            PlayerRecord playerRecord = new PlayerRecord();
+            FileDatabaseManager database;
+            try {
+                database = new FileDatabaseManager(GlobalVariables.pathPlayersRaf, playerRecord);
+
+                PlayerRecord updatePlayerRecord = new PlayerRecord(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
+
+                database.updateRecord(updatePlayerRecord);
+
+            } catch (IOException ex) {
+                Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            jLabel_PlayerUpdateMessage.setText("Player added successfully");
+            jLabel_PlayerUpdateMessage.setForeground(Color.BLUE);
+
+            clearUpdatePlayer();
+
+            displayPlayerList();
+        } else {
+            jLabel_PlayerUpdateMessage.setText("All fields should be filled!");
+            jLabel_PlayerUpdateMessage.setForeground(Color.RED);
+        }
+    }
 
     // Get all available players and add them in the combo box of PlayerGame form
     private void loadAllPlayers() {
@@ -1232,7 +1577,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
 
             // Check if there are any players in the database
-            if(allPlayers.size()>0){
+            if (allPlayers.size() > 0) {
                 DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
                 for (PlayerRecord player : allPlayers) {
 
@@ -1240,12 +1585,12 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
                     comboBoxModel.addElement(comboBoxItemFormat);
                 }
-                
+
                 jButton_AddPlayerGame.setEnabled(true);
             } else {
                 jLabel_PlayerGameAddMessage.setText("There is no available player to add game stats!");
                 jLabel_PlayerGameAddMessage.setForeground(Color.RED);
-                
+
                 jButton_AddPlayerGame.setEnabled(false);
             }
 
@@ -1263,6 +1608,17 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_PlayerWeight.setText("");
         jTextField_PlayerPosition.setText("");
         jTextField_PlayerJersey.setText("");
+    }
+
+    private void clearUpdatePlayer() {
+        jTextField_PlayerUpdateFirstName.setText("");
+        jTextField_PlayerUpdateLastName.setText("");
+        jTextField_PlayerUpdateDoB.setText("");
+        jTextField_PlayerUpdatePoB.setText("");
+        jTextField_PlayerUpdateHeight.setText("");
+        jTextField_PlayerUpdateWeight.setText("");
+        jTextField_PlayerUpdatePosition.setText("");
+        jTextField_PlayerUpdateJersey.setText("");
     }
 
     private long getCurrentTimestamp() {
@@ -1286,6 +1642,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_MatchPointsScored.setText("");
         jTextField_MatchPointsConceded.setText("");
         jTextField_MatchLocation.setText("");
+
+        jLabel_MatchAddMessage.setText("");
     }
 
     private void clearAddPlayerGame() {
@@ -1300,6 +1658,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_PlayerGamePointsScored.setText("");
         jTextField_PlayerGameLocation.setText("");
         jSpinner_PlayerGameDate.setValue(new Date(getCurrentTimestamp()));
+
     }
 
     /**
@@ -1338,12 +1697,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_AddMatch;
     private javax.swing.JButton jButton_AddPlayer;
     private javax.swing.JButton jButton_AddPlayerGame;
+    private javax.swing.JButton jButton_UpdatePlayer;
     private javax.swing.JCheckBox jCheckBox_MatchHomeGame;
     private javax.swing.JCheckBox jCheckBox_PlayerGameHomeGame;
     private javax.swing.JComboBox<String> jComboBox_PlayerGamePlayerName;
+    private javax.swing.JDialog jDialog_ExitConfirmation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1369,7 +1731,16 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1378,6 +1749,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_MatchAddMessage;
     private javax.swing.JLabel jLabel_PlayerAddMessage;
     private javax.swing.JLabel jLabel_PlayerGameAddMessage;
+    private javax.swing.JLabel jLabel_PlayerUpdateId;
+    private javax.swing.JLabel jLabel_PlayerUpdateMessage;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -1401,6 +1774,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel_Intro;
     private javax.swing.JPanel jPanel_Main;
     private javax.swing.JPanel jPanel_MainBody;
@@ -1410,6 +1784,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_PlayerAddGame;
     private javax.swing.JPanel jPanel_PlayerGameList;
     private javax.swing.JPanel jPanel_PlayerList;
+    private javax.swing.JPanel jPanel_PlayerUpdate;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1444,6 +1819,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_PlayerLastName;
     private javax.swing.JTextField jTextField_PlayerPoB;
     private javax.swing.JTextField jTextField_PlayerPosition;
+    private javax.swing.JTextField jTextField_PlayerUpdateDoB;
+    private javax.swing.JTextField jTextField_PlayerUpdateFirstName;
+    private javax.swing.JTextField jTextField_PlayerUpdateHeight;
+    private javax.swing.JTextField jTextField_PlayerUpdateJersey;
+    private javax.swing.JTextField jTextField_PlayerUpdateLastName;
+    private javax.swing.JTextField jTextField_PlayerUpdatePoB;
+    private javax.swing.JTextField jTextField_PlayerUpdatePosition;
+    private javax.swing.JTextField jTextField_PlayerUpdateWeight;
     private javax.swing.JTextField jTextField_PlayerWeight;
     // End of variables declaration//GEN-END:variables
 }
