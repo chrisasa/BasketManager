@@ -92,7 +92,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 JTable jTable = (JTable) me.getSource();
                 Point p = me.getPoint();
                 int row = jTable.rowAtPoint(p);
-                // get the double clikc
+                // get the double click
                 if (me.getClickCount() == 2) {
                     displayPlayerUpdate(jTable, row);
                 }
@@ -106,7 +106,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 JTable jTable = (JTable) me.getSource();
                 Point p = me.getPoint();
                 int row = jTable.rowAtPoint(p);
-                // get the double clikc
+                // get the double click
                 if (me.getClickCount() == 2) {
                     displayMatchUpdate(jTable, row);
                 }
@@ -114,6 +114,19 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         });
 
+        jTable_PlayerGamesList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                JTable jTable = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = jTable.rowAtPoint(p);
+                // get the double click
+                if (me.getClickCount() == 2) {
+                    displayPlayerGameUpdate(jTable, row);
+                }
+            }
+
+        });
     }
 
     private void changeMainBodyContent(JPanel newJPanel) {
@@ -194,6 +207,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_PlayerGamesList = new javax.swing.JTable();
+        jButton_DeletePlayerGame = new javax.swing.JButton();
+        jLabel_PlayerGameDeleteMessage = new javax.swing.JLabel();
         jPanel_PlayerGameAdd = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -221,6 +236,37 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jLabel_PlayerGameAddMessage = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jComboBox_PlayerGamePlayerName = new javax.swing.JComboBox<>();
+        jPanel_PlayerGameUpdate = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel_PlayerGameUpdateGameId = new javax.swing.JLabel();
+        jLabel_PlayerGameUpdatePlayerId = new javax.swing.JLabel();
+        jLabel_PlayerGameUpdatePlayerName = new javax.swing.JLabel();
+        jTextField_PlayerGameUpdateFoulsCommitted = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdateFoulsConceded = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdateAssists = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdateRebounds = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdateSteals = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdateBlocks = new javax.swing.JTextField();
+        jCheckBox_PlayerGameUpdateHomeGame = new javax.swing.JCheckBox();
+        jTextField_PlayerGameUpdateAwayTeamName = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdatePointsScored = new javax.swing.JTextField();
+        jTextField_PlayerGameUpdateLocation = new javax.swing.JTextField();
+        jSpinner_PlayerGameUpdateDate = new javax.swing.JSpinner();
+        jLabel_PlayerGameUpdateMessage = new javax.swing.JLabel();
+        jButton_UpdatePlayerGame = new javax.swing.JButton();
+        jButton_UpdatePlayerGameCancel = new javax.swing.JButton();
         jPanel_MatchList = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -694,27 +740,46 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable_PlayerGamesList.setColumnSelectionAllowed(true);
         jTable_PlayerGamesList.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable_PlayerGamesList);
         jTable_PlayerGamesList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        jButton_DeletePlayerGame.setText("Delete Game");
+        jButton_DeletePlayerGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DeletePlayerGameActionPerformed(evt);
+            }
+        });
+
+        jLabel_PlayerGameDeleteMessage.setText(" ");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel_PlayerGameDeleteMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_DeletePlayerGame)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_DeletePlayerGame)
+                    .addComponent(jLabel_PlayerGameDeleteMessage))
+                .addContainerGap())
         );
 
         jPanel_PlayerGameList.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -903,6 +968,226 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         );
 
         jPanel_PlayerGameAdd.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jPanel_PlayerGameUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Player Game"));
+        jPanel_PlayerGameUpdate.setPreferredSize(new java.awt.Dimension(970, 570));
+        jPanel_PlayerGameUpdate.setLayout(new java.awt.BorderLayout());
+
+        jLabel64.setText("Player Game Id");
+        jLabel64.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel63.setText("Player Id & Name");
+        jLabel63.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel53.setText("Fouls Committed");
+        jLabel53.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel54.setText("Fouls Conceded");
+        jLabel54.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel55.setText("Assists");
+        jLabel55.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel56.setText("Rebounds");
+        jLabel56.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel57.setText("Steals");
+        jLabel57.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel58.setText("Blocks");
+        jLabel58.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel59.setText("Away Team");
+        jLabel59.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel60.setText("Points Scored");
+        jLabel60.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel61.setText("Location/City");
+        jLabel61.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel62.setText("Game Date");
+        jLabel62.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel_PlayerGameUpdateGameId.setText(" ");
+        jLabel_PlayerGameUpdateGameId.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jLabel_PlayerGameUpdatePlayerId.setText(" ");
+
+        jLabel_PlayerGameUpdatePlayerName.setText(" ");
+        jLabel_PlayerGameUpdatePlayerName.setPreferredSize(new java.awt.Dimension(150, 16));
+
+        jTextField_PlayerGameUpdateFoulsCommitted.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdateFoulsConceded.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdateAssists.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdateRebounds.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdateSteals.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdateBlocks.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jCheckBox_PlayerGameUpdateHomeGame.setText("Home Game");
+
+        jTextField_PlayerGameUpdateAwayTeamName.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdatePointsScored.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jTextField_PlayerGameUpdateLocation.setPreferredSize(new java.awt.Dimension(200, 28));
+
+        jSpinner_PlayerGameUpdateDate.setModel(new javax.swing.SpinnerDateModel());
+
+        jLabel_PlayerGameUpdateMessage.setText(" ");
+
+        jButton_UpdatePlayerGame.setText("Update");
+        jButton_UpdatePlayerGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_UpdatePlayerGameActionPerformed(evt);
+            }
+        });
+
+        jButton_UpdatePlayerGameCancel.setText("Cancel");
+        jButton_UpdatePlayerGameCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_UpdatePlayerGameCancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_PlayerGameUpdateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateSteals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateAwayTeamName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdatePointsScored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jButton_UpdatePlayerGame)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton_UpdatePlayerGameCancel))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jSpinner_PlayerGameUpdateDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jCheckBox_PlayerGameUpdateHomeGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField_PlayerGameUpdateBlocks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateFoulsCommitted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateFoulsConceded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField_PlayerGameUpdateRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel_PlayerGameUpdateGameId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel_PlayerGameUpdatePlayerId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel_PlayerGameUpdatePlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 442, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_PlayerGameUpdateGameId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_PlayerGameUpdatePlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_PlayerGameUpdatePlayerId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateFoulsCommitted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateFoulsConceded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateSteals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox_PlayerGameUpdateHomeGame)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateAwayTeamName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdatePointsScored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PlayerGameUpdateLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner_PlayerGameUpdateDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_PlayerGameUpdateMessage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_UpdatePlayerGame)
+                    .addComponent(jButton_UpdatePlayerGameCancel))
+                .addContainerGap())
+        );
+
+        jPanel_PlayerGameUpdate.add(jPanel8, java.awt.BorderLayout.CENTER);
 
         jPanel_MatchList.setBorder(javax.swing.BorderFactory.createTitledBorder("List of Players"));
         jPanel_MatchList.setLayout(new java.awt.BorderLayout());
@@ -1459,6 +1744,18 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         displayMatchList();
     }//GEN-LAST:event_jButton_UpdateMatchCancelActionPerformed
 
+    private void jButton_UpdatePlayerGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdatePlayerGameActionPerformed
+        updatePlayerGame();
+    }//GEN-LAST:event_jButton_UpdatePlayerGameActionPerformed
+
+    private void jButton_UpdatePlayerGameCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdatePlayerGameCancelActionPerformed
+        displayPlayerGameList();
+    }//GEN-LAST:event_jButton_UpdatePlayerGameCancelActionPerformed
+
+    private void jButton_DeletePlayerGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeletePlayerGameActionPerformed
+        deletePlayerGame();
+    }//GEN-LAST:event_jButton_DeletePlayerGameActionPerformed
+
     // =====================================================================================
     // Display methods
     private void displayPlayerList() {
@@ -1499,30 +1796,29 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void displayPlayerUpdate(JTable jTable, int row) {
-        // TODO: Need to be refactored in case of reordering columns
-        String Id = jTable.getValueAt(row, 0).toString();
-        String FirstName = jTable.getValueAt(row, 1).toString();
-        String LastName = jTable.getValueAt(row, 2).toString();
-        String DoB = jTable.getValueAt(row, 2).toString();
-        String PoB = jTable.getValueAt(row, 3).toString();
-        String Height = jTable.getValueAt(row, 4).toString();
-        String Weight = jTable.getValueAt(row, 5).toString();
-        String Position = jTable.getValueAt(row, 6).toString();
-        String Jersey = jTable.getValueAt(row, 7).toString();
-
-        jLabel_PlayerUpdateId.setText(Id);
-        jTextField_PlayerUpdateFirstName.setText(FirstName);
-        jTextField_PlayerUpdateLastName.setText(LastName);
-        jTextField_PlayerUpdateDoB.setText(DoB);
-        jTextField_PlayerUpdatePoB.setText(PoB);
-        jTextField_PlayerUpdateHeight.setText(Height);
-        jTextField_PlayerUpdateWeight.setText(Weight);
-        jTextField_PlayerUpdatePosition.setText(Position);
-        jTextField_PlayerUpdateJersey.setText(Jersey);
-
-        jLabel_PlayerUpdateMessage.setText("");
-
-        changeMainBodyContent(jPanel_PlayerUpdate);
+        try {
+            int PlayerId = Integer.parseInt(jTable.getValueAt(row, 0).toString());
+            
+            PlayerRecord playerRecord = new PlayerRecord();
+            FileDatabaseManager database = new FileDatabaseManager(GlobalVariables.pathPlayersRaf, playerRecord);
+            PlayerRecord tmpPlayerRecord = (PlayerRecord) database.getRecord(PlayerId);
+            
+            jLabel_PlayerUpdateId.setText(Integer.toString(tmpPlayerRecord.getId()));
+            jTextField_PlayerUpdateFirstName.setText(tmpPlayerRecord.getFirstName());
+            jTextField_PlayerUpdateLastName.setText(tmpPlayerRecord.getLastName());
+            jTextField_PlayerUpdateDoB.setText(tmpPlayerRecord.getDoB());
+            jTextField_PlayerUpdatePoB.setText(tmpPlayerRecord.getPoB());
+            jTextField_PlayerUpdateHeight.setText(tmpPlayerRecord.getHeight());
+            jTextField_PlayerUpdateWeight.setText(tmpPlayerRecord.getWeight());
+            jTextField_PlayerUpdatePosition.setText(tmpPlayerRecord.getPosition());
+            jTextField_PlayerUpdateJersey.setText(tmpPlayerRecord.getJersey());
+            
+            jLabel_PlayerUpdateMessage.setText("");
+            
+            changeMainBodyContent(jPanel_PlayerUpdate);
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void displayPlayerGameList() {
@@ -1566,6 +1862,38 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         changeMainBodyContent(jPanel_PlayerGameAdd);
     }
 
+    private void displayPlayerGameUpdate(JTable jTable, int row) {
+        try {
+            int GameId = Integer.parseInt(jTable.getValueAt(row, 0).toString());
+            
+            PlayerGameRecord playerGameRecord = new PlayerGameRecord();
+            FileDatabaseManager database = new FileDatabaseManager(GlobalVariables.pathPlayersGamesRaf, playerGameRecord);
+            PlayerGameRecord tmpPlayerGameRecord = (PlayerGameRecord) database.getRecord(GameId);
+            
+            jLabel_PlayerGameUpdateGameId.setText(Integer.toString(tmpPlayerGameRecord.getId()));
+            jLabel_PlayerGameUpdatePlayerId.setText(Integer.toString(tmpPlayerGameRecord.getPlayerId()));
+            jLabel_PlayerGameUpdatePlayerName.setText(tmpPlayerGameRecord.getPlayerName());
+            jTextField_PlayerGameUpdateFoulsCommitted.setText(tmpPlayerGameRecord.getFoulsCommitted());
+            jTextField_PlayerGameUpdateFoulsConceded.setText(tmpPlayerGameRecord.getFoulsConceded());
+            jTextField_PlayerGameUpdateAssists.setText(tmpPlayerGameRecord.getAssists());
+            jTextField_PlayerGameUpdateRebounds.setText(tmpPlayerGameRecord.getRebounds());
+            jTextField_PlayerGameUpdateSteals.setText(tmpPlayerGameRecord.getSteals());
+            jTextField_PlayerGameUpdateBlocks.setText(tmpPlayerGameRecord.getBlocks());
+            jCheckBox_PlayerGameUpdateHomeGame.setSelected(tmpPlayerGameRecord.getHomeGame() == 1 ? true : false); // 1 is for Home game and 0 for Away
+            jTextField_PlayerGameUpdateAwayTeamName.setText(tmpPlayerGameRecord.getAwayTeamName());
+            jTextField_PlayerGameUpdatePointsScored.setText(tmpPlayerGameRecord.getPointsScored());
+            jTextField_PlayerGameUpdateLocation.setText(tmpPlayerGameRecord.getLocation());
+            jSpinner_PlayerGameUpdateDate.setValue(new Date(tmpPlayerGameRecord.getGameDate())); // The long number is the timpestamp, use Date class to convert it to Date
+            
+            jLabel_PlayerGameUpdateMessage.setText("");
+            
+            changeMainBodyContent(jPanel_PlayerGameUpdate);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void displayMatchList() {
         try {
             ArrayList<MatchRecord> allMatches = DatabaseManager.getAllMatchesEntries(GlobalVariables.pathMatchesRaf);
@@ -1605,37 +1933,36 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void displayMatchUpdate(JTable jTable, int row) {
-        String Id = jTable.getValueAt(row, 0).toString();
-        String Opponent = jTable.getValueAt(row, 1).toString();
-        Date MatchDate = new Date(jTable.getValueAt(row, 2).toString());
-        String FoulsCommitted = jTable.getValueAt(row, 3).toString();
-        String FoulsConceded = jTable.getValueAt(row, 4).toString();
-        String Assists = jTable.getValueAt(row, 5).toString();
-        String Rebounds = jTable.getValueAt(row, 6).toString();
-        String Steals = jTable.getValueAt(row, 7).toString();
-        String Blocks = jTable.getValueAt(row, 8).toString();
-        Boolean HomeGame = Boolean.parseBoolean(jTable.getValueAt(row, 9).toString()); // Parse string to Boolean
-        String PointsScored = jTable.getValueAt(row, 10).toString();
-        String PointsConceded = jTable.getValueAt(row, 11).toString();
-        String Location = jTable.getValueAt(row, 12).toString();
-
-        jLabel_MatchUpdateId.setText(Id);
-        jTextField_MatchUpdateOpponent.setText(Opponent);
-        jSpinner_MatchUpdateDate.setValue(MatchDate);
-        jTextField_MatchUpdateFoulsCommitted.setText(FoulsCommitted);
-        jTextField_MatchUpdateFoulsConceded.setText(FoulsConceded);
-        jTextField_MatchUpdateAssists.setText(Assists);
-        jTextField_MatchUpdateRebounds.setText(Rebounds);
-        jTextField_MatchUpdateSteals.setText(Steals);
-        jTextField_MatchUpdateBlocks.setText(Blocks);
-        jCheckBox_MatchUpdateHomeGame.setSelected(HomeGame);
-        jTextField_MatchUpdatePointsScored.setText(PointsScored);
-        jTextField_MatchUpdatePointsConceded.setText(PointsConceded);
-        jTextField_MatchUpdateLocation.setText(Location);
-
-        jLabel_MatchUpdateMessage.setText("");
-
-        changeMainBodyContent(jPanel_MatchUpdate);
+        try {
+            int MatchId = Integer.parseInt(jTable.getValueAt(row, 0).toString());
+            
+            MatchRecord matchRecord = new MatchRecord();
+            FileDatabaseManager database = new FileDatabaseManager(GlobalVariables.pathMatchesRaf, matchRecord);
+            MatchRecord tmpMatchRecord = (MatchRecord) database.getRecord(MatchId);
+            
+            
+            jLabel_MatchUpdateId.setText(Integer.toString(tmpMatchRecord.getId()));
+            jTextField_MatchUpdateOpponent.setText(tmpMatchRecord.getOpponent());
+            
+            jSpinner_MatchUpdateDate.setValue(new Date(tmpMatchRecord.getDate())); // The long number is the timpestamp, use Date class to convert it to Date
+            
+            jTextField_MatchUpdateFoulsCommitted.setText(tmpMatchRecord.getFoulsCommitted());
+            jTextField_MatchUpdateFoulsConceded.setText(tmpMatchRecord.getFoulsConceded());
+            jTextField_MatchUpdateAssists.setText(tmpMatchRecord.getAssists());
+            jTextField_MatchUpdateRebounds.setText(tmpMatchRecord.getRebounds());
+            jTextField_MatchUpdateSteals.setText(tmpMatchRecord.getSteals());
+            jTextField_MatchUpdateBlocks.setText(tmpMatchRecord.getBlocks());
+            jCheckBox_MatchUpdateHomeGame.setSelected(tmpMatchRecord.getHomeGame() == 1 ? true : false); // 1 is for Home game and 0 for Away
+            jTextField_MatchUpdatePointsScored.setText(tmpMatchRecord.getPointsScored());
+            jTextField_MatchUpdatePointsConceded.setText(tmpMatchRecord.getPointsConceded());
+            jTextField_MatchUpdateLocation.setText(tmpMatchRecord.getLocation());
+            
+            jLabel_MatchUpdateMessage.setText("");
+            
+            changeMainBodyContent(jPanel_MatchUpdate);
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // =====================================================================================
@@ -1714,6 +2041,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         }
     }
 
+    
+    
     private String[] splitPlayerIdAndName(String playerInfo) {
         String[] idAndName = new String[2];
 
@@ -1772,6 +2101,85 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         }
     }
 
+    private void updatePlayerGame() throws IllegalArgumentException, NumberFormatException {
+        int GameId = Integer.parseInt(jLabel_PlayerGameUpdatePlayerId.getText());
+        int PlayerId = Integer.parseInt(jLabel_PlayerGameUpdatePlayerId.getText());
+        String PlayerName = jLabel_PlayerGameUpdatePlayerName.getText();
+        String FoulsCommitted = jTextField_PlayerGameUpdateFoulsCommitted.getText().trim();
+        String FoulsConceded = jTextField_PlayerGameUpdateFoulsConceded.getText().trim();
+        String Assists = jTextField_PlayerGameUpdateAssists.getText().trim();
+        String Rebounds = jTextField_PlayerGameUpdateRebounds.getText().trim();
+        String Steals = jTextField_PlayerGameUpdateSteals.getText().trim();
+        String Blocks = jTextField_PlayerGameUpdateBlocks.getText().trim();
+        int HomeGame = jCheckBox_PlayerGameUpdateHomeGame.isSelected() ? 1 : 0; // 0 = false or 1 = true
+        String AwayTeamName = jTextField_PlayerGameUpdateAwayTeamName.getText().trim();
+        String PointsScored = jTextField_PlayerGameUpdatePointsScored.getText().trim();
+        String Location = jTextField_PlayerGameUpdateLocation.getText().trim();
+        Date tmpDate = (Date) jSpinner_PlayerGameUpdateDate.getValue();
+        long GameDate = tmpDate.getTime();
+
+        if (!FoulsCommitted.equals("") && !FoulsConceded.equals("") && !Assists.equals("")
+                && !Rebounds.equals("") && !Steals.equals("") && !Blocks.equals("")
+                && !AwayTeamName.equals("") && !PointsScored.equals("") && !Location.equals("")) {
+
+            PlayerGameRecord playerGameRecord = new PlayerGameRecord();
+            FileDatabaseManager database;
+            try {
+                database = new FileDatabaseManager(GlobalVariables.pathPlayersGamesRaf, playerGameRecord);
+                PlayerGameRecord updatePlayerGameRecord = new PlayerGameRecord(GameId, PlayerId, PlayerName, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, AwayTeamName, PointsScored, Location, GameDate);
+                database.updateRecord(updatePlayerGameRecord);
+            } catch (IOException ex) {
+                Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            jLabel_PlayerGameUpdateMessage.setText("Player game updated successfully");
+            jLabel_PlayerGameUpdateMessage.setForeground(Color.BLUE);
+            
+            displayPlayerGameList();
+        } else {
+            jLabel_PlayerGameUpdateMessage.setText("All fields should be filled!");
+            jLabel_PlayerGameUpdateMessage.setForeground(Color.RED);
+        }
+    }
+
+    private void deletePlayerGame() {
+        try {
+            int selectedRow = jTable_PlayerGamesList.getSelectedRow();
+            // -1 is the response when none of the rows are selected
+            if (selectedRow != -1 ) {
+                int GameId = Integer.parseInt(jTable_PlayerGamesList.getValueAt(selectedRow, 0).toString());;
+
+                PlayerGameRecord playerGameRecord = new PlayerGameRecord();
+                FileDatabaseManager database = new FileDatabaseManager(GlobalVariables.pathPlayersGamesRaf, playerGameRecord);
+
+                // Gete the player game record
+                PlayerGameRecord deletePlayerGameRecord = (PlayerGameRecord) database.getRecord(GameId);
+                
+                int deleteConfirmation = JOptionPane.showConfirmDialog(jPanel_Main, "Are you sure that you want to delete this game?", "Delete Player Game", JOptionPane.YES_NO_OPTION);
+                if (deleteConfirmation == JOptionPane.YES_OPTION) {
+                    // Delete the record
+                    database.deleteRecord(deletePlayerGameRecord);
+                    
+                    // Reload page to refresh the table
+                    displayPlayerGameList();
+                    
+                    jLabel_PlayerGameDeleteMessage.setText("Entry successfully deleted");
+                    jLabel_PlayerGameDeleteMessage.setForeground(Color.BLUE);
+                } else {
+                    jLabel_PlayerGameDeleteMessage.setText("");
+                }
+            } else {
+                jLabel_PlayerGameDeleteMessage.setText("You need to select one record first");
+                jLabel_PlayerGameDeleteMessage.setForeground(Color.RED);
+            }  
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     private void addMatch() throws IllegalArgumentException {
         String Opponent = jTextField_MatchOpponent.getText().trim();
         Date tmpDate = (Date) jSpinner_MatchDate.getValue();
@@ -1866,7 +2274,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                 DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
                 for (PlayerRecord player : allPlayers) {
 
-                    String comboBoxItemFormat = player.getId() + "." + player.getFirstName().trim() + " " + player.getFirstName().trim();
+                    String comboBoxItemFormat = player.getId() + "." + player.getFirstName().trim() + " " + player.getLastName().trim();
 
                     comboBoxModel.addElement(comboBoxItemFormat);
                 }
@@ -1949,6 +2357,9 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void clearAddPlayerGame() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
+        comboBoxModel.removeAllElements();
+        
         jTextField_PlayerGameFoulsCommitted.setText("");
         jTextField_PlayerGameFoulsConceded.setText("");
         jTextField_PlayerGameAssists.setText("");
@@ -2002,13 +2413,17 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton_AddMatch;
     private javax.swing.JButton jButton_AddPlayer;
     private javax.swing.JButton jButton_AddPlayerGame;
+    private javax.swing.JButton jButton_DeletePlayerGame;
     private javax.swing.JButton jButton_UpdateMatch;
     private javax.swing.JButton jButton_UpdateMatchCancel;
     private javax.swing.JButton jButton_UpdatePlayer;
     private javax.swing.JButton jButton_UpdatePlayerCancel;
+    private javax.swing.JButton jButton_UpdatePlayerGame;
+    private javax.swing.JButton jButton_UpdatePlayerGameCancel;
     private javax.swing.JCheckBox jCheckBox_MatchHomeGame;
     private javax.swing.JCheckBox jCheckBox_MatchUpdateHomeGame;
     private javax.swing.JCheckBox jCheckBox_PlayerGameHomeGame;
+    private javax.swing.JCheckBox jCheckBox_PlayerGameUpdateHomeGame;
     private javax.swing.JComboBox<String> jComboBox_PlayerGamePlayerName;
     private javax.swing.JDialog jDialog_ExitConfirmation;
     private javax.swing.JLabel jLabel1;
@@ -2059,7 +2474,19 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2068,6 +2495,11 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_MatchUpdateMessage;
     private javax.swing.JLabel jLabel_PlayerAddMessage;
     private javax.swing.JLabel jLabel_PlayerGameAddMessage;
+    private javax.swing.JLabel jLabel_PlayerGameDeleteMessage;
+    private javax.swing.JLabel jLabel_PlayerGameUpdateGameId;
+    private javax.swing.JLabel jLabel_PlayerGameUpdateMessage;
+    private javax.swing.JLabel jLabel_PlayerGameUpdatePlayerId;
+    private javax.swing.JLabel jLabel_PlayerGameUpdatePlayerName;
     private javax.swing.JLabel jLabel_PlayerUpdateId;
     private javax.swing.JLabel jLabel_PlayerUpdateMessage;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2094,6 +2526,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel_Intro;
     private javax.swing.JPanel jPanel_Main;
     private javax.swing.JPanel jPanel_MainBody;
@@ -2103,6 +2536,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_PlayerAdd;
     private javax.swing.JPanel jPanel_PlayerGameAdd;
     private javax.swing.JPanel jPanel_PlayerGameList;
+    private javax.swing.JPanel jPanel_PlayerGameUpdate;
     private javax.swing.JPanel jPanel_PlayerList;
     private javax.swing.JPanel jPanel_PlayerUpdate;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2111,6 +2545,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner_MatchDate;
     private javax.swing.JSpinner jSpinner_MatchUpdateDate;
     private javax.swing.JSpinner jSpinner_PlayerGameDate;
+    private javax.swing.JSpinner jSpinner_PlayerGameUpdateDate;
     private javax.swing.JTable jTable_MatchesList;
     private javax.swing.JTable jTable_PlayerGamesList;
     private javax.swing.JTable jTable_PlayersList;
@@ -2145,6 +2580,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_PlayerGamePointsScored;
     private javax.swing.JTextField jTextField_PlayerGameRebounds;
     private javax.swing.JTextField jTextField_PlayerGameSteals;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateAssists;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateAwayTeamName;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateBlocks;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateFoulsCommitted;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateFoulsConceded;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateLocation;
+    private javax.swing.JTextField jTextField_PlayerGameUpdatePointsScored;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateRebounds;
+    private javax.swing.JTextField jTextField_PlayerGameUpdateSteals;
     private javax.swing.JTextField jTextField_PlayerHeight;
     private javax.swing.JTextField jTextField_PlayerJersey;
     private javax.swing.JTextField jTextField_PlayerLastName;

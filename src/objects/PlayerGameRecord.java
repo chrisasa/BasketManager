@@ -61,6 +61,15 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         DatabaseManager.writeString(file, getLocation(), STRING_ENTRY_LENGTH);
         file.writeLong(getGameDate());
     }
+    
+    public void deleteItselfFromFile(RandomAccessFile file) throws IOException {
+        
+        int deletedRecordId = getId();
+        
+        
+        
+        
+    }
 
     @Override
     public int getRecordId() {

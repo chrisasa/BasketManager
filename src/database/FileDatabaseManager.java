@@ -65,6 +65,8 @@ public class FileDatabaseManager {
             System.out.println("Cannot delete.Record does not exist.");
         } else {
             randomAccessFile.seek(getEntryStartPointerOffset(record.getRecordId()));
+            
+            
             record.writeToFile(randomAccessFile);
         }
     }
