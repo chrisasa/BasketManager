@@ -10,7 +10,10 @@ package objects;
  * @author
  */
 public class Match {
+
     private int Id;
+    private int SeasonId;
+    private String SeasonName;
     private String Opponent;
     private long Date;
     private String FoulsCommitted;
@@ -23,15 +26,18 @@ public class Match {
     private String PointsScored;
     private String PointsConceded;
     private String Location;
+    private int IsDeleted; // 0 or 1, delete flag for database
 
     public Match() {
     }
 
-    public Match(int Id, String Opponent, long Date, String FoulsCommited, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String PointsScored, String PointsConceded, String Location) {
+    public Match(int Id, int SeasonId, String SeasonName, String Opponent, long Date, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String PointsScored, String PointsConceded, String Location, int IsDeleted) {
         this.Id = Id;
+        this.SeasonId = SeasonId;
+        this.SeasonName = SeasonName;
         this.Opponent = Opponent;
         this.Date = Date;
-        this.FoulsCommitted = FoulsCommited;
+        this.FoulsCommitted = FoulsCommitted;
         this.FoulsConceded = FoulsConceded;
         this.Assists = Assists;
         this.Rebounds = Rebounds;
@@ -41,16 +47,33 @@ public class Match {
         this.PointsScored = PointsScored;
         this.PointsConceded = PointsConceded;
         this.Location = Location;
+        this.IsDeleted = IsDeleted;
     }
 
-    
     // Getters and Setters
+
     public int getId() {
         return Id;
     }
 
     public void setId(int Id) {
         this.Id = Id;
+    }
+
+    public int getSeasonId() {
+        return SeasonId;
+    }
+
+    public void setSeasonId(int SeasonId) {
+        this.SeasonId = SeasonId;
+    }
+
+    public String getSeasonName() {
+        return SeasonName;
+    }
+
+    public void setSeasonName(String SeasonName) {
+        this.SeasonName = SeasonName;
     }
 
     public String getOpponent() {
@@ -73,8 +96,8 @@ public class Match {
         return FoulsCommitted;
     }
 
-    public void setFoulsCommited(String FoulsCommited) {
-        this.FoulsCommitted = FoulsCommited;
+    public void setFoulsCommitted(String FoulsCommitted) {
+        this.FoulsCommitted = FoulsCommitted;
     }
 
     public String getFoulsConceded() {
@@ -148,5 +171,14 @@ public class Match {
     public void setLocation(String Location) {
         this.Location = Location;
     }
+
+    public int getIsDeleted() {
+        return IsDeleted;
+    }
+
+    public void setIsDeleted(int IsDeleted) {
+        this.IsDeleted = IsDeleted;
+    }
+    
 
 }

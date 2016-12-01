@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import objects.MatchRecord;
 import objects.PlayerGameRecord;
 import objects.PlayerRecord;
+import objects.SeasonRecord;
+import tools.GlobalVariables;
 
 /**
  *
@@ -46,7 +48,7 @@ public class DatabaseManager {
         }
     }
 
-    public static int generateNewPlayerEntryId(String DatabaseFilePath) throws FileNotFoundException, IOException {
+    public static int generateNewEntryId(String DatabaseFilePath) throws FileNotFoundException, IOException {
 
         RandomAccessFile randomAccessFile = new RandomAccessFile(DatabaseFilePath, "rw");
 
@@ -105,14 +107,16 @@ public class DatabaseManager {
 
     public static void showAllPlayerRecords(String playersRafPath) throws FileNotFoundException {
 
-        ArrayList<PlayerRecord> tmpList = getAllPlayerEntries(playersRafPath);
+        ArrayList<PlayerRecord> tmpList = getAllPlayerEntries();
 
         for (Object record : tmpList) {
             System.out.println(record.toString());
         }
     }
 
-    public static ArrayList<PlayerRecord> getAllPlayerEntries(String RafPath) throws FileNotFoundException {
+    public static ArrayList<PlayerRecord> getAllPlayerEntries() throws FileNotFoundException {
+
+        String RafPath = GlobalVariables.pathPlayersRaf;
 
         RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
@@ -144,7 +148,9 @@ public class DatabaseManager {
         return recordsArrayList;
     }
 
-    public static ArrayList<MatchRecord> getAllMatchesEntries(String RafPath) throws FileNotFoundException {
+    public static ArrayList<MatchRecord> getAllMatchesEntries() throws FileNotFoundException {
+        
+        String RafPath = GlobalVariables.pathMatchesRaf;
 
         RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
@@ -176,11 +182,9 @@ public class DatabaseManager {
         return recordsArrayList;
     }
     
-    
-    
-    
-    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntries(String RafPath) throws FileNotFoundException {
-
+    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntries() throws FileNotFoundException {
+        String RafPath = GlobalVariables.pathPlayersGamesRaf;
+        
         RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
         ArrayList<PlayerGameRecord> recordsArrayList = new ArrayList<>();
@@ -196,10 +200,47 @@ public class DatabaseManager {
 
                 playerGameRecord.readFromFile(randomAccessFile);
 
-                recordsArrayList.add(playerGameRecord);
+                // Get only non deleted entries, IsDeleted = 0 
+                if(playerGameRecord.getIsDeleted() == 0) {
+                    recordsArrayList.add(playerGameRecord);
+                }
 
                 // Increase by one entry size the seek position to get the next entry
                 seekPoint += playerGameRecord.getDatabaseEntrySize();
+            }
+
+        } catch (EOFException ex1) {
+            return recordsArrayList;
+        } catch (IOException ex2) {
+            System.err.println("Error reading file");
+        }
+
+        return recordsArrayList;
+    }
+    
+    public static ArrayList<SeasonRecord> getAllSeasonEntries() throws FileNotFoundException {
+
+        String RafPath = GlobalVariables.pathSeasonsRaf;
+        
+        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+
+        ArrayList<SeasonRecord> recordsArrayList = new ArrayList<>();
+
+        try {
+            long seekPoint = getDataEntriesStartPointerOffset();
+
+            // Loop up to the end of the file (EOFException)
+            while (true) {
+                randomAccessFile.seek(seekPoint);
+
+                SeasonRecord seasonRecord = new SeasonRecord();
+
+                seasonRecord.readFromFile(randomAccessFile);
+
+                recordsArrayList.add(seasonRecord);
+
+                // Increase by one entry size the seek position to get the next entry
+                seekPoint += seasonRecord.getDatabaseEntrySize();
             }
 
         } catch (EOFException ex1) {

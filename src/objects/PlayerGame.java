@@ -12,6 +12,8 @@ package objects;
 public class PlayerGame {
     
     private int Id;
+    private int SeasonId;
+    private String SeasonName;
     private int PlayerId;
     private String PlayerName;
     private String FoulsCommitted;
@@ -25,12 +27,15 @@ public class PlayerGame {
     private String PointsScored;
     private String Location;
     private long GameDate;
+    private int IsDeleted; // 0 or 1, delete flag for database
 
     public PlayerGame() {
     }
 
-    public PlayerGame(int Id, int PlayerId, String PlayerName, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String AwayTeamName, String PointsScored, String Location, long GameDate) {
+    public PlayerGame(int Id, int SeasonId, String SeasonName, int PlayerId, String PlayerName, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String AwayTeamName, String PointsScored, String Location, long GameDate, int IsDeleted) {
         this.Id = Id;
+        this.SeasonId = SeasonId;
+        this.SeasonName = SeasonName;
         this.PlayerId = PlayerId;
         this.PlayerName = PlayerName;
         this.FoulsCommitted = FoulsCommitted;
@@ -44,15 +49,33 @@ public class PlayerGame {
         this.PointsScored = PointsScored;
         this.Location = Location;
         this.GameDate = GameDate;
+        this.IsDeleted = IsDeleted;
     }
 
     // Getters and Setters
+
     public int getId() {
         return Id;
     }
 
     public void setId(int Id) {
         this.Id = Id;
+    }
+
+    public int getSeasonId() {
+        return SeasonId;
+    }
+
+    public void setSeasonId(int SeasonId) {
+        this.SeasonId = SeasonId;
+    }
+
+    public String getSeasonName() {
+        return SeasonName;
+    }
+
+    public void setSeasonName(String SeasonName) {
+        this.SeasonName = SeasonName;
     }
 
     public int getPlayerId() {
@@ -159,9 +182,13 @@ public class PlayerGame {
         this.GameDate = GameDate;
     }
 
-    
-    
-    
+    public int getIsDeleted() {
+        return IsDeleted;
+    }
+
+    public void setIsDeleted(int IsDeleted) {
+        this.IsDeleted = IsDeleted;
+    }
     
     
     

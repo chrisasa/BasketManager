@@ -13,14 +13,13 @@ import objects.DatabaseRecord;
  *
  * @author
  */
-@Deprecated
-public class FileDatabaseManager {
+public abstract class AbstractFileDatabaseManager {
 
     DatabaseRecord databaseRecord;
-    
+
     RandomAccessFile randomAccessFile;
 
-    public FileDatabaseManager(String fileString, DatabaseRecord databaseRecord) throws IOException {
+    public AbstractFileDatabaseManager(String fileString, DatabaseRecord databaseRecord) throws IOException {
         this.randomAccessFile = new RandomAccessFile(fileString, "rw");
         this.databaseRecord = databaseRecord;
     }
@@ -51,29 +50,14 @@ public class FileDatabaseManager {
     }
 
     public void updateRecord(DatabaseRecord record) throws IllegalArgumentException, IOException {
-        
-        if (getRecord(record.getRecordId()).getRecordId() == 0) {
-            System.out.println("Cannot update.Record does not exist.");
-        } 
-        else {
-            randomAccessFile.seek(getEntryStartPointerOffset(record.getRecordId()));
-            record.writeToFile(randomAccessFile);
-        }
+        randomAccessFile.seek(getEntryStartPointerOffset(record.getRecordId()));
+        record.writeToFile(randomAccessFile);
     }
 
-    public void deleteRecord(DatabaseRecord record) throws IllegalArgumentException, IOException {
-        if (getRecord(record.getRecordId()).getRecordId() == 0) {
-            System.out.println("Cannot delete.Record does not exist.");
-        } else {
-            randomAccessFile.seek(getEntryStartPointerOffset(record.getRecordId()));
-            
-            
-            record.writeToFile(randomAccessFile);
-        }
-    }
+    public abstract void deleteRecord(DatabaseRecord record) throws IOException;
 
-    private long getEntryStartPointerOffset(int id) {
+    public long getEntryStartPointerOffset(int id) {
         return (DatabaseManager.getIdPointerLength() + ((id - 1) * databaseRecord.getDatabaseEntrySize()));
     }
-    
+
 }

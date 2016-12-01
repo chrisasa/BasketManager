@@ -17,18 +17,20 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
 
     private static final int STRING_ENTRY_LENGTH = 15;
 
-    private static final int NUMBER_OF_STRING_FIELDS = 10;
+    private static final int NUMBER_OF_STRING_FIELDS = 11;
 
     public PlayerGameRecord() {
     }
 
-    public PlayerGameRecord(int Id, int PlayerId, String PlayerName, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String AwayTeamName, String PointsScored, String Location, long GameDate) {
-        super(Id, PlayerId, PlayerName, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, AwayTeamName, PointsScored, Location, GameDate);
+    public PlayerGameRecord(int Id, int SeasonId, String SeasonName, int PlayerId, String PlayerName, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String AwayTeamName, String PointsScored, String Location, long GameDate, int IsDeleted) {
+        super(Id, SeasonId, SeasonName, PlayerId, PlayerName, FoulsCommitted, FoulsConceded, Assists, Rebounds, Steals, Blocks, HomeGame, AwayTeamName, PointsScored, Location, GameDate, IsDeleted);
     }
 
     @Override
     public void readFromFile(RandomAccessFile file) throws IOException {
         setId(file.readInt());
+        setSeasonId(file.readInt());
+        setSeasonName(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setPlayerId(file.readInt());
         setPlayerName(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setFoulsCommitted(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
@@ -41,12 +43,15 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         setAwayTeamName(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setPointsScored(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setLocation(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
-        setGameDate(file.readLong());
+        setGameDate(file.readLong());     
+        setIsDeleted(file.readInt());
     }
 
     @Override
     public void writeToFile(RandomAccessFile file) throws IOException {
         file.writeInt(getId());
+        file.writeInt(getSeasonId());
+        DatabaseManager.writeString(file, getSeasonName(), STRING_ENTRY_LENGTH);
         file.writeInt(getPlayerId());
         DatabaseManager.writeString(file, getPlayerName(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getFoulsCommitted(), STRING_ENTRY_LENGTH);
@@ -60,17 +65,10 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         DatabaseManager.writeString(file, getPointsScored(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getLocation(), STRING_ENTRY_LENGTH);
         file.writeLong(getGameDate());
+        int t = this.getIsDeleted();
+        file.writeInt(getIsDeleted());
     }
     
-    public void deleteItselfFromFile(RandomAccessFile file) throws IOException {
-        
-        int deletedRecordId = getId();
-        
-        
-        
-        
-    }
-
     @Override
     public int getRecordId() {
         return getId();
@@ -78,7 +76,7 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
 
     @Override
     public int getDatabaseEntrySize() {
-        return Integer.BYTES + Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH)) + Integer.BYTES + Long.BYTES;
+        return Integer.BYTES + Integer.BYTES + Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH)) + Integer.BYTES + Long.BYTES + Integer.BYTES;
     }
 
 }

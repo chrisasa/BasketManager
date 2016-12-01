@@ -5,15 +5,12 @@
  */
 package basketmanager;
 
-import database.DatabaseManager;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import objects.PlayerRecord;
-import database.FileDatabaseManager;
-import java.util.ArrayList;
+import database.FileDatabaseManagerPlayerGame;
 import tools.GlobalVariables;
 
 /**
@@ -57,7 +54,9 @@ public class TestMain {
 //        randomAccessFile.close();
         
         PlayerRecord playerRecord = new PlayerRecord();
-        FileDatabaseManager database = new FileDatabaseManager(filePath, playerRecord);
+        FileDatabaseManagerPlayerGame database = new FileDatabaseManagerPlayerGame();
+        playerRecord = (PlayerRecord) database.getRecord(1);
+        System.out.println(playerRecord.toString());
 //        PlayerRecord playerRecord1 = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(filePath), "1", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord2 = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(filePath), "2", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord3 = new PlayerRecord(DatabaseManager.generateNewPlayerEntryId(filePath), "3", "123", "123", "123", "123", "123", "123", "123");
@@ -67,11 +66,11 @@ public class TestMain {
 //        database.insertRecord(playerRecord2);
 //        database.insertRecord(playerRecord3);
 //        database.insertRecord(playerRecord4);
-        ArrayList al = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
+//        ArrayList al = DatabaseManager.getAllPlayerEntries(GlobalVariables.pathPlayersRaf);
         
-        System.out.println(al.size());
+//        System.out.println(al.size());
         
-        DatabaseManager.showAllPlayerRecords(GlobalVariables.pathPlayersRaf);
+//        DatabaseManager.showAllPlayerRecords(GlobalVariables.pathPlayersRaf);
 
 //        PlayerRecord playerRecord1 = new PlayerRecord(1, "1up", "123", "123", "123", "123", "123", "123", "123");
 //        PlayerRecord playerRecord2 = new PlayerRecord(2, "2up", "123", "123", "123", "123", "123", "123", "123");

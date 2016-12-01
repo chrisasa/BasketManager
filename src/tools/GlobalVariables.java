@@ -13,10 +13,7 @@ import java.io.File;
  */
 public class GlobalVariables {
     
-    private static String pathFilesFolderPath = "/Users/christos/Dropbox/PROJECTS/nick_java";
-    
-    //public static String filePath = "/Users/christos/Documents/Dev_Tools/GIT_Repos/BasketManager/src/files/players.store";
-    
+    private static String pathFilesFolderPath = "/Users/christos/Dropbox/PROJECTS/nick_java/BasketFiles";
     
     public static final String pathPlayersExcel = pathFilesFolderPath + File.separator + "Players.xlsx";
     public static final String nameSpreadSheetPlayersInfo = "PlayersInfo";
@@ -31,4 +28,5 @@ public class GlobalVariables {
     
     public static final String pathMatchesRaf = pathFilesFolderPath + File.separator + "Matches.store";
     
+    public static final String pathSeasonsRaf = pathFilesFolderPath + File.separator + "Seasons.store";
 }
