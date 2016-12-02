@@ -22,7 +22,6 @@ public class FileDatabaseManagerPlayerGame extends AbstractFileDatabaseManager {
 
     @Override
     public void deleteRecord(DatabaseRecord record) throws IOException {
-
         updateRecord(record);
     }
 

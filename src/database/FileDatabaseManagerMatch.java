@@ -21,8 +21,8 @@ public class FileDatabaseManagerMatch extends AbstractFileDatabaseManager {
     }
 
     @Override
-    public void deleteRecord(DatabaseRecord record) {
-        
+    public void deleteRecord(DatabaseRecord record) throws IOException {
+        updateRecord(record);
     }
     
 }

@@ -175,6 +175,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_PlayersList = new javax.swing.JTable();
+        jButton_DeletePlayer = new javax.swing.JButton();
+        jLabel_PlayerDeleteMessage = new javax.swing.JLabel();
         jPanel_PlayerAdd = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -291,6 +293,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_MatchesList = new javax.swing.JTable();
+        jButton_DeleteMatch = new javax.swing.JButton();
+        jLabel_MatchDeleteMessage = new javax.swing.JLabel();
         jPanel_MatchAdd = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -432,20 +436,38 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable_PlayersList);
         jTable_PlayersList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+        jButton_DeletePlayer.setText("Delete");
+        jButton_DeletePlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DeletePlayerActionPerformed(evt);
+            }
+        });
+
+        jLabel_PlayerDeleteMessage.setText(" ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_PlayerDeleteMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_DeletePlayer)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_DeletePlayer)
+                    .addComponent(jLabel_PlayerDeleteMessage))
                 .addContainerGap())
         );
 
@@ -1265,7 +1287,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jPanel_PlayerGameUpdate.add(jPanel8, java.awt.BorderLayout.CENTER);
 
-        jPanel_MatchList.setBorder(javax.swing.BorderFactory.createTitledBorder("List of Players"));
+        jPanel_MatchList.setBorder(javax.swing.BorderFactory.createTitledBorder("List of Matches"));
         jPanel_MatchList.setLayout(new java.awt.BorderLayout());
 
         jTable_MatchesList.setModel(new javax.swing.table.DefaultTableModel(
@@ -1292,20 +1314,38 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             jTable_MatchesList.getColumnModel().getColumn(2).setHeaderValue("Date");
         }
 
+        jButton_DeleteMatch.setText("Delete");
+        jButton_DeleteMatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DeleteMatchActionPerformed(evt);
+            }
+        });
+
+        jLabel_MatchDeleteMessage.setText(" ");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel_MatchDeleteMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_DeleteMatch)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_DeleteMatch)
+                    .addComponent(jLabel_MatchDeleteMessage))
                 .addContainerGap())
         );
 
@@ -1583,11 +1623,11 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel52)
                     .addComponent(jLabel_MatchUpdateId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_MatchUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel69)
+                .addGroup(jPanel_MatchUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_MatchUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel_MatchUpdateSeasonName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel_MatchUpdateSeasonId)))
+                        .addComponent(jLabel_MatchUpdateSeasonId))
+                    .addComponent(jLabel69))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel_MatchUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_MatchUpdateLayout.createSequentialGroup()
@@ -1958,6 +1998,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         addSeason();
     }//GEN-LAST:event_jButton_AddPlayer1ActionPerformed
 
+    private void jButton_DeleteMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteMatchActionPerformed
+        deleteMatch();
+    }//GEN-LAST:event_jButton_DeleteMatchActionPerformed
+
+    private void jButton_DeletePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeletePlayerActionPerformed
+        deletePlayer();
+    }//GEN-LAST:event_jButton_DeletePlayerActionPerformed
+
     // =====================================================================================
     // Display methods
     private void displayPlayerList() {
@@ -2056,6 +2104,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void displayPlayerGameAdd() {
+        jLabel_PlayerGameAddMessage.setText("");
+        
         clearAddPlayerGame();
 
         boolean hasPlayers = loadAllPlayersForPlayerGameAdd();
@@ -2077,6 +2127,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             PlayerGameRecord tmpPlayerGameRecord = (PlayerGameRecord) fileDatabaseManagerPlayerGame.getRecord(GameId);
 
             jLabel_PlayerGameUpdateGameId.setText(Integer.toString(tmpPlayerGameRecord.getId()));
+            jLabel_PlayerGameUpdateSeasonId.setText(Integer.toString(tmpPlayerGameRecord.getSeasonId()));
+            jLabel_PlayerGameUpdateSeasonName.setText(tmpPlayerGameRecord.getSeasonName());
             jLabel_PlayerGameUpdatePlayerId.setText(Integer.toString(tmpPlayerGameRecord.getPlayerId()));
             jLabel_PlayerGameUpdatePlayerName.setText(tmpPlayerGameRecord.getPlayerName());
             jTextField_PlayerGameUpdateFoulsCommitted.setText(tmpPlayerGameRecord.getFoulsCommitted());
@@ -2152,7 +2204,9 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             FileDatabaseManagerMatch fileDatabaseManagerMatch = new FileDatabaseManagerMatch();
             MatchRecord tmpMatchRecord = (MatchRecord) fileDatabaseManagerMatch.getRecord(MatchId);
 
-            jLabel_MatchUpdateId.setText(Integer.toString(tmpMatchRecord.getId()));
+            jLabel_MatchUpdateId.setText(Integer.toString(tmpMatchRecord.getId()));            
+            jLabel_MatchUpdateSeasonId.setText(Integer.toString(tmpMatchRecord.getSeasonId()));
+            jLabel_MatchUpdateSeasonName.setText(tmpMatchRecord.getSeasonName());
             jTextField_MatchUpdateOpponent.setText(tmpMatchRecord.getOpponent());
 
             jSpinner_MatchUpdateDate.setValue(new Date(tmpMatchRecord.getDate())); // The long number is the timpestamp, use Date class to convert it to Date
@@ -2213,6 +2267,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         String Weight = jTextField_PlayerWeight.getText().trim();
         String Position = jTextField_PlayerPosition.getText().trim();
         String Jersey = jTextField_PlayerJersey.getText().trim();
+        int IsDeleted = 0; // not deleted
 
         if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("")
                 && !PoB.equals("") && !Height.equals("") && !Weight.equals("")
@@ -2221,7 +2276,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             try {
                 FileDatabaseManagerPlayer fileDatabaseManagerPlayer = new FileDatabaseManagerPlayer();
 
-                PlayerRecord newPlayerRecord = new PlayerRecord(DatabaseManager.generateNewEntryId(GlobalVariables.pathPlayersRaf), FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
+                PlayerRecord newPlayerRecord = new PlayerRecord(DatabaseManager.generateNewEntryId(GlobalVariables.pathPlayersRaf), FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey, IsDeleted);
 
                 fileDatabaseManagerPlayer.insertRecord(newPlayerRecord);
             } catch (IOException ex) {
@@ -2248,6 +2303,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         String Weight = jTextField_PlayerUpdateWeight.getText().trim();
         String Position = jTextField_PlayerUpdatePosition.getText().trim();
         String Jersey = jTextField_PlayerUpdateJersey.getText().trim();
+        int IsDeleted = 0; // not deleted
 
         if (!FirstName.equals("") && !LastName.equals("") && !DoB.equals("")
                 && !PoB.equals("") && !Height.equals("") && !Weight.equals("")
@@ -2256,7 +2312,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             try {
                 FileDatabaseManagerPlayer fileDatabaseManagerPlayer = new FileDatabaseManagerPlayer();
 
-                PlayerRecord updatePlayerRecord = new PlayerRecord(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
+                PlayerRecord updatePlayerRecord = new PlayerRecord(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey, IsDeleted);
 
                 fileDatabaseManagerPlayer.updateRecord(updatePlayerRecord);
 
@@ -2276,6 +2332,43 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         }
     }
 
+    private void deletePlayer() {
+        try {
+            int selectedRow = jTable_PlayersList.getSelectedRow();
+            // -1 is the response when none of the rows are selected
+            if (selectedRow != -1) {
+                int PlayerId = Integer.parseInt(jTable_PlayersList.getValueAt(selectedRow, 0).toString());;
+
+                FileDatabaseManagerPlayer fileDatabaseManagerPlayer = new FileDatabaseManagerPlayer();
+
+                // Get the Player record
+                PlayerRecord deletePlayerRecord = (PlayerRecord) fileDatabaseManagerPlayer.getRecord(PlayerId);
+                deletePlayerRecord.setIsDeleted(1); // set flag to 1 
+
+                int deleteConfirmation = JOptionPane.showConfirmDialog(jPanel_Main, "By deleting this player the games linked with them will also be deleted?", "Delete Player", JOptionPane.YES_NO_OPTION);
+                if (deleteConfirmation == JOptionPane.YES_OPTION) {
+                    // Delete the record
+                    fileDatabaseManagerPlayer.deleteRecord(deletePlayerRecord);
+
+                    // Reload page to refresh the table
+                    displayPlayerList();
+
+                    jLabel_PlayerDeleteMessage.setText("Entry successfully deleted");
+                    jLabel_PlayerDeleteMessage.setForeground(Color.BLUE);
+                } else {
+                    jLabel_PlayerDeleteMessage.setText("");
+                }
+            } else {
+                jLabel_PlayerDeleteMessage.setText("You need to select one record first");
+                jLabel_PlayerDeleteMessage.setForeground(Color.RED);
+            }
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private String[] splitIdAndName(String playerInfo) {
         String[] idAndName = new String[2];
 
@@ -2519,6 +2612,43 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         }
     }
 
+    private void deleteMatch() {
+        try {
+            int selectedRow = jTable_MatchesList.getSelectedRow();
+            // -1 is the response when none of the rows are selected
+            if (selectedRow != -1) {
+                int MatchId = Integer.parseInt(jTable_MatchesList.getValueAt(selectedRow, 0).toString());;
+
+                FileDatabaseManagerMatch fileDatabaseManagerMatch = new FileDatabaseManagerMatch();
+
+                // Get the match record
+                MatchRecord deleteMatchRecord = (MatchRecord) fileDatabaseManagerMatch.getRecord(MatchId);
+                deleteMatchRecord.setIsDeleted(1); // set flag to 1 
+
+                int deleteConfirmation = JOptionPane.showConfirmDialog(jPanel_Main, "Are you sure that you want to delete this match?", "Delete Match", JOptionPane.YES_NO_OPTION);
+                if (deleteConfirmation == JOptionPane.YES_OPTION) {
+                    // Delete the record
+                    fileDatabaseManagerMatch.deleteRecord(deleteMatchRecord);
+
+                    // Reload page to refresh the table
+                    displayMatchList();
+
+                    jLabel_MatchDeleteMessage.setText("Entry successfully deleted");
+                    jLabel_MatchDeleteMessage.setForeground(Color.BLUE);
+                } else {
+                    jLabel_MatchDeleteMessage.setText("");
+                }
+            } else {
+                jLabel_MatchDeleteMessage.setText("You need to select one record first");
+                jLabel_MatchDeleteMessage.setForeground(Color.RED);
+            }
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void addSeason() throws IllegalArgumentException {
         String SeasonName = jTextField_SeasonName.getText().trim();
 
@@ -2771,6 +2901,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton_AddPlayer;
     private javax.swing.JButton jButton_AddPlayer1;
     private javax.swing.JButton jButton_AddPlayerGame;
+    private javax.swing.JButton jButton_DeleteMatch;
+    private javax.swing.JButton jButton_DeletePlayer;
     private javax.swing.JButton jButton_DeletePlayerGame;
     private javax.swing.JButton jButton_UpdateMatch;
     private javax.swing.JButton jButton_UpdateMatchCancel;
@@ -2856,11 +2988,13 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_MatchAddMessage;
+    private javax.swing.JLabel jLabel_MatchDeleteMessage;
     private javax.swing.JLabel jLabel_MatchUpdateId;
     private javax.swing.JLabel jLabel_MatchUpdateMessage;
     private javax.swing.JLabel jLabel_MatchUpdateSeasonId;
     private javax.swing.JLabel jLabel_MatchUpdateSeasonName;
     private javax.swing.JLabel jLabel_PlayerAddMessage;
+    private javax.swing.JLabel jLabel_PlayerDeleteMessage;
     private javax.swing.JLabel jLabel_PlayerGameAddMessage;
     private javax.swing.JLabel jLabel_PlayerGameDeleteMessage;
     private javax.swing.JLabel jLabel_PlayerGameUpdateGameId;

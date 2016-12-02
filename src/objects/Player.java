@@ -20,11 +20,12 @@ public class Player {
     private String Weight;
     private String Position;
     private String Jersey;
+    private int IsDeleted; // 0 or 1, delete flag for database
 
     public Player() {
     }
 
-    public Player(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey) {
+    public Player(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey, int IsDeleted) {
         this.Id = Id;
         this.FirstName = FirstName;
         this.LastName = LastName;
@@ -34,6 +35,7 @@ public class Player {
         this.Weight = Weight;
         this.Position = Position;
         this.Jersey = Jersey;
+        this.IsDeleted = IsDeleted;
     }
 
     // Getters and Setters
@@ -45,7 +47,7 @@ public class Player {
     public void setId(int Id) {
         this.Id = Id;
     }
-    
+
     public String getFirstName() {
         return FirstName;
     }
@@ -109,4 +111,13 @@ public class Player {
     public void setJersey(String Jersey) {
         this.Jersey = Jersey;
     }
+
+    public int getIsDeleted() {
+        return IsDeleted;
+    }
+
+    public void setIsDeleted(int IsDeleted) {
+        this.IsDeleted = IsDeleted;
+    }
+    
 }

@@ -20,11 +20,11 @@ public class PlayerRecord extends Player implements DatabaseRecord {
     private static final int NUMBER_OF_STRING_FIELDS = 8;
 
     public PlayerRecord() {
-        this(0, "", "", "", "", "", "", "", "");
+        //this(0, "", "", "", "", "", "", "", "", 0);
     }
 
-    public PlayerRecord(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey) {
-        super(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey);
+    public PlayerRecord(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey, int IsDeleted) {
+        super(Id, FirstName, LastName, DoB, PoB, Height, Weight, Position, Jersey, IsDeleted);
     }
 
     @Override
@@ -38,6 +38,7 @@ public class PlayerRecord extends Player implements DatabaseRecord {
         setWeight(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setPosition(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setJersey(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
+        setIsDeleted(file.readInt());
     }
 
     @Override
@@ -50,7 +51,8 @@ public class PlayerRecord extends Player implements DatabaseRecord {
         DatabaseManager.writeString(file, getHeight(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getWeight(), STRING_ENTRY_LENGTH);
         DatabaseManager.writeString(file, getPosition(), STRING_ENTRY_LENGTH);
-        DatabaseManager.writeString(file, getWeight(), STRING_ENTRY_LENGTH);
+        DatabaseManager.writeString(file, getJersey(), STRING_ENTRY_LENGTH);
+        file.writeInt(getIsDeleted());
     }
 
     @Override
@@ -58,7 +60,8 @@ public class PlayerRecord extends Player implements DatabaseRecord {
         return "PlayerRecord{" + "Id=" + getId() + ", FirstName=" + getFirstName() 
                 + ", LastName=" + getLastName() + ", DoB=" + getDoB() + ", PoB=" 
                 + getPoB() + ", Height=" + getHeight() + ", Weight=" + getWeight() 
-                + ", Position=" + getPosition() + ", Jersey=" + getJersey() + '}';
+                + ", Position=" + getPosition() + ", Jersey=" + getJersey()
+                + ", IsDeleted=" + getIsDeleted()+ '}';
     }
 
     @Override
@@ -68,7 +71,7 @@ public class PlayerRecord extends Player implements DatabaseRecord {
 
     @Override
     public int getDatabaseEntrySize() {
-        return Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH));
+        return Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH)) + Integer.BYTES;
     }
 
 }

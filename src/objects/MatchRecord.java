@@ -20,7 +20,7 @@ public class MatchRecord extends Match implements DatabaseRecord {
     private static final int NUMBER_OF_STRING_FIELDS = 11;
 
     public MatchRecord() {
-        this(0, 0, "", "", 0, "", "", "", "", "", "", 0, "", "", "", 0);
+        //this(0, 0, "", "", 0, "", "", "", "", "", "", 0, "", "", "", 0);
     }
 
     public MatchRecord(int Id, int SeasonId, String SeasonName, String Opponent, long Date, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String PointsScored, String PointsConceded, String Location, int IsDeleted) {

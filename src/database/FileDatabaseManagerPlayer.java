@@ -6,7 +6,9 @@
 package database;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import objects.DatabaseRecord;
+import objects.PlayerGameRecord;
 import objects.PlayerRecord;
 import tools.GlobalVariables;
 
@@ -22,7 +24,21 @@ public class FileDatabaseManagerPlayer extends AbstractFileDatabaseManager {
 
     @Override
     public void deleteRecord(DatabaseRecord record) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int PlayerId = record.getRecordId();
+
+        updateRecord(record);
+        
+        ArrayList<PlayerGameRecord> playerGameRecordsOfPlayer = DatabaseManager.getAllPlayerGamesEntriesOfPlayer(PlayerId);
+        for (PlayerGameRecord playerGameRecord : playerGameRecordsOfPlayer) {
+            playerGameRecord.setIsDeleted(1); // set flag to 1 
+            
+            FileDatabaseManagerPlayerGame fileDatabaseManagerPlayerGame = new FileDatabaseManagerPlayerGame();
+            
+            fileDatabaseManagerPlayerGame.deleteRecord(playerGameRecord);
+        }
+        
+        
+        
     }
 
 }
