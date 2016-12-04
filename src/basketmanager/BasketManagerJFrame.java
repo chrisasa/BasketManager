@@ -2153,7 +2153,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jPanel_StatsMultipleSeasonsTeam.add(jPanel14, java.awt.BorderLayout.CENTER);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Basket Manager");
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
