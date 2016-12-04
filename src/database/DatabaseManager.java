@@ -291,6 +291,24 @@ public class DatabaseManager {
         return playerGameRecords;
     }
 
+    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntriesOfPlayerAllSelectedSeasons(int PlayerId, ArrayList<Integer> SeasonIdList) {
+        ArrayList<PlayerGameRecord> playerGameRecords = new ArrayList<>();
+
+        ArrayList<PlayerGameRecord> recordsArrayList = getAllPlayerGamesEntries();
+
+        // Iterate the selected seasons
+        for (Integer seasonId : SeasonIdList) {
+            // Iterate all the palyer game entries
+            for (PlayerGameRecord playerGameRecord : recordsArrayList) {
+                // Filter player's entries
+                if (playerGameRecord.getPlayerId() == PlayerId && playerGameRecord.getSeasonId() == seasonId) {
+                    playerGameRecords.add(playerGameRecord);
+                }
+            }
+        }
+        return playerGameRecords;
+    }
+
     public static ArrayList<MatchRecord> getAllMatchesEntriesSpecificSeason(int SeasonId) {
         ArrayList<MatchRecord> matchRecords = new ArrayList<>();
 
