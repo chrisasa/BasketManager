@@ -369,6 +369,30 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jButton_AddPlayer1 = new javax.swing.JButton();
         jLabel_SeasonAddMessage = new javax.swing.JLabel();
         jFileChooser_ImportExcel = new javax.swing.JFileChooser();
+        jPanel_StatsSingleSeasonPlayer = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jButton_ShowStatsSingleSeasonPlayer = new javax.swing.JButton();
+        jComboBox_StatsSingleSeasonPlayerPlayers = new javax.swing.JComboBox<>();
+        jComboBox_StatsSingleSeasonPlayerSeasons = new javax.swing.JComboBox<>();
+        jLabel_StatsSingleSeasonPlayerMessage = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel_StatsSingleSeasonPlayerAverPointsScored = new javax.swing.JLabel();
+        jLabel_StatsSingleSeasonPlayerAverRebounds = new javax.swing.JLabel();
+        jLabel_StatsSingleSeasonPlayerAverAssists = new javax.swing.JLabel();
+        jPanel_StatsSingleSeasonTeam = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel76 = new javax.swing.JLabel();
+        jButton_ShowStatsSingleSeasonTeam = new javax.swing.JButton();
+        jComboBox_StatsSingleSeasonTeamSeasons = new javax.swing.JComboBox<>();
+        jLabel_StatsSingleSeasonTeamMessage = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel_StatsSingleSeasonTeamAverPointsScored = new javax.swing.JLabel();
+        jLabel_StatsSingleSeasonTeamAverPointsConceded = new javax.swing.JLabel();
         jPanel_Main = new javax.swing.JPanel();
         jPanel_MainBody = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -389,8 +413,12 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jMenuItem_SeasonAddSeason = new javax.swing.JMenuItem();
         jMenuItem_SeasonList = new javax.swing.JMenuItem();
         jMenu_Statictis = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu_SingleSeason = new javax.swing.JMenu();
+        jMenuItem_SingleSeasonPlayer = new javax.swing.JMenuItem();
+        jMenuItem_SingleSeasonTeam = new javax.swing.JMenuItem();
+        jMenu_MultipleSeasons = new javax.swing.JMenu();
+        jMenuItem_MultipleSeasonTeam = new javax.swing.JMenuItem();
+        jMenuItem_MultipleSeasonPlayer = new javax.swing.JMenuItem();
 
         jPanel_Intro.setPreferredSize(new java.awt.Dimension(970, 570));
         jPanel_Intro.setLayout(new java.awt.BorderLayout());
@@ -1770,6 +1798,171 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jFileChooser_ImportExcel.setDialogTitle("Import Excel");
 
+        jPanel_StatsSingleSeasonPlayer.setBorder(javax.swing.BorderFactory.createTitledBorder("Single Season Player's Statistics"));
+        jPanel_StatsSingleSeasonPlayer.setLayout(new java.awt.BorderLayout());
+
+        jLabel70.setText("Player");
+
+        jLabel71.setText("Season");
+
+        jButton_ShowStatsSingleSeasonPlayer.setText("Show Stats");
+        jButton_ShowStatsSingleSeasonPlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ShowStatsSingleSeasonPlayerActionPerformed(evt);
+            }
+        });
+
+        jLabel_StatsSingleSeasonPlayerMessage.setText(" ");
+
+        jLabel72.setText("Average Points Scored");
+
+        jLabel73.setText("Average Assists");
+
+        jLabel74.setText("Average Rebounds");
+
+        jLabel_StatsSingleSeasonPlayerAverPointsScored.setText(" ");
+
+        jLabel_StatsSingleSeasonPlayerAverRebounds.setText(" ");
+
+        jLabel_StatsSingleSeasonPlayerAverAssists.setText(" ");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_StatsSingleSeasonPlayerMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel70)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_StatsSingleSeasonPlayerPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel71)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_StatsSingleSeasonPlayerSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_ShowStatsSingleSeasonPlayer))
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                                    .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel_StatsSingleSeasonPlayerAverAssists, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                                    .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel_StatsSingleSeasonPlayerAverRebounds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                                    .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel_StatsSingleSeasonPlayerAverPointsScored, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 305, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel70)
+                    .addComponent(jLabel71)
+                    .addComponent(jButton_ShowStatsSingleSeasonPlayer)
+                    .addComponent(jComboBox_StatsSingleSeasonPlayerPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_StatsSingleSeasonPlayerSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_StatsSingleSeasonPlayerMessage)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel72)
+                    .addComponent(jLabel_StatsSingleSeasonPlayerAverPointsScored))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel74)
+                    .addComponent(jLabel_StatsSingleSeasonPlayerAverRebounds))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel73)
+                    .addComponent(jLabel_StatsSingleSeasonPlayerAverAssists))
+                .addContainerGap(387, Short.MAX_VALUE))
+        );
+
+        jPanel_StatsSingleSeasonPlayer.add(jPanel11, java.awt.BorderLayout.CENTER);
+
+        jPanel_StatsSingleSeasonTeam.setBorder(javax.swing.BorderFactory.createTitledBorder("Single Season Player's Statistics"));
+        jPanel_StatsSingleSeasonTeam.setLayout(new java.awt.BorderLayout());
+
+        jLabel76.setText("Season");
+
+        jButton_ShowStatsSingleSeasonTeam.setText("Show Stats");
+        jButton_ShowStatsSingleSeasonTeam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ShowStatsSingleSeasonTeamActionPerformed(evt);
+            }
+        });
+
+        jLabel_StatsSingleSeasonTeamMessage.setText(" ");
+
+        jLabel77.setText("Average Points Scored");
+
+        jLabel79.setText("Average Points Conceded");
+
+        jLabel_StatsSingleSeasonTeamAverPointsScored.setText(" ");
+
+        jLabel_StatsSingleSeasonTeamAverPointsConceded.setText(" ");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_StatsSingleSeasonTeamMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                    .addComponent(jLabel77, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel_StatsSingleSeasonTeamAverPointsConceded, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_StatsSingleSeasonTeamAverPointsScored, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel76)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_StatsSingleSeasonTeamSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_ShowStatsSingleSeasonTeam)))
+                        .addGap(0, 566, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel76)
+                    .addComponent(jButton_ShowStatsSingleSeasonTeam)
+                    .addComponent(jComboBox_StatsSingleSeasonTeamSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_StatsSingleSeasonTeamMessage)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel77)
+                    .addComponent(jLabel_StatsSingleSeasonTeamAverPointsScored))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel79)
+                    .addComponent(jLabel_StatsSingleSeasonTeamAverPointsConceded))
+                .addContainerGap(396, Short.MAX_VALUE))
+        );
+
+        jPanel_StatsSingleSeasonTeam.add(jPanel12, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Basket Manager");
         setMinimumSize(new java.awt.Dimension(1000, 600));
@@ -1910,11 +2103,35 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jMenu_Statictis.setText("Statistics");
 
-        jMenuItem1.setText("Single Season");
-        jMenu_Statictis.add(jMenuItem1);
+        jMenu_SingleSeason.setText("Single Season");
 
-        jMenuItem2.setText("Multiple Seasons");
-        jMenu_Statictis.add(jMenuItem2);
+        jMenuItem_SingleSeasonPlayer.setText("Player");
+        jMenuItem_SingleSeasonPlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_SingleSeasonPlayerActionPerformed(evt);
+            }
+        });
+        jMenu_SingleSeason.add(jMenuItem_SingleSeasonPlayer);
+
+        jMenuItem_SingleSeasonTeam.setText("Team");
+        jMenuItem_SingleSeasonTeam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_SingleSeasonTeamActionPerformed(evt);
+            }
+        });
+        jMenu_SingleSeason.add(jMenuItem_SingleSeasonTeam);
+
+        jMenu_Statictis.add(jMenu_SingleSeason);
+
+        jMenu_MultipleSeasons.setText("Multiple Seasons");
+
+        jMenuItem_MultipleSeasonTeam.setText("Team");
+        jMenu_MultipleSeasons.add(jMenuItem_MultipleSeasonTeam);
+
+        jMenuItem_MultipleSeasonPlayer.setText("Player");
+        jMenu_MultipleSeasons.add(jMenuItem_MultipleSeasonPlayer);
+
+        jMenu_Statictis.add(jMenu_MultipleSeasons);
 
         jMenuBar1.add(jMenu_Statictis);
 
@@ -2039,32 +2256,45 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         displayImportExcel(ImportDialogType.MATCHES);
     }//GEN-LAST:event_jMenuItem_FileImportMatchesActionPerformed
 
+    private void jMenuItem_SingleSeasonPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SingleSeasonPlayerActionPerformed
+        displayStatsSingleSeasonPlayer();
+    }//GEN-LAST:event_jMenuItem_SingleSeasonPlayerActionPerformed
+
+    private void jButton_ShowStatsSingleSeasonPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ShowStatsSingleSeasonPlayerActionPerformed
+        calculateStatSingleSeasonPlayer();
+    }//GEN-LAST:event_jButton_ShowStatsSingleSeasonPlayerActionPerformed
+
+    private void jButton_ShowStatsSingleSeasonTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ShowStatsSingleSeasonTeamActionPerformed
+        calculateStatSingleSeasonTeam();
+    }//GEN-LAST:event_jButton_ShowStatsSingleSeasonTeamActionPerformed
+
+    private void jMenuItem_SingleSeasonTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SingleSeasonTeamActionPerformed
+        displayStatsSingleSeasonTeam();
+    }//GEN-LAST:event_jMenuItem_SingleSeasonTeamActionPerformed
+
     // =====================================================================================
     // Display methods
     private void displayPlayerList() {
-        try {
-            ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries();
 
-            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayersList.getModel();
-            tableModel.setRowCount(0); // Clear table model
+        ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries();
 
-            for (PlayerRecord player : allPlayers) {
-                Object[] tmpPlayerRow = new Object[]{
-                    player.getId(),
-                    player.getFirstName().trim(),
-                    player.getLastName().trim(),
-                    player.getDoB().trim(),
-                    player.getPoB().trim(),
-                    player.getHeight().trim(),
-                    player.getWeight().trim(),
-                    player.getPosition().trim(),
-                    player.getJersey().trim()
-                };
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayersList.getModel();
+        tableModel.setRowCount(0); // Clear table model
 
-                tableModel.addRow(tmpPlayerRow);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        for (PlayerRecord player : allPlayers) {
+            Object[] tmpPlayerRow = new Object[]{
+                player.getId(),
+                player.getFirstName().trim(),
+                player.getLastName().trim(),
+                player.getDoB().trim(),
+                player.getPoB().trim(),
+                player.getHeight().trim(),
+                player.getWeight().trim(),
+                player.getPosition().trim(),
+                player.getJersey().trim()
+            };
+
+            tableModel.addRow(tmpPlayerRow);
         }
 
         changeMainBodyContent(jPanel_PlayerList);
@@ -2104,33 +2334,29 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void displayPlayerGameList() {
-        try {
-            ArrayList<PlayerGameRecord> allPlayerGameRecords = DatabaseManager.getAllPlayerGamesEntries();
+        ArrayList<PlayerGameRecord> allPlayerGameRecords = DatabaseManager.getAllPlayerGamesEntries();
 
-            DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayerGamesList.getModel();
-            tableModel.setRowCount(0); // Clear table model
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_PlayerGamesList.getModel();
+        tableModel.setRowCount(0); // Clear table model
 
-            for (PlayerGameRecord record : allPlayerGameRecords) {
-                Object[] tmpPlayerGameRow = new Object[]{
-                    record.getId(),
-                    record.getPlayerName().trim(),
-                    record.getFoulsCommitted().trim(),
-                    record.getFoulsConceded().trim(),
-                    record.getAssists().trim(),
-                    record.getRebounds().trim(),
-                    record.getSteals().trim(),
-                    record.getBlocks().trim(),
-                    (record.getHomeGame() == 1 ? true : false),
-                    record.getAwayTeamName().trim(),
-                    record.getPointsScored().trim(),
-                    record.getLocation().trim(),
-                    new Date(record.getGameDate())
-                };
+        for (PlayerGameRecord record : allPlayerGameRecords) {
+            Object[] tmpPlayerGameRow = new Object[]{
+                record.getId(),
+                record.getPlayerName().trim(),
+                record.getFoulsCommitted().trim(),
+                record.getFoulsConceded().trim(),
+                record.getAssists().trim(),
+                record.getRebounds().trim(),
+                record.getSteals().trim(),
+                record.getBlocks().trim(),
+                (record.getHomeGame() == 1 ? true : false),
+                record.getAwayTeamName().trim(),
+                record.getPointsScored().trim(),
+                record.getLocation().trim(),
+                new Date(record.getGameDate())
+            };
 
-                tableModel.addRow(tmpPlayerGameRow);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            tableModel.addRow(tmpPlayerGameRow);
         }
 
         changeMainBodyContent(jPanel_PlayerGameList);
@@ -2138,7 +2364,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
     private void displayPlayerGameAdd() {
         jLabel_PlayerGameAddMessage.setText("");
-        
+
         clearAddPlayerGame();
 
         boolean hasPlayers = loadAllPlayersForPlayerGameAdd();
@@ -2186,33 +2412,29 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void displayMatchList() {
-        try {
-            ArrayList<MatchRecord> allMatches = DatabaseManager.getAllMatchesEntries();
+        ArrayList<MatchRecord> allMatches = DatabaseManager.getAllMatchesEntries();
 
-            DefaultTableModel tableModel = (DefaultTableModel) jTable_MatchesList.getModel();
-            tableModel.setRowCount(0); // Clear table model
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_MatchesList.getModel();
+        tableModel.setRowCount(0); // Clear table model
 
-            for (MatchRecord record : allMatches) {
-                Object[] tmpMatchRow = new Object[]{
-                    record.getId(),
-                    record.getOpponent().trim(),
-                    new Date(record.getDate()),
-                    record.getFoulsCommitted().trim(),
-                    record.getFoulsConceded().trim(),
-                    record.getAssists().trim(),
-                    record.getRebounds().trim(),
-                    record.getSteals().trim(),
-                    record.getBlocks().trim(),
-                    (record.getHomeGame() == 1 ? true : false),
-                    record.getPointsScored().trim(),
-                    record.getPointsConceded().trim(),
-                    record.getLocation().trim()
-                };
+        for (MatchRecord record : allMatches) {
+            Object[] tmpMatchRow = new Object[]{
+                record.getId(),
+                record.getOpponent().trim(),
+                new Date(record.getDate()),
+                record.getFoulsCommitted().trim(),
+                record.getFoulsConceded().trim(),
+                record.getAssists().trim(),
+                record.getRebounds().trim(),
+                record.getSteals().trim(),
+                record.getBlocks().trim(),
+                (record.getHomeGame() == 1 ? true : false),
+                record.getPointsScored().trim(),
+                record.getPointsConceded().trim(),
+                record.getLocation().trim()
+            };
 
-                tableModel.addRow(tmpMatchRow);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            tableModel.addRow(tmpMatchRow);
         }
 
         changeMainBodyContent(jPanel_MatchList);
@@ -2237,7 +2459,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             FileDatabaseManagerMatch fileDatabaseManagerMatch = new FileDatabaseManagerMatch();
             MatchRecord tmpMatchRecord = (MatchRecord) fileDatabaseManagerMatch.getRecord(MatchId);
 
-            jLabel_MatchUpdateId.setText(Integer.toString(tmpMatchRecord.getId()));            
+            jLabel_MatchUpdateId.setText(Integer.toString(tmpMatchRecord.getId()));
             jLabel_MatchUpdateSeasonId.setText(Integer.toString(tmpMatchRecord.getSeasonId()));
             jLabel_MatchUpdateSeasonName.setText(tmpMatchRecord.getSeasonName());
             jTextField_MatchUpdateOpponent.setText(tmpMatchRecord.getOpponent());
@@ -2292,29 +2514,67 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private void displayImportExcel(ImportDialogType importDialogType) {
         try {
             jFileChooser_ImportExcel.showDialog(this, "Select");
-            
+
             jFileChooser_ImportExcel.setCurrentDirectory(new File(GlobalVariables.pathFilesFolderPath));
-            
+
             File choosedFile = jFileChooser_ImportExcel.getSelectedFile();
-            
+
             String filePath = choosedFile.getAbsolutePath();
-            
-            switch(importDialogType){
+
+            switch (importDialogType) {
                 case PLAYERS:
-                    ImportManager.ImportEntries(importDialogType,filePath);
+                    ImportManager.ImportEntries(importDialogType, filePath);
                     break;
                 case PLAYERS_GAMES:
-                    ImportManager.ImportEntries(importDialogType,filePath);
+                    ImportManager.ImportEntries(importDialogType, filePath);
                     break;
                 case MATCHES:
-                    ImportManager.ImportEntries(importDialogType,filePath);
+                    ImportManager.ImportEntries(importDialogType, filePath);
                     break;
             }
         } catch (IOException ex) {
             Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    private void displayStatsSingleSeasonPlayer() {
+        jLabel_StatsSingleSeasonPlayerMessage.setText("");
+
+        clearStatsSingleSeasonPlayer();
+
+        boolean hasPlayers = loadAllPlayersForStatsSingleSeasonPlayer();
+
+        boolean hasSeasons = loadAllSeasonsForStatsSingleSeasonPlayer();
+
+        boolean enableShowStatsButton = hasPlayers && hasSeasons;
+
+        jButton_ShowStatsSingleSeasonPlayer.setEnabled(enableShowStatsButton);
+
+        changeMainBodyContent(jPanel_StatsSingleSeasonPlayer);
+    }
+
+    private void displayStatsSingleSeasonTeam() {
+        jLabel_StatsSingleSeasonTeamMessage.setText("");
+
+        clearStatsSingleSeasonTeam();
+
+        boolean hasSeasons = loadAllSeasonsForStatsSingleSeasonTeam();
+
+        boolean enableShowStatsButton = hasSeasons;
+        
+        // Check if there are any matches, if not, show error message, lock button
+        if(DatabaseManager.getAllMatchesEntries().size() < 1 ) {
+            jLabel_StatsSingleSeasonTeamMessage.setText("There is no available matches!");
+            jLabel_StatsSingleSeasonTeamMessage.setForeground(Color.RED);
+            
+            enableShowStatsButton = false;
+        }
+
+        jButton_ShowStatsSingleSeasonTeam.setEnabled(enableShowStatsButton);
+
+        changeMainBodyContent(jPanel_StatsSingleSeasonTeam);
+    }
+
     // =====================================================================================
     // Actions methods
     private void addPlayer() throws IllegalArgumentException {
@@ -2427,7 +2687,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private String[] splitIdAndName(String playerInfo) {
         String[] idAndName = new String[2];
 
@@ -2611,15 +2871,15 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             }
 
             clearAddMatch();
-            
+
             boolean hasSeasons = loadAllSeasonsForMatchAdd();
 
             boolean enableAddPlayerGameButton = hasSeasons;
 
             jButton_AddMatch.setEnabled(enableAddPlayerGameButton);
-            
+
             jLabel_MatchAddMessage.setText("Match added successfully");
-            jLabel_MatchAddMessage.setForeground(Color.BLUE);            
+            jLabel_MatchAddMessage.setForeground(Color.BLUE);
         } else {
             jLabel_MatchAddMessage.setText("All fields should be filled!");
             jLabel_MatchAddMessage.setForeground(Color.RED);
@@ -2707,7 +2967,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void addSeason() throws IllegalArgumentException {
         String SeasonName = jTextField_SeasonName.getText().trim();
 
@@ -2738,30 +2998,25 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private boolean loadAllPlayersForPlayerGameAdd() {
         boolean hasPlayers = false;
 
-        try {
-            ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries();
+        ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries();
 
-            // Check if there are any players in the database
-            if (allPlayers.size() > 0) {
-                DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
-                comboBoxModel.removeAllElements();
-                for (PlayerRecord player : allPlayers) {
+        // Check if there are any players in the database
+        if (allPlayers.size() > 0) {
+            DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
+            comboBoxModel.removeAllElements();
+            for (PlayerRecord player : allPlayers) {
 
-                    String comboBoxItemFormat = player.getId() + "." + player.getFirstName().trim() + " " + player.getLastName().trim();
+                String comboBoxItemFormat = player.getId() + "." + player.getFirstName().trim() + " " + player.getLastName().trim();
 
-                    comboBoxModel.addElement(comboBoxItemFormat);
-                }
-
-                hasPlayers = true;
-            } else {
-                jLabel_PlayerGameAddMessage.setText("There is no available player to add game stats!");
-                jLabel_PlayerGameAddMessage.setForeground(Color.RED);
-
-                hasPlayers = false;
+                comboBoxModel.addElement(comboBoxItemFormat);
             }
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            hasPlayers = true;
+        } else {
+            jLabel_PlayerGameAddMessage.setText("There is no available player to add game stats!");
+            jLabel_PlayerGameAddMessage.setForeground(Color.RED);
+
+            hasPlayers = false;
         }
 
         return hasPlayers;
@@ -2809,9 +3064,9 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
             // Check if there are any players in the database
             if (allSeasons.size() > 0) {
                 DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_MatchSeasonName.getModel();
-                
+
                 comboBoxModel.removeAllElements();
-                
+
                 for (SeasonRecord season : allSeasons) {
 
                     String comboBoxItemFormat = season.getId() + "." + season.getSeasonName().trim();
@@ -2834,6 +3089,164 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         return hasSeasons;
     }
 
+    private boolean loadAllPlayersForStatsSingleSeasonPlayer() {
+        boolean hasPlayers = false;
+
+        ArrayList<PlayerRecord> allPlayers = DatabaseManager.getAllPlayerEntries();
+
+        // Check if there are any players in the database
+        if (allPlayers.size() > 0) {
+            DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_StatsSingleSeasonPlayerPlayers.getModel();
+            comboBoxModel.removeAllElements();
+            for (PlayerRecord player : allPlayers) {
+
+                String comboBoxItemFormat = player.getId() + "." + player.getFirstName().trim() + " " + player.getLastName().trim();
+
+                comboBoxModel.addElement(comboBoxItemFormat);
+            }
+
+            hasPlayers = true;
+        } else {
+            jLabel_StatsSingleSeasonPlayerMessage.setText("There is no available players!");
+            jLabel_StatsSingleSeasonPlayerMessage.setForeground(Color.RED);
+
+            hasPlayers = false;
+        }
+
+        return hasPlayers;
+    }
+
+    // Get all available players and add them in the combo box of PlayerGame form
+    private boolean loadAllSeasonsForStatsSingleSeasonPlayer() {
+        boolean hasSeasons = false;
+
+        try {
+            ArrayList<SeasonRecord> allSeasons = DatabaseManager.getAllSeasonEntries();
+
+            // Check if there are any players in the database
+            if (allSeasons.size() > 0) {
+                DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_StatsSingleSeasonPlayerSeasons.getModel();
+                comboBoxModel.removeAllElements();
+                for (SeasonRecord season : allSeasons) {
+
+                    String comboBoxItemFormat = season.getId() + "." + season.getSeasonName().trim();
+
+                    comboBoxModel.addElement(comboBoxItemFormat);
+                }
+
+                hasSeasons = true;
+            } else {
+                jLabel_StatsSingleSeasonPlayerMessage.setText("There is no available seasons!");
+                jLabel_StatsSingleSeasonPlayerMessage.setForeground(Color.RED);
+
+                hasSeasons = false;
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return hasSeasons;
+    }
+
+    private boolean loadAllSeasonsForStatsSingleSeasonTeam() {
+        boolean hasSeasons = false;
+
+        try {
+            ArrayList<SeasonRecord> allSeasons = DatabaseManager.getAllSeasonEntries();
+
+            // Check if there are any players in the database
+            if (allSeasons.size() > 0) {
+                DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_StatsSingleSeasonTeamSeasons.getModel();
+                comboBoxModel.removeAllElements();
+                for (SeasonRecord season : allSeasons) {
+
+                    String comboBoxItemFormat = season.getId() + "." + season.getSeasonName().trim();
+
+                    comboBoxModel.addElement(comboBoxItemFormat);
+                }
+
+                hasSeasons = true;
+            } else {
+                jLabel_StatsSingleSeasonTeamMessage.setText("There is no available seasons!");
+                jLabel_StatsSingleSeasonTeamMessage.setForeground(Color.RED);
+
+                hasSeasons = false;
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return hasSeasons;
+    }
+
+    // =====================================================================================
+    // Calcualate Stats 
+    private void calculateStatSingleSeasonPlayer() throws NumberFormatException {
+        jLabel_StatsSingleSeasonPlayerAverPointsScored.setText("");
+        jLabel_StatsSingleSeasonPlayerAverRebounds.setText("");
+        jLabel_StatsSingleSeasonPlayerAverAssists.setText("");
+
+        String tmpPlayerData = jComboBox_StatsSingleSeasonPlayerPlayers.getSelectedItem().toString();
+        String[] tmpIdAndName = splitIdAndName(tmpPlayerData);
+        int PlayerId = Integer.parseInt(tmpIdAndName[0]); // Convert string to int
+
+        String tmpSeasonData = jComboBox_StatsSingleSeasonPlayerSeasons.getSelectedItem().toString();
+        String[] tmpSeasonIdAndName = splitIdAndName(tmpSeasonData);
+        int SeasonId = Integer.parseInt(tmpSeasonIdAndName[0]); // Convert string to int
+
+        ArrayList<PlayerGameRecord> playerGameRecords = DatabaseManager.getAllPlayerGamesEntriesOfPlayerSpecificSeason(PlayerId, SeasonId);
+        int numOfGames = playerGameRecords.size();
+        int sumPointsScored = 0;
+        int sumRebounds = 0;
+        int sumAssists = 0;
+        for (PlayerGameRecord playerGameRecord : playerGameRecords) {
+            sumPointsScored += Integer.parseInt(playerGameRecord.getPointsScored().trim());
+            sumRebounds += Integer.parseInt(playerGameRecord.getRebounds().trim());
+            sumAssists += Integer.parseInt(playerGameRecord.getAssists().trim());
+        }
+
+        // Needs to cast the integers to double in order to get the full result
+        double averPointsScored = (double) sumPointsScored / (double) numOfGames;
+        jLabel_StatsSingleSeasonPlayerAverPointsScored.setText(Double.toString(averPointsScored));
+
+        double averRebounds = (double) sumRebounds / (double) numOfGames;
+        jLabel_StatsSingleSeasonPlayerAverRebounds.setText(Double.toString(averRebounds));
+
+        double averAssists = (double) sumAssists / (double) numOfGames;
+        jLabel_StatsSingleSeasonPlayerAverAssists.setText(Double.toString(averAssists));
+    }
+
+    private void calculateStatSingleSeasonTeam() throws NumberFormatException {
+        jLabel_StatsSingleSeasonTeamAverPointsScored.setText("");
+        jLabel_StatsSingleSeasonTeamAverPointsConceded.setText("");
+
+        String tmpSeasonData = jComboBox_StatsSingleSeasonTeamSeasons.getSelectedItem().toString();
+        String[] tmpSeasonIdAndName = splitIdAndName(tmpSeasonData);
+        int SeasonId = Integer.parseInt(tmpSeasonIdAndName[0]); // Convert string to int
+
+        ArrayList<MatchRecord> matchRecords = DatabaseManager.getAllMatchesEntriesSpecificSeason(SeasonId);
+
+        int numOMatches = matchRecords.size();
+        int sumPointsScored = 0;
+        int sumPointsConceded = 0;
+
+        for (MatchRecord matchRecord : matchRecords) {
+            sumPointsScored += Integer.parseInt(matchRecord.getPointsScored().trim());
+            sumPointsConceded += Integer.parseInt(matchRecord.getPointsConceded().trim());
+        }
+
+        // Needs to cast the integers to double in order to get the full result
+        double averPointsScored = (double) sumPointsScored / (double) numOMatches;
+        jLabel_StatsSingleSeasonTeamAverPointsScored.setText(Double.toString(averPointsScored));
+
+        double averPointsConceded = (double) sumPointsConceded / (double) numOMatches;
+        jLabel_StatsSingleSeasonTeamAverPointsConceded.setText(Double.toString(averPointsConceded));
+    }
+
+    // =====================================================================================
+    // Clear forms
     private void clearAddPlayer() {
         jTextField_PlayerFirstName.setText("");
         jTextField_PlayerLastName.setText("");
@@ -2899,7 +3312,10 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     }
 
     private void clearAddPlayerGame() {
-        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGameSeasonName.getModel();
+        comboBoxModel.removeAllElements();
+
+        comboBoxModel = (DefaultComboBoxModel) jComboBox_PlayerGamePlayerName.getModel();
         comboBoxModel.removeAllElements();
 
         jTextField_PlayerGameFoulsCommitted.setText("");
@@ -2918,6 +3334,25 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
     private void clearAddSeason() {
         jTextField_SeasonName.setText("");
+    }
+
+    private void clearStatsSingleSeasonPlayer() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_StatsSingleSeasonPlayerPlayers.getModel();
+        comboBoxModel.removeAllElements();
+        comboBoxModel = (DefaultComboBoxModel) jComboBox_StatsSingleSeasonPlayerSeasons.getModel();
+        comboBoxModel.removeAllElements();
+
+        jLabel_StatsSingleSeasonPlayerAverPointsScored.setText("");
+        jLabel_StatsSingleSeasonPlayerAverRebounds.setText("");
+        jLabel_StatsSingleSeasonPlayerAverAssists.setText("");
+    }
+
+    private void clearStatsSingleSeasonTeam() {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) jComboBox_StatsSingleSeasonTeamSeasons.getModel();
+        comboBoxModel.removeAllElements();
+
+        jLabel_StatsSingleSeasonTeamAverPointsScored.setText("");
+        jLabel_StatsSingleSeasonTeamAverPointsConceded.setText("");
     }
 
     /**
@@ -2963,6 +3398,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DeleteMatch;
     private javax.swing.JButton jButton_DeletePlayer;
     private javax.swing.JButton jButton_DeletePlayerGame;
+    private javax.swing.JButton jButton_ShowStatsSingleSeasonPlayer;
+    private javax.swing.JButton jButton_ShowStatsSingleSeasonTeam;
     private javax.swing.JButton jButton_UpdateMatch;
     private javax.swing.JButton jButton_UpdateMatchCancel;
     private javax.swing.JButton jButton_UpdatePlayer;
@@ -2976,6 +3413,9 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_MatchSeasonName;
     private javax.swing.JComboBox<String> jComboBox_PlayerGamePlayerName;
     private javax.swing.JComboBox<String> jComboBox_PlayerGameSeasonName;
+    private javax.swing.JComboBox<String> jComboBox_StatsSingleSeasonPlayerPlayers;
+    private javax.swing.JComboBox<String> jComboBox_StatsSingleSeasonPlayerSeasons;
+    private javax.swing.JComboBox<String> jComboBox_StatsSingleSeasonTeamSeasons;
     private javax.swing.JFileChooser jFileChooser_ImportExcel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3044,6 +3484,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_MatchAddMessage;
@@ -3065,29 +3513,42 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_PlayerUpdateId;
     private javax.swing.JLabel jLabel_PlayerUpdateMessage;
     private javax.swing.JLabel jLabel_SeasonAddMessage;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonPlayerAverAssists;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonPlayerAverPointsScored;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonPlayerAverRebounds;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonPlayerMessage;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonTeamAverPointsConceded;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonTeamAverPointsScored;
+    private javax.swing.JLabel jLabel_StatsSingleSeasonTeamMessage;
     private javax.swing.JList<String> jList_SeasonList;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_FileExit;
     private javax.swing.JMenuItem jMenuItem_FileImportMatches;
     private javax.swing.JMenuItem jMenuItem_FileImportPlayers;
     private javax.swing.JMenuItem jMenuItem_FileImportPlayersGames;
     private javax.swing.JMenuItem jMenuItem_MatchAddNew;
     private javax.swing.JMenuItem jMenuItem_MatchList;
+    private javax.swing.JMenuItem jMenuItem_MultipleSeasonPlayer;
+    private javax.swing.JMenuItem jMenuItem_MultipleSeasonTeam;
     private javax.swing.JMenuItem jMenuItem_PlayerAdd;
     private javax.swing.JMenuItem jMenuItem_PlayerAddGame;
     private javax.swing.JMenuItem jMenuItem_PlayerGameList;
     private javax.swing.JMenuItem jMenuItem_PlayerList;
     private javax.swing.JMenuItem jMenuItem_SeasonAddSeason;
     private javax.swing.JMenuItem jMenuItem_SeasonList;
+    private javax.swing.JMenuItem jMenuItem_SingleSeasonPlayer;
+    private javax.swing.JMenuItem jMenuItem_SingleSeasonTeam;
     private javax.swing.JMenu jMenu_File;
     private javax.swing.JMenu jMenu_MatchData;
+    private javax.swing.JMenu jMenu_MultipleSeasons;
     private javax.swing.JMenu jMenu_Player;
     private javax.swing.JMenu jMenu_Season;
+    private javax.swing.JMenu jMenu_SingleSeason;
     private javax.swing.JMenu jMenu_Statictis;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -3110,6 +3571,8 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_PlayerUpdate;
     private javax.swing.JPanel jPanel_SeasonAdd;
     private javax.swing.JPanel jPanel_SeasonList;
+    private javax.swing.JPanel jPanel_StatsSingleSeasonPlayer;
+    private javax.swing.JPanel jPanel_StatsSingleSeasonTeam;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

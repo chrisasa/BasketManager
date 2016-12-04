@@ -105,7 +105,7 @@ public class DatabaseManager {
         return getIdPointerLength();
     }
 
-    public static void showAllPlayerRecords(String playersRafPath) throws FileNotFoundException {
+    public static void showAllPlayerRecords(String playersRafPath) {
 
         ArrayList<PlayerRecord> tmpList = getAllPlayerEntries();
 
@@ -114,15 +114,15 @@ public class DatabaseManager {
         }
     }
 
-    public static ArrayList<PlayerRecord> getAllPlayerEntries() throws FileNotFoundException {
-
-        String RafPath = GlobalVariables.pathPlayersRaf;
-
-        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+    public static ArrayList<PlayerRecord> getAllPlayerEntries() {
 
         ArrayList<PlayerRecord> recordsArrayList = new ArrayList<>();
 
         try {
+            String RafPath = GlobalVariables.pathPlayersRaf;
+
+            RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+
             long seekPoint = getDataEntriesStartPointerOffset();
 
             // Loop up to the end of the file (EOFException)
@@ -134,7 +134,7 @@ public class DatabaseManager {
                 playerRecord.readFromFile(randomAccessFile);
 
                 // Get only non deleted entries, IsDeleted = 0 
-                if(playerRecord.getIsDeleted() == 0) {
+                if (playerRecord.getIsDeleted() == 0) {
                     recordsArrayList.add(playerRecord);
                 }
 
@@ -151,15 +151,52 @@ public class DatabaseManager {
         return recordsArrayList;
     }
 
-    public static ArrayList<MatchRecord> getAllMatchesEntries() throws FileNotFoundException {
-        
-        String RafPath = GlobalVariables.pathMatchesRaf;
+    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntries() {
 
-        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+        ArrayList<PlayerGameRecord> recordsArrayList = new ArrayList<>();
+
+        try {
+            String RafPath = GlobalVariables.pathPlayersGamesRaf;
+
+            RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+
+            long seekPoint = getDataEntriesStartPointerOffset();
+
+            // Loop up to the end of the file (EOFException)
+            while (true) {
+                randomAccessFile.seek(seekPoint);
+
+                PlayerGameRecord playerGameRecord = new PlayerGameRecord();
+
+                playerGameRecord.readFromFile(randomAccessFile);
+
+                // Get only non deleted entries, IsDeleted = 0 
+                if (playerGameRecord.getIsDeleted() == 0) {
+                    recordsArrayList.add(playerGameRecord);
+                }
+
+                // Increase by one entry size the seek position to get the next entry
+                seekPoint += playerGameRecord.getDatabaseEntrySize();
+            }
+
+        } catch (EOFException ex1) {
+            return recordsArrayList;
+        } catch (IOException ex2) {
+            System.err.println("Error reading file");
+        }
+
+        return recordsArrayList;
+    }
+
+    public static ArrayList<MatchRecord> getAllMatchesEntries() {
 
         ArrayList<MatchRecord> recordsArrayList = new ArrayList<>();
 
         try {
+            String RafPath = GlobalVariables.pathMatchesRaf;
+
+            RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
+
             long seekPoint = getDataEntriesStartPointerOffset();
 
             // Loop up to the end of the file (EOFException)
@@ -171,7 +208,7 @@ public class DatabaseManager {
                 matchRecord.readFromFile(randomAccessFile);
 
                 // Get only non deleted entries, IsDeleted = 0 
-                if(matchRecord.getIsDeleted() == 0) {
+                if (matchRecord.getIsDeleted() == 0) {
                     recordsArrayList.add(matchRecord);
                 }
 
@@ -187,84 +224,11 @@ public class DatabaseManager {
 
         return recordsArrayList;
     }
-    
-    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntries() throws FileNotFoundException {
-        String RafPath = GlobalVariables.pathPlayersGamesRaf;
-        
-        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
-        ArrayList<PlayerGameRecord> recordsArrayList = new ArrayList<>();
-
-        try {
-            long seekPoint = getDataEntriesStartPointerOffset();
-
-            // Loop up to the end of the file (EOFException)
-            while (true) {
-                randomAccessFile.seek(seekPoint);
-
-                PlayerGameRecord playerGameRecord = new PlayerGameRecord();
-
-                playerGameRecord.readFromFile(randomAccessFile);
-
-                // Get only non deleted entries, IsDeleted = 0 
-                if(playerGameRecord.getIsDeleted() == 0) {
-                    recordsArrayList.add(playerGameRecord);
-                }
-
-                // Increase by one entry size the seek position to get the next entry
-                seekPoint += playerGameRecord.getDatabaseEntrySize();
-            }
-
-        } catch (EOFException ex1) {
-            return recordsArrayList;
-        } catch (IOException ex2) {
-            System.err.println("Error reading file");
-        }
-
-        return recordsArrayList;
-    }
-    
-    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntriesOfPlayer(int PlayerId) throws FileNotFoundException {
-        String RafPath = GlobalVariables.pathPlayersGamesRaf;
-        
-        RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
-
-        ArrayList<PlayerGameRecord> recordsArrayList = new ArrayList<>();
-
-        try {
-            long seekPoint = getDataEntriesStartPointerOffset();
-
-            // Loop up to the end of the file (EOFException)
-            while (true) {
-                randomAccessFile.seek(seekPoint);
-
-                PlayerGameRecord playerGameRecord = new PlayerGameRecord();
-
-                playerGameRecord.readFromFile(randomAccessFile);
-
-                // Get only non deleted entries, IsDeleted = 0 
-                if(playerGameRecord.getIsDeleted() == 0 && playerGameRecord.getPlayerId() == PlayerId) {
-                    recordsArrayList.add(playerGameRecord);
-                }
-
-                // Increase by one entry size the seek position to get the next entry
-                seekPoint += playerGameRecord.getDatabaseEntrySize();
-            }
-
-        } catch (EOFException ex1) {
-            return recordsArrayList;
-        } catch (IOException ex2) {
-            System.err.println("Error reading file");
-        }
-
-        return recordsArrayList;
-    }
-    
-    
     public static ArrayList<SeasonRecord> getAllSeasonEntries() throws FileNotFoundException {
 
         String RafPath = GlobalVariables.pathSeasonsRaf;
-        
+
         RandomAccessFile randomAccessFile = new RandomAccessFile(RafPath, "rw");
 
         ArrayList<SeasonRecord> recordsArrayList = new ArrayList<>();
@@ -293,6 +257,51 @@ public class DatabaseManager {
         }
 
         return recordsArrayList;
+    }
+
+    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntriesOfPlayer(int PlayerId) {
+        ArrayList<PlayerGameRecord> playerGameRecords = new ArrayList<>();
+
+        ArrayList<PlayerGameRecord> recordsArrayList = getAllPlayerGamesEntries();
+
+        for (PlayerGameRecord playerGameRecord : recordsArrayList) {
+            // Filter player's entries
+            if (playerGameRecord.getPlayerId() == PlayerId) {
+                playerGameRecords.add(playerGameRecord);
+            }
+
+        }
+
+        return playerGameRecords;
+    }
+
+    public static ArrayList<PlayerGameRecord> getAllPlayerGamesEntriesOfPlayerSpecificSeason(int PlayerId, int SeasonId) {
+        ArrayList<PlayerGameRecord> playerGameRecords = new ArrayList<>();
+
+        ArrayList<PlayerGameRecord> recordsArrayList = getAllPlayerGamesEntries();
+
+        for (PlayerGameRecord playerGameRecord : recordsArrayList) {
+            // Filter player's entries
+            if (playerGameRecord.getPlayerId() == PlayerId && playerGameRecord.getSeasonId() == SeasonId) {
+                playerGameRecords.add(playerGameRecord);
+            }
+
+        }
+
+        return playerGameRecords;
+    }
+
+    public static ArrayList<MatchRecord> getAllMatchesEntriesSpecificSeason(int SeasonId) {
+        ArrayList<MatchRecord> matchRecords = new ArrayList<>();
+
+        ArrayList<MatchRecord> recordsArrayList = getAllMatchesEntries();
+
+        for (MatchRecord matchRecord : recordsArrayList) {
+            if (matchRecord.getSeasonId() == SeasonId) {
+                matchRecords.add(matchRecord);
+            }
+        }
+        return matchRecords;
     }
 
 }

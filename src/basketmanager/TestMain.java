@@ -34,11 +34,12 @@ public class TestMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        PlayerRecord playerRecord = new PlayerRecord();
-        //System.out.println(playerRecord.toString());
+        int k = 1345;
+        int l = 234;
+        double res = k/l;
         
-        PlayerGameRecord playerGameRecord = new PlayerGameRecord();
-        System.out.println(playerGameRecord.toString());
+        System.out.println(res);
+        
 //        TestMain mn = new TestMain();
 //
 //        mn.testImportPlayer();
