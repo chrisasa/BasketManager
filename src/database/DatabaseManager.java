@@ -322,4 +322,21 @@ public class DatabaseManager {
         return matchRecords;
     }
 
+    public static ArrayList<MatchRecord> getAllMatchesEntriesOfAllSelectedSeasons(ArrayList<Integer> SeasonIdList) {
+        ArrayList<MatchRecord> matchRecords = new ArrayList<>();
+
+        ArrayList<MatchRecord> recordsArrayList = getAllMatchesEntries();
+
+        // Iterate the selected seasons
+        for (Integer seasonId : SeasonIdList) {
+            // Iterate all match entries
+            for (MatchRecord matchRecord : recordsArrayList) {
+                if (matchRecord.getSeasonId() == seasonId) {
+                    matchRecords.add(matchRecord);
+                }
+            }
+        }
+        return matchRecords;
+    }
+
 }
