@@ -13,7 +13,7 @@ import java.io.File;
  */
 public class GlobalVariables {
     
-    private static String pathFilesFolderPath = "/Users/christos/Dropbox/PROJECTS/nick_java/BasketFiles";
+    public static String pathFilesFolderPath = "/Users/christos/Dropbox/PROJECTS/nick_java/BasketFiles";
     
     public static final String pathPlayersExcel = pathFilesFolderPath + File.separator + "Players.xlsx";
     public static final String nameSpreadSheetPlayersInfo = "PlayersInfo";

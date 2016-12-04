@@ -3,8 +3,9 @@
  * To change this template randomAccessFile, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package NotInUse;
 
+import database.DatabaseManager;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import objects.DatabaseRecord;

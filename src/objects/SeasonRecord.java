@@ -47,5 +47,10 @@ public class SeasonRecord extends Season implements DatabaseRecord {
     public int getDatabaseEntrySize() {
         return Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH));
     }
+
+    @Override
+    public boolean isValidRecord() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

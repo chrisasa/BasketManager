@@ -22,6 +22,8 @@ public interface DatabaseRecord {
     
     public int getDatabaseEntrySize();
     
+    public boolean isValidRecord();
+    
     @Override
     public String toString();
 }

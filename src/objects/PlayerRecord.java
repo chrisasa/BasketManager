@@ -20,7 +20,6 @@ public class PlayerRecord extends Player implements DatabaseRecord {
     private static final int NUMBER_OF_STRING_FIELDS = 8;
 
     public PlayerRecord() {
-        //this(0, "", "", "", "", "", "", "", "", 0);
     }
 
     public PlayerRecord(int Id, String FirstName, String LastName, String DoB, String PoB, String Height, String Weight, String Position, String Jersey, int IsDeleted) {
@@ -72,6 +71,11 @@ public class PlayerRecord extends Player implements DatabaseRecord {
     @Override
     public int getDatabaseEntrySize() {
         return Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH)) + Integer.BYTES;
+    }
+
+    @Override
+    public boolean isValidRecord() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

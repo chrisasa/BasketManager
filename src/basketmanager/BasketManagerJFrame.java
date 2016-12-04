@@ -10,7 +10,10 @@ import database.FileDatabaseManagerPlayer;
 import database.FileDatabaseManagerPlayerGame;
 import database.FileDatabaseManagerMatch;
 import database.FileDatabaseManagerSeason;
+import database.ImportManager;
+import database.ImportManager.ImportDialogType;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -365,11 +368,14 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         jTextField_SeasonName = new javax.swing.JTextField();
         jButton_AddPlayer1 = new javax.swing.JButton();
         jLabel_SeasonAddMessage = new javax.swing.JLabel();
-        jDialog_ExitConfirmation = new javax.swing.JDialog();
+        jFileChooser_ImportExcel = new javax.swing.JFileChooser();
         jPanel_Main = new javax.swing.JPanel();
         jPanel_MainBody = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_File = new javax.swing.JMenu();
+        jMenuItem_FileImportPlayers = new javax.swing.JMenuItem();
+        jMenuItem_FileImportMatches = new javax.swing.JMenuItem();
+        jMenuItem_FileImportPlayersGames = new javax.swing.JMenuItem();
         jMenuItem_FileExit = new javax.swing.JMenuItem();
         jMenu_Player = new javax.swing.JMenu();
         jMenuItem_PlayerAdd = new javax.swing.JMenuItem();
@@ -1762,16 +1768,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         jPanel_SeasonAdd.add(jPanel9, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jDialog_ExitConfirmationLayout = new javax.swing.GroupLayout(jDialog_ExitConfirmation.getContentPane());
-        jDialog_ExitConfirmation.getContentPane().setLayout(jDialog_ExitConfirmationLayout);
-        jDialog_ExitConfirmationLayout.setHorizontalGroup(
-            jDialog_ExitConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog_ExitConfirmationLayout.setVerticalGroup(
-            jDialog_ExitConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jFileChooser_ImportExcel.setDialogTitle("Import Excel");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Basket Manager");
@@ -1798,6 +1795,30 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         );
 
         jMenu_File.setText("File");
+
+        jMenuItem_FileImportPlayers.setText("Import Players");
+        jMenuItem_FileImportPlayers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_FileImportPlayersActionPerformed(evt);
+            }
+        });
+        jMenu_File.add(jMenuItem_FileImportPlayers);
+
+        jMenuItem_FileImportMatches.setText("Import Matches");
+        jMenuItem_FileImportMatches.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_FileImportMatchesActionPerformed(evt);
+            }
+        });
+        jMenu_File.add(jMenuItem_FileImportMatches);
+
+        jMenuItem_FileImportPlayersGames.setText("Import Players' Games");
+        jMenuItem_FileImportPlayersGames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_FileImportPlayersGamesActionPerformed(evt);
+            }
+        });
+        jMenu_File.add(jMenuItem_FileImportPlayersGames);
 
         jMenuItem_FileExit.setText("Exit");
         jMenuItem_FileExit.addActionListener(new java.awt.event.ActionListener() {
@@ -2005,6 +2026,18 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private void jButton_DeletePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeletePlayerActionPerformed
         deletePlayer();
     }//GEN-LAST:event_jButton_DeletePlayerActionPerformed
+
+    private void jMenuItem_FileImportPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_FileImportPlayersActionPerformed
+        displayImportExcel(ImportDialogType.PLAYERS);
+    }//GEN-LAST:event_jMenuItem_FileImportPlayersActionPerformed
+
+    private void jMenuItem_FileImportPlayersGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_FileImportPlayersGamesActionPerformed
+        displayImportExcel(ImportDialogType.PLAYERS_GAMES);
+    }//GEN-LAST:event_jMenuItem_FileImportPlayersGamesActionPerformed
+
+    private void jMenuItem_FileImportMatchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_FileImportMatchesActionPerformed
+        displayImportExcel(ImportDialogType.MATCHES);
+    }//GEN-LAST:event_jMenuItem_FileImportMatchesActionPerformed
 
     // =====================================================================================
     // Display methods
@@ -2256,6 +2289,32 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
         changeMainBodyContent(jPanel_SeasonAdd);
     }
 
+    private void displayImportExcel(ImportDialogType importDialogType) {
+        try {
+            jFileChooser_ImportExcel.showDialog(this, "Select");
+            
+            jFileChooser_ImportExcel.setCurrentDirectory(new File(GlobalVariables.pathFilesFolderPath));
+            
+            File choosedFile = jFileChooser_ImportExcel.getSelectedFile();
+            
+            String filePath = choosedFile.getAbsolutePath();
+            
+            switch(importDialogType){
+                case PLAYERS:
+                    ImportManager.ImportEntries(importDialogType,filePath);
+                    break;
+                case PLAYERS_GAMES:
+                    ImportManager.ImportEntries(importDialogType,filePath);
+                    break;
+                case MATCHES:
+                    ImportManager.ImportEntries(importDialogType,filePath);
+                    break;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     // =====================================================================================
     // Actions methods
     private void addPlayer() throws IllegalArgumentException {
@@ -2917,7 +2976,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_MatchSeasonName;
     private javax.swing.JComboBox<String> jComboBox_PlayerGamePlayerName;
     private javax.swing.JComboBox<String> jComboBox_PlayerGameSeasonName;
-    private javax.swing.JDialog jDialog_ExitConfirmation;
+    private javax.swing.JFileChooser jFileChooser_ImportExcel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3011,6 +3070,9 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_FileExit;
+    private javax.swing.JMenuItem jMenuItem_FileImportMatches;
+    private javax.swing.JMenuItem jMenuItem_FileImportPlayers;
+    private javax.swing.JMenuItem jMenuItem_FileImportPlayersGames;
     private javax.swing.JMenuItem jMenuItem_MatchAddNew;
     private javax.swing.JMenuItem jMenuItem_MatchList;
     private javax.swing.JMenuItem jMenuItem_PlayerAdd;

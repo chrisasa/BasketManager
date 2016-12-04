@@ -9,6 +9,7 @@ package NotInUse;
  *
  * @author
  */
+@Deprecated
 public interface PlayerManagerInterface {
     
     public void createPlayersExcelFile();

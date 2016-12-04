@@ -43,7 +43,7 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         setAwayTeamName(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setPointsScored(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
         setLocation(DatabaseManager.readString(file, STRING_ENTRY_LENGTH));
-        setGameDate(file.readLong());     
+        setGameDate(file.readLong());
         setIsDeleted(file.readInt());
     }
 
@@ -68,7 +68,7 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         int t = this.getIsDeleted();
         file.writeInt(getIsDeleted());
     }
-    
+
     @Override
     public int getRecordId() {
         return getId();
@@ -77,6 +77,53 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
     @Override
     public int getDatabaseEntrySize() {
         return Integer.BYTES + Integer.BYTES + Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH)) + Integer.BYTES + Long.BYTES + Integer.BYTES;
+    }
+
+    @Override
+    public boolean isValidRecord() {
+        
+        boolean isValid = true;
+        
+        if (getSeasonId() == 0) {isValid = false;}
+        if (getSeasonName() == null) {isValid = false;}
+        if (getPlayerId() == 0) {isValid = false;}
+        if (getPlayerName() == null) {isValid = false;}
+        if (getFoulsCommitted()== null) {isValid = false;}
+        if (getFoulsConceded()== null) {isValid = false;}
+        if (getAssists()== null) {isValid = false;}
+        if (getRebounds()== null) {isValid = false;}
+        if (getSteals()== null) {isValid = false;}
+        if (getBlocks()== null) {isValid = false;}
+        if (getHomeGame() != 0 || getHomeGame() != 1) {isValid = false;} 
+        if (getAwayTeamName()== null) {isValid = false;}
+        if (getPointsScored()== null) {isValid = false;}
+        if (getLocation()== null) {isValid = false;}
+        if (getGameDate() == 0) {isValid = false;}
+        
+        return isValid;
+    }
+    
+    @Override
+    public String toString() {
+        return "PlayerGameRecord{"
+                + "Id = " + getId()
+                + ", SeasonId = " + getSeasonId()
+                + ", SeasonName = " + getSeasonName()
+                + ", PlayerId = " + getPlayerId()
+                + ", PlayerName = " + getPlayerName()
+                + ", FoulsCommitted = " + getFoulsCommitted()
+                + ", FoulsConceded = " + getFoulsConceded()
+                + ", Assists = " + getAssists()
+                + ", Rebounds = " + getRebounds()
+                + ", Steals = " + getSteals()
+                + ", Blocks = " + getBlocks()
+                + ", HomeGame = " + getHomeGame()
+                + ", AwayTeamName = " + getAwayTeamName()
+                + ", PointsScored = " + getPointsScored()
+                + ", Location = " + getLocation()
+                + ", GameDate = " + getGameDate()
+                + ", IsDeleted" + getIsDeleted()
+                + "}";
     }
 
 }

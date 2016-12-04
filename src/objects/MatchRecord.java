@@ -20,7 +20,6 @@ public class MatchRecord extends Match implements DatabaseRecord {
     private static final int NUMBER_OF_STRING_FIELDS = 11;
 
     public MatchRecord() {
-        //this(0, 0, "", "", 0, "", "", "", "", "", "", 0, "", "", "", 0);
     }
 
     public MatchRecord(int Id, int SeasonId, String SeasonName, String Opponent, long Date, String FoulsCommitted, String FoulsConceded, String Assists, String Rebounds, String Steals, String Blocks, int HomeGame, String PointsScored, String PointsConceded, String Location, int IsDeleted) {
@@ -75,6 +74,51 @@ public class MatchRecord extends Match implements DatabaseRecord {
     @Override
     public int getDatabaseEntrySize() {
         return Integer.BYTES + Integer.BYTES + (NUMBER_OF_STRING_FIELDS * (Character.BYTES * STRING_ENTRY_LENGTH)) + Long.BYTES + Integer.BYTES + Integer.BYTES;
+    }
+
+    @Override
+    public boolean isValidRecord() {
+        
+        boolean isValid = true;
+        
+        if (getSeasonId() == 0) {isValid = false;}
+        if (getSeasonName() == null) {isValid = false;}
+        if (getOpponent() == null) {isValid = false;}
+        if (getDate() == 0) {isValid = false;}
+        if (getFoulsCommitted()== null) {isValid = false;}
+        if (getFoulsConceded()== null) {isValid = false;}
+        if (getAssists()== null) {isValid = false;}
+        if (getRebounds()== null) {isValid = false;}
+        if (getSteals()== null) {isValid = false;}
+        if (getBlocks()== null) {isValid = false;}
+        if (getHomeGame() != 0 || getHomeGame() != 1) {isValid = false;} 
+        if (getPointsScored()== null) {isValid = false;}
+        if (getPointsConceded()== null) {isValid = false;}
+        if (getLocation()== null) {isValid = false;}
+        
+        return isValid;
+    }
+    
+    @Override
+    public String toString() {
+        return "PlayerGameRecord{"
+                + "Id = " + getId()
+                + ", SeasonId = " + getSeasonId()
+                + ", SeasonName = " + getSeasonName()
+                + ", Opponent = " + getOpponent()
+                + ", GameDate = " + getDate()
+                + ", FoulsCommitted = " + getFoulsCommitted()
+                + ", FoulsConceded = " + getFoulsConceded()
+                + ", Assists = " + getAssists()
+                + ", Rebounds = " + getRebounds()
+                + ", Steals = " + getSteals()
+                + ", Blocks = " + getBlocks()
+                + ", HomeGame = " + getHomeGame()
+                + ", PointsScored = " + getPointsScored()
+                + ", PointsConceded = " + getPointsConceded()
+                + ", Location = " + getLocation()
+                + ", IsDeleted" + getIsDeleted()
+                + "}";
     }
     
 }
