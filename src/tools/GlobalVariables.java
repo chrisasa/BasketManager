@@ -12,15 +12,8 @@ import java.io.File;
  * @author
  */
 public class GlobalVariables {
-    
-    public static String pathFilesFolderPath = "/Users/christos/Dropbox/PROJECTS/nick_java/BasketFiles";
-    
-    public static final String pathPlayersExcel = pathFilesFolderPath + File.separator + "Players.xlsx";
-    public static final String nameSpreadSheetPlayersInfo = "PlayersInfo";
-    public static final String nameSpreadSheetPlayersMatchData = "PlayersMatchData";
-    public static final String pathMatchesExcel = pathFilesFolderPath + File.separator + "Matches.xlsx";
-    
-    
+    // Set a location for the main folder
+    public static String pathFilesFolderPath = "C";
     
     public static final String pathPlayersRaf = pathFilesFolderPath + File.separator + "Players.store";
     

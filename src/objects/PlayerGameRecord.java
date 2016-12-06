@@ -84,9 +84,7 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         
         boolean isValid = true;
         
-        if (getSeasonId() == 0) {isValid = false;}
         if (getSeasonName() == null) {isValid = false;}
-        if (getPlayerId() == 0) {isValid = false;}
         if (getPlayerName() == null) {isValid = false;}
         if (getFoulsCommitted()== null) {isValid = false;}
         if (getFoulsConceded()== null) {isValid = false;}
@@ -94,7 +92,7 @@ public class PlayerGameRecord extends PlayerGame implements DatabaseRecord {
         if (getRebounds()== null) {isValid = false;}
         if (getSteals()== null) {isValid = false;}
         if (getBlocks()== null) {isValid = false;}
-        if (getHomeGame() != 0 || getHomeGame() != 1) {isValid = false;} 
+        if (getHomeGame() != 0 && getHomeGame() != 1) {isValid = false;} 
         if (getAwayTeamName()== null) {isValid = false;}
         if (getPointsScored()== null) {isValid = false;}
         if (getLocation()== null) {isValid = false;}

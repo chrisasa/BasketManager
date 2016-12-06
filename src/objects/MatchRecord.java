@@ -81,7 +81,6 @@ public class MatchRecord extends Match implements DatabaseRecord {
         
         boolean isValid = true;
         
-        if (getSeasonId() == 0) {isValid = false;}
         if (getSeasonName() == null) {isValid = false;}
         if (getOpponent() == null) {isValid = false;}
         if (getDate() == 0) {isValid = false;}
@@ -91,7 +90,7 @@ public class MatchRecord extends Match implements DatabaseRecord {
         if (getRebounds()== null) {isValid = false;}
         if (getSteals()== null) {isValid = false;}
         if (getBlocks()== null) {isValid = false;}
-        if (getHomeGame() != 0 || getHomeGame() != 1) {isValid = false;} 
+        if (getHomeGame() != 0 && getHomeGame() != 1) {isValid = false;} 
         if (getPointsScored()== null) {isValid = false;}
         if (getPointsConceded()== null) {isValid = false;}
         if (getLocation()== null) {isValid = false;}

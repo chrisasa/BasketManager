@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -29,6 +30,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -72,7 +74,7 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
         initListeners();
     }
-
+    
     private void initPlayersStoreFile() {
         File playersRaf = new File(GlobalVariables.pathPlayersRaf);
         if (!playersRaf.exists()) {
@@ -2731,26 +2733,33 @@ public class BasketManagerJFrame extends javax.swing.JFrame {
 
     private void displayImportExcel(ImportDialogType importDialogType) {
         try {
-            jFileChooser_ImportExcel.showDialog(this, "Select");
-
-            jFileChooser_ImportExcel.setCurrentDirectory(new File(GlobalVariables.pathFilesFolderPath));
+            int clickedButton = jFileChooser_ImportExcel.showDialog(this, "Select");
 
             File choosedFile = jFileChooser_ImportExcel.getSelectedFile();
 
             String filePath = choosedFile.getAbsolutePath();
-
+            
+            String dialogMessage = "";
+            
             switch (importDialogType) {
                 case PLAYERS:
-                    ImportManager.ImportEntries(importDialogType, filePath);
+                    dialogMessage = ImportManager.ImportEntries(importDialogType, filePath);
                     break;
                 case PLAYERS_GAMES:
-                    ImportManager.ImportEntries(importDialogType, filePath);
+                    dialogMessage = ImportManager.ImportEntries(importDialogType, filePath);
                     break;
                 case MATCHES:
-                    ImportManager.ImportEntries(importDialogType, filePath);
+                    dialogMessage = ImportManager.ImportEntries(importDialogType, filePath);
                     break;
             }
-        } catch (IOException ex) {
+            
+            // In case of Cancel button do nothing
+            if(clickedButton == JFileChooser.APPROVE_OPTION){
+                JOptionPane.showMessageDialog(jPanel_Main, dialogMessage);
+            }
+            
+        } catch (IOException | ParseException ex) {
+            JOptionPane.showMessageDialog(jPanel_Main, "Error during data import: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(BasketManagerJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
